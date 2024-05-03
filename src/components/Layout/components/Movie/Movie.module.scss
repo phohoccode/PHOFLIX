@@ -1,0 +1,48 @@
+.Movie {
+    width: 20%;
+    padding: 0 8px;
+
+
+    figure {
+        border-radius: var(--borderRadius);
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+        transition: .3s;
+
+        i {
+            font-size: 5rem;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: .3s;
+        }
+
+        &:hover img {
+            transform: scale(1.2);
+            opacity: 0.3;
+        }
+
+        &:hover i {
+            opacity: 1;
+        }
+
+    }
+
+    span {
+        display: block;
+        margin-top: 8px;
+        color: #fff;
+        font-size: 1.6rem;
+        transition: .3s;
+
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+
+
+}

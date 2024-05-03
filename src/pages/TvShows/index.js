@@ -1,6 +1,8 @@
+import Movies from "../../components/Layout/components/Movies";
+
 function TvShows() {
     return ( 
-        <h1>TvShows</h1>
+        <Movies api="https://phimapi.com/v1/api/danh-sach/tv-shows"/>
      );
 }
 

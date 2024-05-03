@@ -1,0 +1,13 @@
+.Movies__wrapper {
+  h4 {
+    font-size: 3rem;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .Movies__list {
+    display: flex;
+    gap: 16px 0;
+    flex-wrap: wrap;
+    margin: 0 -8px;
+  }
+}

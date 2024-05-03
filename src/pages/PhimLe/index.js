@@ -1,6 +1,8 @@
+import Movies from "../../components/Layout/components/Movies";
+
 function PhimLe() {
     return ( 
-        <h1>PhimLe</h1>
+        <Movies api="https://phimapi.com/v1/api/danh-sach/phim-le"/>
      );
 }
 

@@ -1,0 +1,61 @@
+.NavBar {
+    position: sticky;
+    height: 60px;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 32px;
+    border-bottom: .1px solid #4f4e4e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    background-color: var(--background);
+
+    .NavBar__logo {
+        display: flex;
+        gap: 0 12px;
+        align-items: center;
+
+        a {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--borderRadius);
+            overflow: hidden;
+        }   
+
+        h4 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+    }
+
+    .NavBar__search {
+        position: relative;
+
+        input {
+            width: 400px;
+            height: 40px;
+            border-radius: var(--borderRadius);
+            padding: 0 40px 0 12px;
+            background-color: var(--sub-background);
+            color: #fff;
+            font-size: 1.6rem;
+        }
+
+        a {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            font-size: 2rem;
+            color: #fff;
+            transform: translateY(-50%);
+        }
+    }
+
+    .NavBar__actions {
+        display: flex;
+        gap: 0 12px;
+
+    }
+}

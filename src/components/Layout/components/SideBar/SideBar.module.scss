@@ -1,0 +1,50 @@
+.SideBar {
+    position: sticky;
+    top: 70px;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 200px;
+    padding: 12px;
+    border-radius: var(--borderRadius);
+    background-color: var(--sub-background);
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    user-select: none;
+    z-index: 999;
+    overscroll-behavior-y: none;
+    
+    .SideBar__item {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        
+        h4 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;;
+        }
+        
+        li {
+            display: block;
+            color: #fff;
+            padding: 6px 12px;
+            transition: .3s;
+            font-size: 1.8rem;
+            cursor: pointer;
+
+            i {
+                margin-left: 8px;
+            }
+
+            a {
+                color: inherit;
+            }
+        }
+
+        li:hover {
+            color: var(--primary-color);
+        }
+
+    }
+}

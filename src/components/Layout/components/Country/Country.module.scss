@@ -1,0 +1,9 @@
+.SideBar__country {
+    overflow-y: auto;
+    height: 200px;
+    overscroll-behavior-y: none;
+
+    li {
+        font-size: 1.7rem !important;
+    }
+}

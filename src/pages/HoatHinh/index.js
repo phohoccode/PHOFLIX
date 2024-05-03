@@ -1,6 +1,8 @@
+import Movies from "../../components/Layout/components/Movies";
+
 function HoatHinh() {
     return ( 
-        <h1>HoatHinh</h1>
+        <Movies api="https://phimapi.com/v1/api/danh-sach/hoat-hinh"/>
      );
 }
 

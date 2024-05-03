@@ -5,9 +5,6 @@ import { useState, useEffect } from 'react';
 import useFetch from './Hooks/useFetch';
 
 function App() {
-    const [movie, setMovie] = useState([])
-    const data = useFetch('https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=1');
-    console.log(data)
     return (
         <>
             <Router>
