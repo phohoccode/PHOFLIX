@@ -12,6 +12,7 @@ import LatestMovies from "../pages/LatestMovies"
 import NotFound from "../pages/NotFound"
 import Detail from "../pages/Detail"
 import Watch from "../pages/Watch"
+import Info from "../pages/Info"
 
 const publicRoutes = [
     { path: '/PHOFLIX/', component: Home},
@@ -19,13 +20,14 @@ const publicRoutes = [
     { path: '/PHOFLIX/phimbo', component: PhimBo},
     { path: '/PHOFLIX/hoathinh', component: HoatHinh},
     { path: '/PHOFLIX/tvshows', component: TvShows},
-    { path: '/PHOFLIX/categoty/:slug', component: Category},
+    { path: '/PHOFLIX/category/:slug', component: Category},
     { path: '/PHOFLIX/country/:slug', component: Country},
     { path: '/PHOFLIX/savemovie', component: SaveMovie},
     { path: '/PHOFLIX/lastestmovies', component: LatestMovies},
     { path: '/PHOFLIX/recenltyviewed', component: RecenltyViewed},
     { path: '/PHOFLIX/search/:slug', component: Search},
-    { path: '/PHOFLIX/detail/:slug', component: Detail},
+    { path: '/PHOFLIX/detail/:list/:slug', component: Detail},
+    { path: '/PHOFLIX/info/:slug', component: Info},
     { path: '/PHOFLIX/watch/:slug', component: Watch},
     { path: '*', component: NotFound}
 ]

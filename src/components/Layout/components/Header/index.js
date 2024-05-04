@@ -19,7 +19,7 @@ function Header() {
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </Link>
                 </div>
-                <div className={clsx('btn', styles.NavBar__actions)}>
+                <div className={clsx('btn btn--primary', styles.NavBar__actions)}>
                     <Link>Đăng nhập</Link>
                 </div>
             </nav>

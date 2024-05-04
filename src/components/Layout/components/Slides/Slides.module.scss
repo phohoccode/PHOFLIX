@@ -1,0 +1,11 @@
+.Sides__container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 32px;
+
+    .Sides__inner {
+        display: flex;
+        transition: transform 0.8s;
+    }
+}

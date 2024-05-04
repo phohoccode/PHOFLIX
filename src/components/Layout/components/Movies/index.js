@@ -3,26 +3,24 @@ import clsx from "clsx";
 import styles from "./Movies.module.scss"
 import Movie from "../Movie";
 import { Link } from "react-router-dom";
+import useFetch from "../../../../Hooks/useFetch";
 
 function Movies({ api }) {
-    const [movies, setMovies] = useState([])
-    const [titlePage, setTitlePage] = useState('')
-    useEffect(() => {
-        const getDataMovie = async () => {
-            const res = await fetch(api)
-            const data = await res.json()
-            setMovies(data?.data?.items)
-            setTitlePage(data?.data?.titlePage)
-            console.log(data)
-        }
-        getDataMovie()
-    }, [])
+    const [data] = useFetch(api)
+    const titlePage = data?.data?.titlePage
+    const movies = data?.data?.items
+    const breadCrumb = data?.data?.breadCrumb[0]
 
     return (
         <div className={clsx(styles.Movies__wrapper)}>
-            <h4>{titlePage}</h4>
+            <header>
+                <h4>{titlePage && titlePage}</h4>
+                <Link to={breadCrumb && `/PHOFLIX/detail${breadCrumb?.slug}`}>
+                    Xem tất cả
+                    <i className="fa-solid fa-chevron-right"></i></Link>
+            </header>
             <div className={clsx(styles.Movies__list)}>
-                {movies.map((movie, index) => (
+                {movies && movies.map((movie, index) => (
                     <Movie key={index} data={movie} />
                 ))}
             </div>

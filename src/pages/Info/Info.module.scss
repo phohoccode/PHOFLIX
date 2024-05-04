@@ -1,0 +1,108 @@
+.Info {
+
+    .Info__background {
+        position: relative;
+        
+        figure {
+            height: 500px;
+            border-radius: var(--borderRadius);
+            overflow: hidden;
+        }
+
+        .Info__backgroundOuter {
+            
+            position: absolute;
+            top: 100%;
+            left: 100px;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 12px;
+
+            figure {
+                width: 200px;
+                height: 300px;
+                border-radius: var(--borderRadius);
+                overflow: hidden;
+            }
+
+            .Info__movie {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                font-size: 1.8rem;
+
+                h4{
+                    text-transform: uppercase;
+                    color: #fff;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+                    font-size: 4rem;
+                }
+
+                h5 {
+                    font-size: 3rem;
+                }
+
+                .Info__actions {
+                    display: flex;
+                    gap: 12px;
+
+                    button, a {
+                        margin-top: 4px;
+                        i {
+                            margin-right: 12px;
+                        }
+                    }
+                }
+
+
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    span {
+                        margin-right: 12px;
+                    }
+
+                    li {
+                        margin-right: 4px;
+                    }
+                }
+            }
+        }
+    }
+
+    .Info__content {
+        margin-top: 200px;
+
+        h4 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 1.8rem;
+        }
+    }
+
+    .Info__trailer {
+        width: 100%;
+        height: 300px;
+        margin-top: 32px;
+
+        h4 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+        
+        iframe {
+            border-radius: var(--borderRadius);
+            border: 1px solid var(--sub-background);
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

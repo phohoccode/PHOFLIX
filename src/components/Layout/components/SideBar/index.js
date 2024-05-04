@@ -20,22 +20,22 @@ function SideBar() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/PHOFLIX/phimle">
+                        <Link to="/PHOFLIX/detail/danh-sach/phim-le">
                             Phim Lẻ
                         </Link>
                     </li>
                     <li>
-                        <Link to="/PHOFLIX/phimbo">
+                        <Link to="/PHOFLIX/detail/danh-sach/phim-bo">
                             Phim Bộ
                         </Link>
                     </li>
                     <li>
-                        <Link to="/PHOFLIX/hoathinh">
+                        <Link to="/PHOFLIX/detail/danh-sach/hoat-hinh">
                             Phim Hoạt Hình
                         </Link>
                     </li>
                     <li>
-                        <Link to="/PHOFLIX/tvshows">
+                        <Link to="/PHOFLIX/detail/danh-sach/tv-shows">
                             Tv Shows
                         </Link>
                     </li>
@@ -63,7 +63,7 @@ function SideBar() {
                         <Link to="/PHOFLIX/savemovie">Phim đã lưu</Link>
                     </li>
                     <li>
-                        <Link to="/PHOFLIX/">Đã xem gần đây</Link>
+                        <Link to="/PHOFLIX/recenltyviewed">Đã xem gần đây</Link>
                     </li>
                 </ul>
             </div>

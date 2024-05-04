@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Movie({ data }) {
     return (
         <div className={clsx(styles.Movie)}>
-            <Link to={`/PHOFLIX/detail/${data.slug}`}>
+            <Link to={`/PHOFLIX/info/${data.slug}`}>
                 <figure>
                     <img 
                         loading="lazy"
@@ -14,9 +14,10 @@ function Movie({ data }) {
                             data.poster_url : `https://img.phimapi.com/${data.poster_url}`
                         } 
                     />
-                    <i class="fa-solid fa-play"></i>
+                    <i className="fa-solid fa-play"></i>
+                    <span className={clsx(styles.status)}>{data.lang}</span>
                 </figure>
-                <span>{data.name}</span>
+                <span className={clsx(styles.name)}>{data.name}</span>
             </Link>
         </div>
     );

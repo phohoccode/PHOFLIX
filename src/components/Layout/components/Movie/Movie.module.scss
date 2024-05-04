@@ -1,48 +1,56 @@
 .Movie {
-    width: 20%;
-    padding: 0 8px;
+  width: 20%;
+  padding: 0 8px;
 
+  figure {
+    border-radius: var(--borderRadius);
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
 
-    figure {
-        border-radius: var(--borderRadius);
-        height: 300px;
-        position: relative;
-        overflow: hidden;
-        transition: .3s;
-
-        i {
-            font-size: 5rem;
-            color: #fff;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: .3s;
-        }
-
-        &:hover img {
-            transform: scale(1.2);
-            opacity: 0.3;
-        }
-
-        &:hover i {
-            opacity: 1;
-        }
-
+    i {
+      font-size: 5rem;
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: 0.3s;
     }
 
-    span {
-        display: block;
-        margin-top: 8px;
-        color: #fff;
-        font-size: 1.6rem;
-        transition: .3s;
-
-        &:hover {
-            color: var(--primary-color);
-        }
+    &:hover img {
+      transform: scale(1.2);
+      opacity: 0.3;
     }
 
+    &:hover i {
+      opacity: 1;
+    }
 
+    .status {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      padding: 4px 6px;
+      background-color: var(--primary-color);
+      border-radius: var(--borderRadius);
+      box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    }
+  }
+
+  .name {
+    display: block;
+    margin-top: 8px;
+    color: #fff;
+    font-size: 1.6rem;
+    transition: 0.3s;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
 }

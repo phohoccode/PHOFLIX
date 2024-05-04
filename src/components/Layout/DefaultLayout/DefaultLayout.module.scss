@@ -2,6 +2,7 @@
     display: flex;
 
     .Container__content {
+        overflow-x: hidden;
         margin-top: 10px;
         width: calc(100% - 20px);
         padding: 0 32px 32px 20px;

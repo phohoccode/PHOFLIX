@@ -1,0 +1,21 @@
+.Detail {
+  .Detail__pages {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    gap: 12px;
+
+    li {
+      padding: 6px 16px;
+      border-radius: var(--borderRadius);
+      background-color: var(--primary-color);
+      font-size: 1.8rem;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    li.active {
+      background-color: #3a86ff !important;
+    }
+  }
+}

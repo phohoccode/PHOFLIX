@@ -2,22 +2,15 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./Category.module.scss"
 import clsx from "clsx";
+import useFetch from "../../../../Hooks/useFetch";
 
 function Category() {
-    const [categotys, setCategorys] = useState([])
-    useEffect(() => {
-        const getCategorys = async () => {
-            const res = await fetch('https://phimapi.com/the-loai')
-            const data = await res.json()
-            setCategorys(data)
-        }
-        getCategorys()
-    }, [])
+    const [categorys] = useFetch('https://phimapi.com/the-loai')
     return ( 
         <ul className={clsx(styles.SideBar__category)}>
-            {categotys.map((categoty, index) => (
+            {categorys && categorys.map((category, index) => (
                 <li key={index}>
-                    <Link to={`/PHOFLIX/categoty/${categoty.slug}`}>{categoty.name}</Link>
+                    <Link to={`/PHOFLIX/category/${category.slug}`}>{category.name}</Link>
                 </li>
             ))}
         </ul>
