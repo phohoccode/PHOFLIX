@@ -4,6 +4,7 @@ import styles from "./Movie.module.scss"
 import { Link } from "react-router-dom";
 
 function Movie({ data }) {
+
     return (
         <div className={clsx(styles.Movie)}>
             <Link to={`/PHOFLIX/info/${data.slug}`}>

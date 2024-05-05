@@ -10,7 +10,7 @@ function Country() {
         <ul className={clsx(styles.SideBar__country)}>
             {countrys && countrys.map((country, index) => (
                 <li key={index}>
-                    <Link to={`/PHOFLIX/country/${country.slug}`}>{country.name}</Link>
+                    <Link to={`/PHOFLIX/detail/quoc-gia/${country.slug}`}>{country.name}</Link>
                 </li>
             ))}
         </ul>

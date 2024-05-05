@@ -10,7 +10,7 @@ function Category() {
         <ul className={clsx(styles.SideBar__category)}>
             {categorys && categorys.map((category, index) => (
                 <li key={index}>
-                    <Link to={`/PHOFLIX/category/${category.slug}`}>{category.name}</Link>
+                    <Link to={`/PHOFLIX/detail/the-loai/${category.slug}`}>{category.name}</Link>
                 </li>
             ))}
         </ul>

@@ -33,17 +33,18 @@
             font-size: 1.8rem;
             cursor: pointer;
 
+            &:hover {
+                color: var(--primary-color);
+            }
+
             i {
                 margin-left: 8px;
             }
 
             a {
+                display: block;
                 color: inherit;
             }
-        }
-
-        li:hover {
-            color: var(--primary-color);
         }
 
     }

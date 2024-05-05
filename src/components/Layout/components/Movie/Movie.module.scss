@@ -2,12 +2,14 @@
   width: 20%;
   padding: 0 8px;
 
+  
   figure {
     border-radius: var(--borderRadius);
-    height: 300px;
+    height: 350px;
     position: relative;
     overflow: hidden;
     transition: 0.3s;
+    border:  1px solid var(--sub-background);
 
     i {
       font-size: 5rem;
@@ -20,9 +22,8 @@
       transition: 0.3s;
     }
 
-    &:hover img {
-      transform: scale(1.2);
-      opacity: 0.3;
+    &:hover  {
+      transform: scale(1.06);
     }
 
     &:hover i {

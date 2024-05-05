@@ -1,4 +1,4 @@
-import Slides from "../Slides";
+import Slides from "../../components/Layout/components/Slides";
 
 function PhimMoiCapNhat() {
     return ( 

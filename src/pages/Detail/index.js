@@ -1,18 +1,40 @@
-import { useParams } from "react-router-dom";
-import Movie from "../../components/Layout/components/Movie";
-import { useEffect, useState } from "react";
-import useFetch from "../../Hooks/useFetch";
-import clsx from "clsx";
+import { useParams } from "react-router-dom"
+import Movie from "../../components/Layout/components/Movie"
+import { useEffect, useState } from "react"
+import clsx from "clsx"
 import styles from './Detail.module.scss'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 
 function Detail() {
-    const params = useParams();
-    const [page, setPage] = useState(1);
-    const [data] = useFetch('https://phimapi.com/v1/api/'.concat(params.list, '/', params.slug, `?page=${page}`));
-    const movies = data?.data?.items;
-    const titleName = data?.data?.breadCrumb[0]?.name;
-    const totalPages = data?.data?.params?.pagination?.totalPages;
+    const params = useParams()
+    const [movies, setMovies] = useState([])
+    const [titleName, setTitleName] = useState('')
+    const [totalPages, setTotalPages] = useState(0)
+    const [page, setPage] = useState(1)
+
+    useEffect(() => {
+        setPage(1)
+    }, [params.slug])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch(`https://phimapi.com/v1/api/${params.describe}/${params.slug}?page=${page}`)
+                const data = await res.json()
+                setMovies(data?.data?.items)
+                setTitleName(data?.data?.breadCrumb[0]?.name)
+                setTotalPages(data?.data?.params?.pagination?.totalPages)
+            } catch (error) {
+                console.error("Error fetching data:", error)
+            }
+        }
+
+        fetchData()
+
+        return () => {
+            setMovies([])
+        }
+    }, [params.describe, params.slug, page])
 
     const handleChangePage = (index) => {
         setPage(index)
@@ -23,26 +45,26 @@ function Detail() {
     }
 
     const renderPaginations = () => {
-        const paginationItems = [];
+        const paginationItems = []
         for (let i = 1; i <= totalPages; i++) {
             paginationItems.push(
-                <li 
+                <li
                     className={clsx(i === page ? styles.active : '')}
-                    onClick={() => handleChangePage(i)} 
+                    onClick={() => handleChangePage(i)}
                     key={i}
                 >
                     {i}
                 </li>
-            );
+            )
         }
-        return paginationItems;
-    };
+        return paginationItems
+    }
 
     return (
         <div className={clsx(styles.Detail)}>
             <div className={clsx(stylesMovie.Movies__wrapper)}>
                 <header>
-                    <h4>{titleName && titleName}</h4>
+                    <h4>{titleName}</h4>
                     <span>Trang {page}</span>
                 </header>
                 <div className={clsx(stylesMovie.Movies__list)}>
@@ -55,8 +77,7 @@ function Detail() {
                 {renderPaginations()}
             </ul>
         </div>
-    );
+    )
 }
 
-
-export default Detail;
+export default Detail

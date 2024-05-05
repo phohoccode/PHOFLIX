@@ -12,9 +12,7 @@
   width: 6px;
   height: 6px;
 }
-// ::-webkit-scrollbar-track {
-//   background: #000;
-// }
+
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
   background-color: #5a5e7c;
@@ -68,13 +66,22 @@ a {
   color: #fff;
   max-width: 160px;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  transition: .3s;
+}
+
+.btn:hover {
+    outline: 3px solid;
+    outline-offset: 3px;
 }
 
 .btn.btn--primary {
+    outline-color: var(--primary-color);
   background-color: var(--primary-color);
 }
 
 .btn.btn--sub {
+    outline-color: var(--sub-color);
   background-color: var(--sub-color);
 }
 
@@ -102,7 +109,6 @@ a {
   justify-content: center;
   transition: 0.3s;
   cursor: pointer;
-  transform: translateX();
 }
 
 .prev {
@@ -113,10 +119,11 @@ a {
   right: 10px;
 }
 
-.year {
+.year, .quality {
   font-size: 1.4rem;
   color: #fff;
   padding: 4px 6px;
   background-color: #3a86ff;
   border-radius: var(--borderRadius);
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 }

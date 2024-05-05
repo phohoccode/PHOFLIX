@@ -8,11 +8,6 @@ function Info() {
     const params = useParams()
     const [data] = useFetch('https://phimapi.com/phim/'.concat(params.slug))
 
-    useEffect(() => {
-        console.log(data)
-        console.log(data?.movie?.country)
-    }, [])
-
     return (
         <div className={clsx(styles.Info)}>
             <div className={clsx(styles.Info__background)}>
@@ -21,6 +16,7 @@ function Info() {
                     <div className={clsx(styles.Info__backgroundOuter)}>
                         <figure>
                             <img src={data?.movie?.poster_url}/>
+                            <span className={clsx('quality', styles.Info__quality)}>{data?.movie?.quality}</span>
                         </figure>
                         <div className={clsx(styles.Info__movie)}>
                             <h4>{data?.movie?.name}</h4>
@@ -34,7 +30,7 @@ function Info() {
                                     Xem ngay
                                 </Link>
                             </div>
-                            <h5>Thông tin</h5>
+                            <h5>Thông tin phim</h5>
                             <span>Thời gian: {data?.movie?.time}</span>
                             <span>Tác giả: {data?.movie?.director}</span>
                             <ul>
@@ -46,7 +42,11 @@ function Info() {
                             <ul>
                                 <span>Thể loại:</span>
                                 {data?.movie?.category.map((category, index) => (
-                                    <li key={index}>{category.name}</li>
+                                    <li key={index}>
+                                        <Link to={`/PHOFLIX/detail/the-loai/${category.slug}`}>
+                                            {category.name}
+                                        </Link>
+                                    </li>
                                 ))}
                             </ul>
                             <ul>
@@ -61,12 +61,12 @@ function Info() {
             </div>
 
             <div className={clsx(styles.Info__content)}>
-                <h4>Tóm tắt</h4>
+                <h4>Tóm tắt nội dung phim</h4>
                 <p>{data?.movie?.content}</p>
             </div>
 
             <div className={clsx(styles.Info__trailer)}>
-                <h4>Trailer</h4>
+                <h4>Xem Trailer</h4>
                 <iframe 
                     src={data?.movie?.trailer_url.replace('watch?v=', '/embed/')} 
                     frameBorder="0" 

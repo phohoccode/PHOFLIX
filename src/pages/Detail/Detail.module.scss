@@ -13,9 +13,17 @@
       color: #000;
       font-weight: 600;
       cursor: pointer;
+      transition: .3s;
+
+      &:active {
+        outline: 3px solid var(--primary-color);
+        outline-offset: 3px;
+      }
     }
     li.active {
-      background-color: #3a86ff !important;
+      background-color: #3a86ff;
+      outline: 3px solid #3a86ff;
+      outline-offset: 3px;
     }
   }
 }
