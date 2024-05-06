@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PHOFLIX/static/css/main.6a025188.css",
-    "main.js": "/PHOFLIX/static/js/main.29780c2b.js",
+    "main.css": "/PHOFLIX/static/css/main.5700d93a.css",
+    "main.js": "/PHOFLIX/static/js/main.df66775e.js",
     "static/js/453.f476dd28.chunk.js": "/PHOFLIX/static/js/453.f476dd28.chunk.js",
     "static/media/fa-solid-900.ttf": "/PHOFLIX/static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/fa-brands-400.ttf": "/PHOFLIX/static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
@@ -13,12 +13,12 @@
     "static/media/fa-v4compatibility.ttf": "/PHOFLIX/static/media/fa-v4compatibility.c8e090db312b0bea2aa2.ttf",
     "static/media/fa-v4compatibility.woff2": "/PHOFLIX/static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "/PHOFLIX/index.html",
-    "main.6a025188.css.map": "/PHOFLIX/static/css/main.6a025188.css.map",
-    "main.29780c2b.js.map": "/PHOFLIX/static/js/main.29780c2b.js.map",
+    "main.5700d93a.css.map": "/PHOFLIX/static/css/main.5700d93a.css.map",
+    "main.df66775e.js.map": "/PHOFLIX/static/js/main.df66775e.js.map",
     "453.f476dd28.chunk.js.map": "/PHOFLIX/static/js/453.f476dd28.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a025188.css",
-    "static/js/main.29780c2b.js"
+    "static/css/main.5700d93a.css",
+    "static/js/main.df66775e.js"
   ]
 }
