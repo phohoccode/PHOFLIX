@@ -111,6 +111,11 @@ a {
   cursor: pointer;
 }
 
+.prev:active, .next:active {
+    outline: 3px solid var(--sub-background);
+    outline-offset: 3px;
+}
+
 .prev {
   left: 10px;
 }

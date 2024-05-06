@@ -25,7 +25,7 @@ function Info() {
                                     <i className="fa-solid fa-bookmark"></i>
                                     Lưu phim
                                 </button>
-                                <Link to={`/PHOFLIX/watch/${data?.movie?.slug}`} className={clsx('btn btn--sub')}>
+                                <Link to={data?.movie?.slug && `/PHOFLIX/watch/${data?.movie?.slug}`} className={clsx('btn btn--sub')}>
                                     <i className="fa-solid fa-play"></i>
                                     Xem ngay
                                 </Link>
@@ -36,7 +36,11 @@ function Info() {
                             <ul>
                                 <span>Quốc gia:</span>
                                 {data?.movie?.country.map((country, index) => (
-                                    <li key={index}>{country.name}</li>
+                                    <li key={index}>
+                                        <Link to={`/PHOFLIX/detail/quoc-gia/${country.slug}`}>
+                                            {country.name}
+                                        </Link>
+                                    </li>
                                 ))}
                             </ul>
                             <ul>

@@ -38,10 +38,11 @@
             width: 400px;
             height: 40px;
             border-radius: var(--borderRadius);
-            padding: 0 40px 0 12px;
+            padding: 0 64px 0 12px;
             background-color: var(--sub-background);
             color: #fff;
             font-size: 1.6rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 
             &:focus {
                 outline: 3px solid var(--sub-background);
@@ -49,13 +50,30 @@
             }
         }
 
-        a {
+        input:focus + span {
+            opacity: 1;
+        }
+
+        a, span {
             position: absolute;
             top: 50%;
-            right: 12px;
             font-size: 2rem;
             color: #fff;
             transform: translateY(-50%);
+            transition: .3s;
+
+            &:hover {
+                color: var(--primary-color);
+            }
+        }
+
+        a {
+            right: 12px;
+        }
+
+        span {
+            opacity: 0;
+            right: 44px;
         }
     }
 

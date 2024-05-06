@@ -23,7 +23,7 @@ function Movies({ api }) {
                 {movies && movies.map((movie, index) => (
                     <Movie key={index} data={movie} />
                 ))}
-            </div>
+            </div>  
         </div>
     );
 }
