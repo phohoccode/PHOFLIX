@@ -23,7 +23,7 @@ function Header() {
                         onChange={(e) => setValueSearch(e.target.value)}
                     />
                     <span onClick={() => setValueSearch('')}>
-                        <i class="fa-solid fa-xmark"></i>
+                        <i className="fa-solid fa-xmark"></i>
                     </span>
                     <Link to={`/PHOFLIX/search/${valueSearch}`}>
                         <i className="fa-solid fa-magnifying-glass"></i>

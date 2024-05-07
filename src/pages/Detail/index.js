@@ -11,7 +11,7 @@ function Detail() {
     const [titleName, setTitleName] = useState('')
     const [totalPages, setTotalPages] = useState(0)
     const [page, setPage] = useState(1)
-
+    
     useEffect(() => {
         setPage(1)  
     }, [params.slug])
@@ -24,16 +24,12 @@ function Detail() {
                 setMovies(data?.data?.items)
                 setTitleName(data?.data?.breadCrumb[0]?.name)
                 setTotalPages(data?.data?.params?.pagination?.totalPages)
+                document.title = data?.data?.seoOnPage?.titleHead
             } catch (error) {
                 console.error("Error fetching data:", error)
             }
         }
-
         fetchData()
-
-        return () => {
-            setMovies([])
-        }
     }, [params.describe, params.slug, page])
 
     const handleChangePage = (index) => {

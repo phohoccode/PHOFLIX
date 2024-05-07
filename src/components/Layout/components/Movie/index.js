@@ -9,10 +9,9 @@ function Movie({ data }) {
         <div className={clsx(styles.Movie)}>
             <Link to={`/PHOFLIX/info/${data.slug}`}>
                 <figure>
-                    <img 
-                        loading="lazy"
-                        src={data.poster_url.includes('https://img.phimapi.com') ?
-                            data.poster_url : `https://img.phimapi.com/${data.poster_url}`
+                    <img
+                        src={data?.poster_url.includes('https://img.phimapi.com') ?
+                            data?.poster_url : `https://img.phimapi.com/${data?.poster_url}`
                         } 
                     />
                     <i className="fa-solid fa-play"></i>

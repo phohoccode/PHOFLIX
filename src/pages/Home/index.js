@@ -1,7 +1,13 @@
 import Slides from "../../components/Layout/components/Slides"
 import Movies from "../../components/Layout/components/Movies"
+import { useEffect } from "react";
 
 function Home() {
+
+    useEffect(() => {
+        document.title = 'Trang chủ'
+    }, [])
+
     return (
         <>
             <Slides api={'https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=1'}/>
