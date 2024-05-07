@@ -14,7 +14,6 @@ function Watch() {
     const handleSetEpisode = (data) => {
         const currentMovie = JSON.parse(localStorage.getItem('current-movie'))
         const isExist = currentMovie.link_embed === data?.episodes[0]?.server_data[currentMovie.index - 1]?.link_embed
-        isExist ? setEpisode(currentMovie.index) : setEpisode(1)
         if (isExist) {
             setEpisode(currentMovie.index)
             setLinkEmbed(currentMovie.link_embed)
@@ -33,6 +32,7 @@ function Watch() {
                 setMovieName(data?.movie?.name)
                 handleRecenltyViewed(data)
                 handleSetEpisode(data)
+                console.log(data)
                 document.title = `Bạn đang xem: ${data?.movie.name}`
             } catch (error) {
                 console.error(error)
