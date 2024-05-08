@@ -1,43 +1,58 @@
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
 import clsx from 'clsx'
 import styles from "./SideBar.module.scss"
 import Category from "../Category";
 import Country from "../Country";
-import { useState } from "react";
 
 function SideBar() {
+    const { pathname } = useLocation()
     const [showCategorys, setShowCategorys] = useState(false)
     const [showCountry, setShowCountry] = useState(false)
 
     return (
-        <div className={clsx(styles.SideBar)}>
-            <div className={clsx(styles.SideBar__item)}>
-                <h4>Danh mục</h4>
+        <div className={clsx(styles.sidebar)}>
+            <div className={clsx(styles.sidebar__item)}>
+                <h4>
+                    <i className="fa-regular fa-rectangle-list"></i>
+                    Danh mục
+                </h4>
                 <ul>
-                    <li>
-                        <Link to="/PHOFLIX/">
+                    <li
+                        className={pathname === '/PHOFLIX/' ?
+                            clsx(styles.active) : ''}>
+                        <NavLink to="/PHOFLIX/">
+
                             Trang Chủ
-                        </Link>
+                        </NavLink>
                     </li>
-                    <li>
-                        <Link to="/PHOFLIX/detail/danh-sach/phim-le">
+                    <li
+                        className={pathname === '/PHOFLIX/detail/danh-sach/phim-le' ?
+                            clsx(styles.active) : ''} >
+                        <NavLink to="/PHOFLIX/detail/danh-sach/phim-le">
                             Phim Lẻ
-                        </Link>
+                        </NavLink>
                     </li>
-                    <li>
-                        <Link to="/PHOFLIX/detail/danh-sach/phim-bo">
+                    <li
+                        className={pathname === '/PHOFLIX/detail/danh-sach/phim-bo' ?
+                            clsx(styles.active) : ''} >
+                        <NavLink to="/PHOFLIX/detail/danh-sach/phim-bo">
                             Phim Bộ
-                        </Link>
+                        </NavLink>
                     </li>
-                    <li>
-                        <Link to="/PHOFLIX/detail/danh-sach/hoat-hinh">
+                    <li
+                        className={pathname === '/PHOFLIX/detail/danh-sach/hoat-hinh' ?
+                            clsx(styles.active) : ''} >
+                        <NavLink to="/PHOFLIX/detail/danh-sach/hoat-hinh">
                             Phim Hoạt Hình
-                        </Link>
+                        </NavLink>
                     </li>
-                    <li>
-                        <Link to="/PHOFLIX/detail/danh-sach/tv-shows">
+                    <li
+                        className={pathname === '/PHOFLIX/detail/danh-sach/tv-shows' ?
+                            clsx(styles.active) : ''} >
+                        <NavLink to="/PHOFLIX/detail/danh-sach/tv-shows">
                             Tv Shows
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
                         <span onClick={() => setShowCategorys(!showCategorys)}>
@@ -56,14 +71,21 @@ function SideBar() {
                 </ul>
             </div>
             <div className={clsx('seperate')}></div>
-            <div className={clsx(styles.SideBar__item)}>
-                <h4>Cá nhân</h4>
+            <div className={clsx(styles.sidebar__item)}>
+                <h4>
+                    <i className="fa-solid fa-user"></i>
+                    Cá nhân
+                </h4>
                 <ul>
-                    <li>
-                        <Link to="/PHOFLIX/savemovie">Phim đã lưu</Link>
+                    <li
+                        className={pathname === '/PHOFLIX/savemovie' ?
+                            clsx(styles.active) : ''} >
+                        <NavLink to="/PHOFLIX/savemovie">Phim đã lưu</NavLink>
                     </li>
-                    <li>
-                        <Link to="/PHOFLIX/recenltyviewed">Đã xem gần đây</Link>
+                    <li
+                        className={pathname === '/PHOFLIX/recenltyviewed' ?
+                            clsx(styles.active) : ''} >
+                        <NavLink to="/PHOFLIX/recenltyviewed">Đã xem gần đây</NavLink>
                     </li>
                 </ul>
             </div>

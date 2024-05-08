@@ -32,14 +32,14 @@ function Slides({ api }) {
     };
 
     return (
-        <div className={clsx(styles.Sides__container)}>
+        <div className={clsx(styles.slides__container)}>
             <button 
                 onClick={handlePrev} 
                 className={clsx('prev')}
             >
                 <i className="fa-solid fa-chevron-left"></i>
             </button>
-            <div ref={slideInnerRef} className={clsx(styles.Sides__inner)}>
+            <div ref={slideInnerRef} className={clsx(styles.slides__inner)}>
                 {slides && slides.map((slide, index) => (
                     <Slide key={index} data={slide} />
                 ))}

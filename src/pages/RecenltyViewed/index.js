@@ -20,7 +20,7 @@ function RecentlyViewed() {
 
     return (
         <div className={clsx(styles.recentltyViewed)}>
-            <div className={clsx(stylesMovie.Movies__wrapper)}>
+            <div className={clsx(stylesMovie.movies__wrapper)}>
                 <header>
                     <h4>
                         {movies.length > 0 ? 'Lịch sử đã xem gần đây' : 'Lịch sử trống!'}
@@ -35,7 +35,7 @@ function RecentlyViewed() {
                         </button>
                     }
                 </header>
-                <div className={clsx(stylesMovie.Movies__list)}>
+                <div className={clsx(stylesMovie.movies__list)}>
                     {movies && movies.map((movie, index) => (
                         <Movie key={index} data={movie?.movie} />
                     ))}

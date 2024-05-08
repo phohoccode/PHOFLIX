@@ -1,0 +1,22 @@
+.not_found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-direction: column;
+    
+    h1 {
+        font-size: 10rem;
+        color: var(--primary-color);
+    }
+    
+    span {
+        font-size: 3rem;
+        color: var(--white-color);
+    }
+
+    p {
+        font-size: 2rem;
+        color: var(--white-color);
+    }
+}

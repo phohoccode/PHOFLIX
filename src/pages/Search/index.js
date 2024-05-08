@@ -12,6 +12,13 @@ function Search() {
     let [limit, setLimit] = useState(10)
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }, [])
+
+    useEffect(() => {
         setLimit(prevLimit => prevLimit * 0 + 10)
     }, [params.keyword])
 
@@ -21,8 +28,6 @@ function Search() {
                 console.log('limit', limit)
                 const res = await fetch(`https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword}&limit=${limit}`)
                 const data = await res.json()
-                console.log('render')
-                console.log(data)
                 setResultMovies(data?.data?.items)
                 setTitlePgae(data?.data?.titlePage)    
             } catch (error) {
@@ -35,7 +40,6 @@ function Search() {
 
 
     const handleSeeMoreResult = () => {
-        console.log('result',resultMovies.length)
         if (resultMovies.length < limit) {
             alert('het phim')
             return
@@ -45,7 +49,7 @@ function Search() {
 
     return (
         <div className={clsx(styles.Search)}>
-            <div className={clsx(stylesMovie.Movies__wrapper)}>
+            <div className={clsx(stylesMovie.movies__wrapper)}>
                 <header>
                     <h4>
                         {resultMovies.length > 0 ?
@@ -54,7 +58,7 @@ function Search() {
                         }
                     </h4>
                 </header>
-                <div className={clsx(stylesMovie.Movies__list)}>
+                <div className={clsx(stylesMovie.movies__list)}>
                     {resultMovies && resultMovies.map((movie, index) => (
                         <Movie key={index} data={movie} />
                     ))}

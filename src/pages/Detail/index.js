@@ -13,6 +13,10 @@ function Detail() {
     const [page, setPage] = useState(1)
     
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
         setPage(1)  
     }, [params.slug])
 
@@ -57,19 +61,19 @@ function Detail() {
     }
 
     return (
-        <div className={clsx(styles.Detail)}>
-            <div className={clsx(stylesMovie.Movies__wrapper)}>
+        <div className={clsx(styles.detail)}>
+            <div className={clsx(stylesMovie.movies__wrapper)}>
                 <header>
                     <h4>{titleName}</h4>
                     <span>Trang {page}</span>
                 </header>
-                <div className={clsx(stylesMovie.Movies__list)}>
+                <div className={clsx(stylesMovie.movies__list)}>
                     {movies && movies.map((movie, index) => (
                         <Movie key={index} data={movie} />
                     ))}
                 </div>
             </div>
-            <ul className={clsx(styles.Detail__pages)}>
+            <ul className={clsx(styles.detail__pages)}>
                 {renderPaginations()}
             </ul>
         </div>

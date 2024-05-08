@@ -1,10 +1,9 @@
-.Movie {
+.movie {
   width: 20%;
   padding: 0 8px;
 
-  
   figure {
-    border-radius: var(--borderRadius);
+    border-radius: var(--border-radius);
     height: 350px;
     position: relative;
     overflow: hidden;
@@ -13,7 +12,7 @@
 
     i {
       font-size: 5rem;
-      color: #fff;
+      color: var(--white-color);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -38,15 +37,15 @@
       text-transform: uppercase;
       padding: 4px 6px;
       background-color: var(--primary-color);
-      border-radius: var(--borderRadius);
-      box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow)
     }
   }
 
   .name {
     display: block;
     margin-top: 8px;
-    color: #fff;
+    color: var(--white-color);
     font-size: 1.6rem;
     transition: 0.3s;
 

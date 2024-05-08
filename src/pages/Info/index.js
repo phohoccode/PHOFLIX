@@ -11,6 +11,13 @@ function Info() {
     const movies = data?.movie
     
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }, [])
+
+    useEffect(() => {
         const savedMovies = JSON.parse(localStorage.getItem('Save-Movie')) || []
         const isMovieSaved = savedMovies.some(saveMovie => saveMovie?.movie?.slug === params.slug)
         setShow(isMovieSaved)
@@ -34,44 +41,54 @@ function Info() {
     }
 
     return (
-        <div className={clsx(styles.Info)}>
-            <div className={clsx(styles.Info__background)}>
+        <div className={clsx(styles.info)}>
+            <div className={clsx(styles.info__background)}>
                 <figure>
                     <img src={movies?.thumb_url} />
-                    <div className={clsx(styles.Info__backgroundOuter)}>
+                    <div className={clsx(styles.info__background_outer)}>
                         <figure>
                             <img src={movies?.poster_url} />
-                            <span className={clsx('quality', styles.Info__quality)}>{movies?.quality}</span>
+                            <span className={clsx('quality', styles.info__quality)}>
+                                {movies?.quality}
+                            </span>
                         </figure>
-                        <div className={clsx(styles.Info__movie)}>
+                        <div className={clsx(styles.info__movie)}>
                             <h4>{movies?.name}</h4>
-                            <div className={clsx(styles.Info__actions)}>
-                                {show === false && <button
-                                    className={clsx('btn btn--primary')}
-                                    onClick={() => handleSaveMovie(data)}
-                                >
-                                    <i className="fa-solid fa-bookmark"></i>
-                                    Lưu phim
-                                </button>}
-                                {show && <button
-                                    className={clsx('btn btn--primary')}
-                                    onClick={() => handleRemoveMovie(movies?.slug)}
-                                >
-                                    <i className="fa-solid fa-trash"></i>
-                                    Xoá phim
-                                </button>}
+                            <div className={clsx(styles.info__actions)}>
+                                {show === false && 
+                                    <button
+                                        className={clsx('btn btn--primary')}
+                                        onClick={() => handleSaveMovie(data)}
+                                        >
+                                        <i className="fa-solid fa-bookmark"></i>
+                                        Lưu phim
+                                    </button>
+                                }
+                                {show &&
+                                    <button
+                                        className={clsx('btn btn--primary')}
+                                        onClick={() => handleRemoveMovie(movies?.slug)}
+                                    >
+                                        <i className="fa-solid fa-trash"></i>
+                                        Xoá phim
+                                    </button>
+                                }
                                 <Link to={movies?.slug && `/PHOFLIX/watch/${movies?.slug}`} className={clsx('btn btn--sub')}>
                                     <i className="fa-solid fa-play"></i>
                                     Xem ngay
                                 </Link>
                             </div>
                             <h5>Thông tin phim</h5>
-                            <span>Thời gian: {movies?.time}</span>
-                            <span>Tác giả: {movies?.director}</span>
+                            <span className={clsx('text-primary')}>
+                                Thời gian: <span className={clsx('text-white')}>{movies?.time}</span>
+                            </span>
+                            <span className={clsx('text-primary')}>
+                                Đạo diễn: <span className={clsx('text-white')}>{movies?.director}</span>
+                            </span>
                             <ul>
-                                <span>Quốc gia:</span>
+                                <span className={clsx('text-primary')}>Quốc gia:</span>
                                 {movies?.country.map((country, index) => (
-                                    <li key={index}>
+                                    <li className={clsx('cursor-pointer')} key={index}>
                                         <Link to={`/PHOFLIX/detail/quoc-gia/${country.slug}`}>
                                             {country.name}
                                         </Link>
@@ -79,9 +96,9 @@ function Info() {
                                 ))}
                             </ul>
                             <ul>
-                                <span>Thể loại:</span>
+                                <span className={clsx('text-primary')}>Thể loại:</span>
                                 {movies?.category.map((category, index) => (
-                                    <li key={index}>
+                                    <li className={clsx('cursor-pointer')} key={index}>
                                         <Link to={`/PHOFLIX/detail/the-loai/${category.slug}`}>
                                             {category.name}
                                         </Link>
@@ -89,7 +106,7 @@ function Info() {
                                 ))}
                             </ul>
                             <ul>
-                                <span>Diễn viên:</span>
+                                <span className={clsx('text-primary')}>Diễn viên:</span>
                                 {movies?.actor.map((actor, index) => (
                                     <li key={index}>{actor}</li>
                                 ))}
@@ -99,12 +116,12 @@ function Info() {
                 </figure>
             </div>
 
-            <div className={clsx(styles.Info__content)}>
+            <div className={clsx(styles.info__content)}>
                 <h4>Tóm tắt nội dung phim</h4>
                 <p>{movies?.content}</p>
             </div>
 
-            <div className={clsx(styles.Info__trailer)}>
+            <div className={clsx(styles.info__trailer)}>
                 <h4>Xem Trailer</h4>
                 <iframe
                     src={movies?.trailer_url.replace('watch?v=', '/embed/')}

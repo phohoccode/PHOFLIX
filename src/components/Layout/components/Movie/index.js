@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-import clsx from "clsx";
+import clsx from "clsx"
 import styles from "./Movie.module.scss"
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 function Movie({ data }) {
 
     return (
-        <div className={clsx(styles.Movie)}>
+        <div className={clsx(styles.movie)}>
             <Link to={`/PHOFLIX/info/${data.slug}`}>
                 <figure>
                     <img
@@ -20,7 +19,7 @@ function Movie({ data }) {
                 <span className={clsx(styles.name)}>{data.name}</span>
             </Link>
         </div>
-    );
+    )
 }
 
-export default Movie;
+export default Movie

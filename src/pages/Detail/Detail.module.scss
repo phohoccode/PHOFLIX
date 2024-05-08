@@ -1,19 +1,20 @@
-.Detail {
-  .Detail__pages {
+.detail {
+  &__pages {
     display: flex;
     overflow-x: auto;
     padding: 5px 5px 12px 5px;
     gap: 12px;
 
     li {
+      user-select: none;
       padding: 6px 16px;
-      border-radius: var(--borderRadius);
+      border-radius: var(--border-radius);
       background-color: var(--primary-color);
       font-size: 1.8rem;
-      color: #000;
+      color: var(--black-color);
       font-weight: 600;
       cursor: pointer;
-      transition: .3s;
+      transition: 0.3s;
 
       &:active {
         outline: 3px solid var(--primary-color);
@@ -21,8 +22,8 @@
       }
     }
     li.active {
-      background-color: #3a86ff;
-      outline: 3px solid #3a86ff;
+      background-color: var(--blue-custom-color);
+      outline: 3px solid var(--blue-custom-color);
       outline-offset: 3px;
     }
   }

@@ -20,7 +20,7 @@ function SaveMovie() {
     }
     return (
         <div className={clsx(styles.saveMovie)}>
-            <div className={clsx(stylesMovie.Movies__wrapper)}>
+            <div className={clsx(stylesMovie.movies__wrapper)}>
                 <header>
                     <h4>
                         {movies.length > 0 ? 'Danh sách phim đã lưu' : 'Danh sách phim trống!'}
@@ -35,7 +35,7 @@ function SaveMovie() {
                         </button>
                     }
                 </header>
-                <div className={clsx(stylesMovie.Movies__list)}>
+                <div className={clsx(stylesMovie.movies__list)}>
                     {movies && movies.map((movie, index) => (
                         <Movie key={index} data={movie?.movie} />
                     ))}

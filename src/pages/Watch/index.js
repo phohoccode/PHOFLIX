@@ -10,6 +10,13 @@ function Watch() {
     const [linkEmbed, setLinkEmbed] = useState('')
     const params = useParams()
     const movieRef = useRef()
+    
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }, [])
 
     const handleSetEpisode = (data) => {
         const currentMovie = JSON.parse(localStorage.getItem('current-movie'))
@@ -63,9 +70,9 @@ function Watch() {
     }
 
     return (
-        <div className={clsx(styles.Watch)}>
+        <div className={clsx(styles.watch)}>
             <h4>{movieName}</h4>
-            <div className={clsx(styles.Watch__iframe)}>
+            <div className={clsx(styles.watch__iframe)}>
                 <iframe
                     src={linkEmbed}
                     frameBorder="0"
@@ -75,7 +82,7 @@ function Watch() {
             </div>
             <div>
                 <h4>Danh sách tập phim</h4>
-                <ul className={clsx(styles.Watch__episodes)}>
+                <ul className={clsx(styles.watch__episodes)}>
                     {movie.map((movie, index) => (
                         <li
                             ref={movieRef}

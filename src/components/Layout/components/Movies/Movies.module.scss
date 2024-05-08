@@ -1,5 +1,4 @@
-.Movies__wrapper {
-
+.movies__wrapper {
     header {
         display: flex;
         justify-content: space-between;
@@ -26,7 +25,7 @@
             }
         }
     }
-  .Movies__list {
+  .movies__list {
     display: flex;
     gap: 16px 0;
     flex-wrap: wrap;

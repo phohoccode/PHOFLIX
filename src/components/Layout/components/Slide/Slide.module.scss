@@ -1,16 +1,17 @@
-.Slide {
+.slide {
   position: relative;
   width: 100%;
   flex-shrink: 0;
 
   figure {
     height: 500px;
-    border-radius: 3px;
+    border-radius: var(--border-radius);
     overflow: hidden;
     border: 1px solid var(--sub-background);
   }
 
-  .Slide__info {
+  &__info {
+    width: 90%;
     position: absolute;
     left: 30px;
     bottom: 30px;
@@ -20,9 +21,10 @@
       font-size: 3rem;
       margin-bottom: 12px;
       text-transform: uppercase;
-      color: #fff;
+      color: var(--white-color);
       white-space: nowrap;
       text-overflow: ellipsis;
+      overflow: hidden;
       text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
     }
 
@@ -34,9 +36,7 @@
 
     a {
       transition: 0.3s;
-      &:hover {
-        opacity: 0.8;
-      }
+      color: var(--white-color);
 
       i {
         margin-right: 12px;

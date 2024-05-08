@@ -1,18 +1,18 @@
-.NavBar {
+.navbar {
     position: sticky;
     height: 60px;
     top: 0;
     left: 0;
     right: 0;
     padding: 0 32px;
-    border-bottom: .1px solid #4f4e4e;
+    border-bottom: .1px solid var(--seperate-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 999;
+    z-index: 1999;
     background-color: var(--background);
 
-    .NavBar__logo {
+    &__logo {
         display: flex;
         gap: 0 12px;
         align-items: center;
@@ -20,8 +20,9 @@
         a {
             width: 40px;
             height: 40px;
-            border-radius: var(--borderRadius);
+            border-radius: var(--border-radius);
             overflow: hidden;
+            box-shadow: var(--box-shadow);
         }   
 
         h4 {
@@ -31,18 +32,18 @@
         }
     }
 
-    .NavBar__search {
+    &__search {
         position: relative;
 
         input {
             width: 400px;
             height: 40px;
-            border-radius: var(--borderRadius);
+            border-radius: var(--border-radius);
             padding: 0 64px 0 12px;
             background-color: var(--sub-background);
-            color: #fff;
-            font-size: 1.6rem;
-            box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+            color: var(--white-color);
+            font-size: 1.8rem;
+            box-shadow: var(--box-shadow);
 
             &:focus {
                 outline: 3px solid var(--sub-background);
@@ -77,9 +78,4 @@
         }
     }
 
-    .NavBar__actions {
-        display: flex;
-        gap: 0 12px;
-
-    }
 }

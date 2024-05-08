@@ -1,9 +1,28 @@
-.SideBar__category {
+.category {
     overflow-y: auto;
     height: 200px;
     overscroll-behavior-y: none;
 
     li {
-        font-size: 1.7rem !important;
+        font-size: 1.7rem;
+        position: relative;
+
+        ::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            border-radius: var(--border-radius);
+          }
+    }
+
+    li.active {
+        color: var(--primary-color);
+
+        ::after {
+            background-color: var(--primary-color);
+        }
     }
 }

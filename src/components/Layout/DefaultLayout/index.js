@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
+import Footer from "../components/Footer"
 import styles from "./DefaultLayout.module.scss"
 
 function DefaultLayout({children}) {
@@ -13,6 +14,7 @@ function DefaultLayout({children}) {
                     {children}
                 </div>
             </div>
+            <Footer/>
         </>
     );
 }

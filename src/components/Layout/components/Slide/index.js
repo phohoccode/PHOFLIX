@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 
 function Slide({ data }) {
     return (
-        <div className={clsx(styles.Slide)}>
+        <div className={clsx(styles.slide)}>
             <figure>
                 <img src={data?.thumb_url} />
             </figure>
-            <div className={clsx(styles.Slide__info)}>
+            <div className={clsx(styles.slide__info)}>
                 <h4>{data?.name}</h4>
                 <div>
                     <Link to={`/PHOFLIX/watch/${data.slug}`} className={clsx('btn btn--sub')}>

@@ -1,51 +1,58 @@
-.Info {
-  .Info__background {
+.info {
+  &__background {
     position: relative;
 
     figure {
       height: 450px;
-      border-radius: var(--borderRadius);
       overflow: hidden;
+      border-radius: var(--border-radius);
       border: 1px solid var(--sub-background);
     }
 
-    .Info__backgroundOuter {
+    .info__background_outer {
+      width: 90%;
       position: absolute;
       top: 100%;
       left: 5%;
       transform: translateY(-50%);
       display: flex;
       gap: 24px;
+      padding: 6px;
+      border-radius: var(--border-radius);
+      background-color: rgba(0, 0, 0, 0.5);
 
       figure {
         width: 200px;
         height: 300px;
-        border-radius: var(--borderRadius);
+        border-radius: var(--border-radius);
         overflow: hidden;
         flex-shrink: 0;
         position: relative;
         border: 1px solid var(--sub-background);
 
-        .Info__quality {
+        .info__quality {
           position: absolute;
           top: 4px;
           right: 4px;
         }
       }
 
-      .Info__movie {
+      .info__movie {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 6px;
         font-size: 1.8rem;
+        overflow: hidden;
 
         h4 {
           text-transform: uppercase;
-          color: #fff;
+          color: var(--white-color);
           white-space: nowrap;
           text-overflow: ellipsis;
+          overflow: hidden;
           text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
           font-size: 4rem;
+          margin-top: -6px;
         }
 
         h5 {
@@ -53,13 +60,16 @@
           text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .Info__actions {
+        .info__actions {
           display: flex;
           gap: 12px;
+          margin: 0 0 12px 5px;
 
           button,
           a {
+            color: var(--white-color);
             margin-top: 4px;
+
             i {
               margin-right: 12px;
             }
@@ -76,13 +86,14 @@
 
           li {
             margin-right: 8px;
-            cursor: pointer;
+
             a {
-                color: #fff;
-                transition: .3s;
-                &:hover {
-                    color: var(--primary-color);
-                }
+              color: var(--white-color);
+              transition: 0.3s;
+
+              &:hover {
+                color: var(--primary-color);
+              }
             }
           }
         }
@@ -90,7 +101,7 @@
     }
   }
 
-  .Info__content {
+  .info__content {
     margin-top: 250px;
 
     h4 {
@@ -104,7 +115,7 @@
     }
   }
 
-  .Info__trailer {
+  &__trailer {
     margin-top: 32px;
 
     h4 {
@@ -114,7 +125,7 @@
     }
 
     iframe {
-      border-radius: var(--borderRadius);
+      border-radius: var(--border-radius);
       border: 1px solid var(--sub-background);
       width: 100%;
       height: 300px;

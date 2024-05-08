@@ -1,13 +1,13 @@
-.Watch {
+.watch {
 
     h4 {
         font-size: 4rem;
     }
 
-    .Watch__iframe {
+    &__iframe {
         width: 100%;
         height: 400px;
-        border-radius: 3px;
+        border-radius: var(--border-radius);
         border: 2px solid var(--sub-background);
         margin: 32px 0;
         
@@ -22,7 +22,7 @@
             font-size: 3rem;
             margin-bottom: 16px;
         }
-        .Watch__episodes {
+        .watch__episodes {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
@@ -31,9 +31,9 @@
                 width: calc(8.33333% - 11px);
                 background-color: var(--primary-color);
                 padding: 8px 12px;
-                border-radius: var(--borderRadius);
+                border-radius: var(--border-radius);
                 font-size: 1.8rem;
-                color: #000;
+                color: var(--black-color);
                 font-weight: 600;
                 display: flex;
                 align-items: center;
@@ -53,9 +53,9 @@
             }
     
             li.active {
-                background-color: #3a86ff;
+                background-color: var(--blue-custom-color);
                 cursor: default;
-                outline: 3px solid #3a86ff;
+                outline: 3px solid var(--blue-custom-color);
                 outline-offset: 3px;
             }
         }
