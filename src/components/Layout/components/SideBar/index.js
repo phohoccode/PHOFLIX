@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import clsx from 'clsx'
 import styles from "./SideBar.module.scss"
 import Category from "../Category";
@@ -14,7 +14,7 @@ function SideBar() {
 
     return (
         <div 
-            style={{display: isSideBarOpen ? 'block' : 'none'}} 
+            style={{display: window.innerWidth > 768 || isSideBarOpen ? 'block' : 'none'}}
             className={clsx(styles.sidebar)}
         >
             <div className={clsx(styles.sidebar__item)}>
