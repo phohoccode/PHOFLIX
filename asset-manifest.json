@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PHOFLIX/static/css/main.4ec94ca1.css",
-    "main.js": "/PHOFLIX/static/js/main.a1f2fad4.js",
+    "main.js": "/PHOFLIX/static/js/main.621323a5.js",
     "static/js/453.f476dd28.chunk.js": "/PHOFLIX/static/js/453.f476dd28.chunk.js",
     "static/media/fa-solid-900.ttf": "/PHOFLIX/static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/fa-brands-400.ttf": "/PHOFLIX/static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
@@ -14,11 +14,11 @@
     "static/media/fa-v4compatibility.woff2": "/PHOFLIX/static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "/PHOFLIX/index.html",
     "main.4ec94ca1.css.map": "/PHOFLIX/static/css/main.4ec94ca1.css.map",
-    "main.a1f2fad4.js.map": "/PHOFLIX/static/js/main.a1f2fad4.js.map",
+    "main.621323a5.js.map": "/PHOFLIX/static/js/main.621323a5.js.map",
     "453.f476dd28.chunk.js.map": "/PHOFLIX/static/js/453.f476dd28.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4ec94ca1.css",
-    "static/js/main.a1f2fad4.js"
+    "static/js/main.621323a5.js"
   ]
 }
