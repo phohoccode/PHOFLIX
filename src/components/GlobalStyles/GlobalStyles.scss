@@ -78,6 +78,14 @@ a {
   box-shadow: var(--box-shadow);
   transition: .3s;
   cursor: pointer;
+  white-space: nowrap;
+}
+
+
+@media (max-width: 768px) {
+    .btn {
+        font-size: 1.6rem;
+    }
 }
 
 .btn:hover {

@@ -4,13 +4,26 @@ footer {
     font-size: 1.8rem;
     background-color: var(--sub-background);
     border-radius: var(--border-radius);
+
+    
+    @media (max-width: 768px) {
+       margin: 32px 16px;
+    }
     
     .footer__row {
         display: flex;
         gap: 24px;
 
+        @media (max-width: 768px) {
+            flex-wrap: wrap;
+        }
+
         .footer__column {
             width: 25%;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
     
             h3 {
                 text-transform: uppercase;

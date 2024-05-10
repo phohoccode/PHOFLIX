@@ -2,13 +2,22 @@
   width: 20%;
   padding: 0 8px;
 
+  @media (max-width: 768px) {
+    width: 50%;
+  }
+
   figure {
     border-radius: var(--border-radius);
     height: 350px;
     position: relative;
     overflow: hidden;
     transition: 0.3s;
-    border:  1px solid var(--sub-background);
+    border: 1px solid var(--sub-background);
+
+    
+    @media (max-width: 768px) {
+        height: 240px;
+    }
 
     i {
       font-size: 5rem;
@@ -21,7 +30,7 @@
       transition: 0.3s;
     }
 
-    &:hover  {
+    &:hover {
       transform: scale(1.06);
     }
 
@@ -38,7 +47,7 @@
       padding: 4px 6px;
       background-color: var(--primary-color);
       border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow)
+      box-shadow: var(--box-shadow);
     }
   }
 

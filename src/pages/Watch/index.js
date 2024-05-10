@@ -10,7 +10,7 @@ function Watch() {
     const [linkEmbed, setLinkEmbed] = useState('')
     const params = useParams()
     const movieRef = useRef()
-    
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -39,7 +39,6 @@ function Watch() {
                 setMovieName(data?.movie?.name)
                 handleRecenltyViewed(data)
                 handleSetEpisode(data)
-                console.log(data)
                 document.title = `Bạn đang xem: ${data?.movie.name}`
             } catch (error) {
                 console.error(error)
@@ -57,7 +56,6 @@ function Watch() {
             console.log('Đã tồn tại trong lịch sử xem gần đây.');
         }
     }
-
 
     const hanleChangeEpisode = (link_embed, index) => {
         const value = {

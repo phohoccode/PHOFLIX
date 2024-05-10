@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom'
 import styles from './NotFound.module.scss'
 import clsx from 'clsx';
+import { useEffect } from 'react';
 
 function NotFound() {
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }, [])
+
     return ( 
         <div className={clsx(styles.not_found)}>
             <h1>404</h1>

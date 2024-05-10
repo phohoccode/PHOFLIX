@@ -2,6 +2,10 @@
 
     h4 {
         font-size: 4rem;
+        
+        @media (max-width: 768px) {
+            font-size: 3rem;
+        }
     }
 
     &__iframe {
@@ -10,6 +14,10 @@
         border-radius: var(--border-radius);
         border: 2px solid var(--sub-background);
         margin: 32px 0;
+
+        @media (max-width: 768px) {
+            height: 200px;
+        }
         
         iframe {
             width: 100%;
@@ -21,11 +29,13 @@
         h4 {
             font-size: 3rem;
             margin-bottom: 16px;
+
         }
         .watch__episodes {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
+            margin-bottom: 6px;
     
             li {
                 width: calc(8.33333% - 11px);
@@ -41,6 +51,12 @@
                 cursor: pointer;
                 transition: .3s;
                 user-select: none;
+
+                @media (max-width: 768px) {
+                    width: calc(20% - 10px);
+                    font-size: 1.4rem;
+                    padding: 6px;
+                }
     
                 &:hover:not(.active) {
                     opacity: .8;

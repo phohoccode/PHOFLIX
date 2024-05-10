@@ -15,6 +15,19 @@
   overscroll-behavior-y: none;
   box-shadow: var(--box-shadow);
 
+  @media (max-width: 768px) {
+    display: none;
+    position: fixed;
+    top: 60px;
+    margin: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    overscroll-behavior: none;
+    border-radius: unset;
+    background-color: var(--background);
+    padding: 16px;
+  }
+
   &__item {
     display: flex;
     flex-direction: column;
@@ -28,49 +41,54 @@
       gap: 8px;
     }
 
-    li {
-      display: block;
-      color: #fff;
-      padding: 6px;
-      transition: 0.3s;
-      font-size: 1.8rem;
-      position: relative;
-      cursor: pointer;
-
-      ::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 0;
-        height: 100%;
-        width: 3px;
-        border-radius: var(--border-radius);
-      }
-
-      &:hover {
-        color: var(--primary-color);
-      }
-
-     span > i {
-        margin-left: 8px;
-      }
-
-      a {
-        display: block;
-        color: inherit;
-
-        i {
-            margin-right: 8px;
+    ul {
+        margin: 0 -6px;
+        
+        li {
+          display: block;
+          color: #fff;
+          padding: 6px;
+          transition: 0.3s;
+          font-size: 1.8rem;
+          position: relative;
+          cursor: pointer;
+    
+          ::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            border-radius: var(--border-radius);
+          }
+    
+          &:hover {
+            color: var(--primary-color);
+          }
+    
+          span > i {
+            margin-left: 8px;
+          }
+    
+          a {
+            display: block;
+            color: inherit;
+    
+            i {
+              margin-right: 8px;
+            }
+          }
         }
-      }
+    
+        li.active {
+          color: var(--primary-color);
+    
+          ::after {
+            background-color: var(--primary-color);
+          }
+        }
     }
 
-    li.active {
-      color: var(--primary-color);
-
-      ::after {
-        background-color: var(--primary-color);
-      }
-    }
   }
 }

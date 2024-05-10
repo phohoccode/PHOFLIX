@@ -2,14 +2,20 @@ import { NavLink } from "react-router-dom"
 import logo from './logo.jpg'
 import styles from "./Header.module.scss"
 import clsx from 'clsx'
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { Context } from "../../../../Provider"
 
 function Header() {
     const [valueSearch, setValueSearch] = useState('')
+    const {handleToggleBar, isSideBarOpen } = useContext(Context)
 
     return ( 
         <>
             <nav className={clsx(styles.navbar)}>
+                <div onClick={handleToggleBar} className={clsx(styles.navbar__bar)}>
+                    {!isSideBarOpen && <i className="fa-solid fa-bars-staggered"></i>}
+                    {isSideBarOpen && <i className="fa-solid fa-xmark"></i>}
+                </div>
                 <div className={clsx(styles.navbar__logo)}>
                     <NavLink to="/PHOFLIX/">
                         <img src={logo}/>

@@ -17,7 +17,7 @@ function Footer() {
             <div className={clsx(styles.footer__row)}>
                 <div className={clsx(styles.footer__column)}>
                     <h3>Về chúng tôi</h3>
-                    <p>PHOFLIX - Được thực hiện bởi Nhan Quốc Việt, sinh viên đang theo học Công nghệ thông tin tại trường Đại học Sư phạm Kỹ thuật Vĩnh Long. Trang web đem đến trải nghiệm xem phim mượt mà, không quảng cáo làm phiền. Tận hưởng bộ sưu tập phong phú từ mọi thể loại, không giới hạn, không gò bó. Chỉ cần tập trung vào việc thưởng thức và khám phá, PHOFLIX sẽ lo phần còn lại.</p>
+                    <p>PHOFLIX - Được thực hiện bởi Nhan Quốc Việt, là sinh viên Công nghệ thông tin tại trường Đại học Sư phạm Kỹ thuật Vĩnh Long. Trang web đem đến trải nghiệm xem phim mượt mà, không quảng cáo làm phiền. Tận hưởng bộ sưu tập phong phú từ mọi thể loại, không giới hạn, không gò bó. Chỉ cần tập trung vào việc thưởng thức và khám phá, PHOFLIX sẽ lo phần còn lại.</p>
                 </div>
                 <div className={clsx(styles.footer__column)}>
                     <h3>Mạng xã hội</h3>

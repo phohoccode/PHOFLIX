@@ -13,10 +13,25 @@
     span {
         font-size: 3rem;
         color: var(--white-color);
+
+        
+        @media (max-width: 768px) {
+            font-size: 2rem;
+        }
     }
 
     p {
         font-size: 2rem;
         color: var(--white-color);
+
+        
+        @media (max-width: 768px) {
+            font-size: 1.8rem;
+        }
+    }
+
+    a {
+        white-space: nowrap;
+        margin-bottom: 12px;
     }
 }

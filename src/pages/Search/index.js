@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 import styles from './Search.module.scss'
 import { useParams } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Movie from '../../components/Layout/components/Movie';
 
 function Search() {
