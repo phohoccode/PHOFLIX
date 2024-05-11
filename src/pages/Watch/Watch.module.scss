@@ -25,7 +25,9 @@
         }
     }
 
-    div {
+    &__listOfEpisodes {
+        margin-bottom: 32px;
+        
         h4 {
             font-size: 3rem;
             margin-bottom: 16px;

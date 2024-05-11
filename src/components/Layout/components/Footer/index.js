@@ -6,6 +6,9 @@ function Footer() {
     const [valueSubmid, setValueSubmit] = useState('')
 
     const handleSubmit = (e) => {
+        if (valueSubmid === '') {
+            alert('Chưa nhập lời nhắn!')
+        }
         e.preventDefault()
         const subject = encodeURIComponent('Xin chào tôi đến từ PHOFLIX!')
         const body = encodeURIComponent(valueSubmid)
@@ -58,7 +61,7 @@ function Footer() {
                 </div>
                 <div className={clsx(styles.footer__column)}>
                     <h3>Gửi phản hồi</h3>
-                    <form className={clsx(styles.footer_form)}>
+                    <form className={clsx(styles.footer__form)}>
                         <label>
                             <i className="fa-regular fa-message"></i>
                             Lời nhắn

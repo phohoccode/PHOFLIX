@@ -6,19 +6,16 @@ import styles from "./DefaultLayout.module.scss"
 import { Provider } from "../../../Provider";
 
 function DefaultLayout({ children }) {
-
     return (
         <Provider>
-            <>
-                <Header/>
-                <div className={clsx(styles.Container)}>
-                    <SideBar/>
-                    <div className={clsx(styles.Container__content)}>
-                        {children}
-                    </div>
+            <Header />
+            <div className={clsx(styles.Container)}>
+                <SideBar />
+                <div className={clsx(styles.Container__content)}>
+                    {children}
                 </div>
-                <Footer />
-            </>
+            </div>
+            <Footer />
         </Provider>
     );
 }

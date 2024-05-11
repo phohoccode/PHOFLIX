@@ -11,7 +11,6 @@ function Category() {
     const { pathname} = useLocation()
     const {handleToggleBar} = useContext(Context)
 
-
     return ( 
         <ul className={clsx(styles.category)}>
             {categorys && categorys.map((category, index) => (

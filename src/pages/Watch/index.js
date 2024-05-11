@@ -1,7 +1,8 @@
-import clsx from "clsx";
+import clsx from "clsx"
 import styles from "./Watch.module.scss"
-import { useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom"
+import { useEffect, useRef, useState } from "react"
+import Comment from "../../components/Layout/components/Comments"
 
 function Watch() {
     const [movie, setMovie] = useState([])
@@ -19,15 +20,16 @@ function Watch() {
     }, [])
 
     const handleSetEpisode = (data) => {
-        const currentMovie = JSON.parse(localStorage.getItem('current-movie'))
-        const isExist = currentMovie.link_embed === data?.episodes[0]?.server_data[currentMovie.index - 1]?.link_embed
-        if (isExist) {
-            setEpisode(currentMovie.index)
-            setLinkEmbed(currentMovie.link_embed)
-        } else {
+        const currentMovie = JSON.parse(localStorage.getItem('current-movie')) || []
+        const isExist = currentMovie.link_embed === 
+                        data?.episodes[0]?.server_data[currentMovie.episode - 1]?.link_embed
+        if (!isExist) {
             setEpisode(1)
             setLinkEmbed(data?.episodes[0]?.server_data[0]?.link_embed)
+            return
         }
+        setEpisode(currentMovie.episode)
+        setLinkEmbed(currentMovie.link_embed)
     }
     
     useEffect(() => {
@@ -51,16 +53,15 @@ function Watch() {
         const recenltyViewed = JSON.parse(localStorage.getItem('RecentltyViewed')) || []
         const isExist = recenltyViewed.some(movie => movie?.movie?.slug === data?.movie?.slug)
         if (!isExist) {
-            localStorage.setItem('RecentltyViewed', JSON.stringify([...recenltyViewed, data]));
-        } else {
-            console.log('Đã tồn tại trong lịch sử xem gần đây.');
+            localStorage.setItem('RecentltyViewed', JSON.stringify([...recenltyViewed, data]))
         }
     }
 
-    const hanleChangeEpisode = (link_embed, index) => {
+    const hanleChangeEpisode = (link_embed, index, filename) => {
         const value = {
             link_embed,
-            index
+            episode: index,
+            filename
         }
         localStorage.setItem('current-movie', JSON.stringify(value))
         setLinkEmbed(link_embed)
@@ -78,7 +79,7 @@ function Watch() {
                     allow="fullscreen">
                 </iframe>
             </div>
-            <div>
+            <div className={clsx(styles.watch__listOfEpisodes)}>
                 <h4>Danh sách tập phim</h4>
                 <ul className={clsx(styles.watch__episodes)}>
                     {movie.map((movie, index) => (
@@ -89,15 +90,16 @@ function Watch() {
                                      clsx(styles.active) : ''
                             }
                             key={index}
-                            onClick={() => hanleChangeEpisode(movie.link_embed, index)}
+                            onClick={() => hanleChangeEpisode(movie.link_embed, index, movie?.filename)}
                         >
                             {movie.name}
                         </li>
                     ))}
                 </ul>
             </div>
+            <Comment/>
         </div>
-    );
+    )
 }
 
-export default Watch;
+export default Watch

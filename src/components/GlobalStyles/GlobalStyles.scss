@@ -61,6 +61,10 @@ textarea {
   user-select: none;
 }
 
+textarea {
+    resize: unset;
+}
+
 ul {
   list-style: none;
 }
@@ -72,7 +76,7 @@ a {
 
 .btn {
   border-radius: var(--border-radius);
-  padding: 4px 12px;
+  padding: 4px 8px;
   font-size: 1.8rem;
   color: var(--black-color);
   box-shadow: var(--box-shadow);

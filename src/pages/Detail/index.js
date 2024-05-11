@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom"
 import Movie from "../../components/Layout/components/Movie"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import clsx from "clsx"
 import styles from './Detail.module.scss'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
+
+
 
 function Detail() {
     const params = useParams()
@@ -11,13 +13,13 @@ function Detail() {
     const [titleName, setTitleName] = useState('')
     const [totalPages, setTotalPages] = useState(0)
     const [page, setPage] = useState(1)
-    
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         })
-        setPage(1)  
+        setPage(1)
     }, [params.slug])
 
     useEffect(() => {
@@ -46,17 +48,17 @@ function Detail() {
 
     const renderPaginations = () => {
         const paginationItems = []
-        for (let i = 1; i <= totalPages; i++) {
-            paginationItems.push(
-                <li
-                    className={clsx(i === page ? styles.active : '')}
-                    onClick={() => handleChangePage(i)}
-                    key={i}
-                >
-                    {i}
-                </li>
-            )
-        }
+            for (let i = 1; i <= totalPages; i++) {
+                paginationItems.push(
+                    <li
+                        className={clsx(i === page ? styles.active : '')}
+                        onClick={() => handleChangePage(i)}
+                        key={i}
+                    >
+                        {i}
+                    </li>
+                )
+            }
         return paginationItems
     }
 
