@@ -3,63 +3,63 @@ import clsx from "clsx";
 import styles from "./Comments.module.scss"
 import logo from './logo.jpg'
 
-function Comments() {
+function Comments({ slug }) {
     const [valueComment, setValueComment] = useState('')
     const [valueEditComment, setValueEditComment] = useState('')
-    const [comments, setComments] = useState(
-        JSON.parse(localStorage.getItem('comments')) || [])
+    const [comments, setComments] = useState(() => {
+        const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+        return storedComments[slug] || []
+    })
     const [indexEdit, setIndexEdit] = useState(-1)
     const commentRef = useRef()
     const commentEditRef = useRef()
 
     const handleAddComment = () => {
-        if (valueComment !== '') {
+        if (valueComment.trim() !== '') {
             const newComment = {
                 valueComment,
-                like: 0
+                like: 0,
             }
-            const updatedComments = [...comments, newComment]
-            setComments(updatedComments)
+            const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+            storedComments[slug] = [...(storedComments[slug] || []), newComment]
+            localStorage.setItem('comments', JSON.stringify(storedComments))
+            setComments(storedComments[slug] || [])
             setValueComment('')
-            localStorage.setItem('comments', JSON.stringify(updatedComments))
         }
     }
 
     const handleDeleteComment = (index) => {
-        const updatedComments = [...comments]
-        updatedComments.splice(index, 1)
-        setComments(updatedComments)
-        localStorage.setItem('comments', JSON.stringify(updatedComments))
+        const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+        storedComments[slug].splice(index, 1)
+        localStorage.setItem('comments', JSON.stringify(storedComments))
+        setComments(storedComments[slug] || [])
     }
 
     const handleEditComment = (index) => {
         setIndexEdit(index)
-        setValueEditComment(comments[index].valueComment)
+        setValueEditComment(comments[index].valueComment)                                                       
     }
-
+    
     const handleSaveEditComment = () => {
-        const updatedComments = [...comments]
-        updatedComments[indexEdit] = {
-            valueComment: valueEditComment,
-            like: updatedComments[indexEdit].like
-        }
-        setComments(updatedComments)
-        localStorage.setItem('comments', JSON.stringify(updatedComments))
+        const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+        storedComments[slug][indexEdit].valueComment = valueEditComment
+        localStorage.setItem('comments', JSON.stringify(storedComments))
+        setComments(storedComments[slug] || [])
         setIndexEdit(-1)
     }
 
     const handleLikeComment = (index) => {
-        const updatedComments = [...comments]
-        updatedComments[index].like++
-        setComments(updatedComments)
-        localStorage.setItem('comments', JSON.stringify(updatedComments))
-    }
+        const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+        storedComments[slug][index].like++
+        localStorage.setItem('comments', JSON.stringify(storedComments))
+        setComments(storedComments[slug] || [])
+    }   
 
     return (
         <div className={clsx(styles.comments)}>
             <h4>
                 Bình luận
-                <i class="fa-regular fa-comment fa-bounce"></i>
+                <i className="fa-regular fa-comment"></i>
             </h4>
             <div className={clsx(styles.comments__box)}>
                 <textarea
@@ -78,14 +78,14 @@ function Comments() {
             </div>
             <ul className={clsx(styles.comments__list_comment)}>
                 <span>{comments.length} bình luận</span>
-                {comments.map((comment, index) => (
+                {comments && comments.map((comment, index) => (
                     <li key={index}>
                         <div className={clsx(styles.comments__user)}>
                             <figure>
                                 <img src={logo} alt="user" />
                             </figure>
                             <div className={clsx(styles.comments__user_content)}>
-                                {index !== indexEdit && 
+                                {index !== indexEdit &&
                                     <>
                                         <span>Người dùng ẩn danh</span>
                                         <p>{comment.valueComment}</p>
@@ -103,17 +103,17 @@ function Comments() {
                         </div>
                         <div className="seperate"></div>
                         <div className={clsx(styles.comments__actions)}>
-                            {index !== indexEdit && 
+                            {index !== indexEdit &&
                                 <button
                                     onClick={() => handleLikeComment(index)}
                                     className={clsx('btn btn--primary')}
                                 >
                                     {comment.like} lượt thích
                                 </button>
-                            }
+                            }   
                             {index !== indexEdit &&
                                 <button
-                                    onClick={() => handleDeleteComment(index, valueEditComment)}
+                                    onClick={() => handleDeleteComment(index)}
                                     className={clsx('btn btn--primary')}
                                 >
                                     Xoá
@@ -129,14 +129,14 @@ function Comments() {
                             }
                             {index === indexEdit &&
                                 <button
-                                    onClick={handleSaveEditComment}
-                                    className={clsx('btn btn--primary')}>Lưu
+                                onClick={() => setIndexEdit(-1)}
+                                className={clsx('btn btn--primary')}>Huỷ
                                 </button>
                             }
                             {index === indexEdit &&
                                 <button
-                                    onClick={() => setIndexEdit(-1)}
-                                    className={clsx('btn btn--primary')}>Huỷ
+                                    onClick={handleSaveEditComment}
+                                    className={clsx('btn btn--primary')}>Lưu
                                 </button>
                             }
                         </div>

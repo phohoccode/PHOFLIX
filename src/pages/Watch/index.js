@@ -6,6 +6,7 @@ import Comment from "../../components/Layout/components/Comments"
 
 function Watch() {
     const [movie, setMovie] = useState([])
+    const [slug, setSlug] = useState('')
     const [movieName, setMovieName] = useState('')
     const [episode, setEpisode] = useState(1)
     const [linkEmbed, setLinkEmbed] = useState('')
@@ -37,7 +38,9 @@ function Watch() {
             try {
                 const res = await fetch(`https://phimapi.com/phim/${params.slug}`)
                 const data = await res.json()
+                console.log(data);
                 setMovie(data?.episodes[0]?.server_data)
+                setSlug(data?.movie?.slug)
                 setMovieName(data?.movie?.name)
                 handleRecenltyViewed(data)
                 handleSetEpisode(data)
@@ -73,7 +76,7 @@ function Watch() {
             <h4>{movieName}</h4>
             <div className={clsx(styles.watch__iframe)}>
                 <iframe
-                    src={linkEmbed}
+                    // src={linkEmbed}
                     frameBorder="0"
                     className="video"
                     allow="fullscreen">
@@ -97,7 +100,7 @@ function Watch() {
                     ))}
                 </ul>
             </div>
-            <Comment/>
+            {slug && <Comment slug={slug}/>}
         </div>
     )
 }
