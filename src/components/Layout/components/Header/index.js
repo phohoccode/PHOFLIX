@@ -2,13 +2,22 @@ import { NavLink } from "react-router-dom"
 import logo from './logo.jpg'
 import styles from "./Header.module.scss"
 import clsx from 'clsx'
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { Context } from "../../../../Provider"
 
 function Header() {
     const [valueSearch, setValueSearch] = useState('')
     const [showOnMobile, setShowOnMobile] = useState(false)
     const { handleToggleBar, isSideBarOpen } = useContext(Context)
+    const [width, setWidth] = useState(window.innerWidth)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth)
+        }
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     return (
         <>
@@ -26,16 +35,16 @@ function Header() {
                         <h4>PHOFLIX</h4>
                     </div>}
                 <div
-                    style={{flex: showOnMobile ? 1 : ''}}
+                    style={{ flex: showOnMobile ? 1 : '' }}
                     className={clsx(styles.navbar__search)}>
-                    <div 
+                    <div
                         onClick={() => setShowOnMobile(!showOnMobile)}
                         style={{ display: showOnMobile ? 'block' : 'none' }}
                         className={clsx(styles.navbar__search_left)}>
                         <i className="fa-solid fa-arrow-left"></i>
                     </div>
                     <div
-                        style={{ display: window.innerWidth > 768 || showOnMobile ? 'block' : 'none' }}
+                        style={{ display: width > 768 || showOnMobile ? 'block' : 'none' }}
                         className={clsx(styles.navbar__search_center)}>
                         <input
                             placeholder="Tìm kiếm phim..."
@@ -49,7 +58,7 @@ function Header() {
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </NavLink>
                     </div>
-                    {!showOnMobile && 
+                    {!showOnMobile &&
                         <div
                             onClick={() => setShowOnMobile(!showOnMobile)}
                             className={clsx(styles.navbar__search_right)}>

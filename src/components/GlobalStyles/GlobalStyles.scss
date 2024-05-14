@@ -1,4 +1,5 @@
 @import "normalize.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --border-radius: 4px;
@@ -14,7 +15,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
   height: 6px;
 }
 
@@ -40,9 +41,13 @@ html {
 body {
   font-size: 1.8rem;
   line-height: 1.6;
-  text-rendering: optimizeSpeed;
   background-color: var(--background);
   color: var(--white-color);
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeSpeed;
 }
 
 img {
@@ -59,6 +64,7 @@ textarea {
   border: none;
   outline: none;
   user-select: none;
+  font-family: "Montserrat", sans-serif;
 }
 
 textarea {
@@ -74,6 +80,10 @@ a {
   color: #000;
 }
 
+i {
+    outline: none;
+}
+
 .btn {
   border-radius: var(--border-radius);
   padding: 4px 8px;
@@ -83,12 +93,14 @@ a {
   transition: .3s;
   cursor: pointer;
   white-space: nowrap;
+  font-weight: 600;
 }
 
 
 @media (max-width: 768px) {
     .btn {
         font-size: 1.6rem;
+        padding: 8px;
     }
 }
 

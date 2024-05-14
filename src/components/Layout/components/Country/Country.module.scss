@@ -2,9 +2,10 @@
     overflow-y: auto;
     height: 200px;
     overscroll-behavior-y: none;
+    margin-left: 6px !important;
 
     li {
-        font-size: 1.7rem;
+        font-size: 1.6rem !important;
         position: relative;
 
         ::after {

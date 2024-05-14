@@ -25,6 +25,34 @@
         }
     }
 
+    &__copy_link_m3u8 {
+        margin: 24px 0;
+        
+        h4 {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+        div {            
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px;
+            border-radius: var(--border-radius);
+            background-color: var(--sub-background);
+            overflow: hidden;
+            button {
+                padding: 8px 12px;
+            }
+    
+            p {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+    }
+
     &__listOfEpisodes {
         margin-bottom: 32px;
         

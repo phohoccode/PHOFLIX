@@ -1,43 +1,46 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import useFetch from "../../Hooks/useFetch"
 import clsx from "clsx"
+import useFetch from "../../Hooks/useFetch"
 import styles from "./Info.module.scss"
+import storage from "../../util"
 
 function Info() {
     const params = useParams()
     const [data] = useFetch(`https://phimapi.com/phim/${params.slug}`)
-    const [show, setShow] = useState(false)
+    const [isShow, setIsShow] = useState(false)
     const movies = data?.movie
 
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
 
     useEffect(() => {
-        const savedMovies = JSON.parse(localStorage.getItem('Save-Movie')) || []
-        const isMovieSaved = savedMovies.some(saveMovie => saveMovie?.movie?.slug === params.slug)
-        setShow(isMovieSaved)
+        const savedMovies = storage.get('list-of-saved-movies', [])
+        const isMovieSaved = savedMovies.some(
+            saveMovie => saveMovie?.movie?.slug === params.slug)
+        setIsShow(isMovieSaved)
     }, [params.slug])
 
-    const handleSaveMovie = (data) => {
-        const saveMovies = JSON.parse(localStorage.getItem('Save-Movie')) || []
-        setShow(true)
-        if (data !== null) {
-            localStorage.setItem('Save-Movie', JSON.stringify([
+    const handleSaveMovie = () => {
+        try {
+            if (!data) return
+            const saveMovies = storage.get('list-of-saved-movies', [])
+            localStorage.setItem('list-of-saved-movies', JSON.stringify([
                 ...saveMovies, data
             ]))
+            setIsShow(true)
+        } catch (error) {
+            console.error(error)
         }
     }
 
     const handleRemoveMovie = (slug) => {
-        setShow(false)
-        const saveMovies = JSON.parse(localStorage.getItem('Save-Movie')) || []
-        const newSaveMovies = saveMovies.filter(saveMovie => saveMovie?.movie?.slug !== slug)
-        localStorage.setItem('Save-Movie', JSON.stringify(newSaveMovies))
+        const saveMovies = storage.get('list-of-saved-movies', [])
+        const newSaveMovies = saveMovies.filter(
+            saveMovie => saveMovie?.movie?.slug !== slug)
+        storage.set('list-of-saved-movies', newSaveMovies)
+        setIsShow(false)
     }
 
     return (
@@ -56,16 +59,16 @@ function Info() {
                     <div className={clsx(styles.info__movie)}>
                         <h4>{movies?.name}</h4>
                         <div className={clsx(styles.info__actions)}>
-                            {show === false &&
+                            {!isShow &&
                                 <button
                                     className={clsx('btn btn--primary')}
-                                    onClick={() => handleSaveMovie(data)}
+                                    onClick={handleSaveMovie}
                                 >
                                     <i className="fa-solid fa-bookmark"></i>
                                     Lưu phim
                                 </button>
                             }
-                            {show &&
+                            {isShow &&
                                 <button
                                     className={clsx('btn btn--primary')}
                                     onClick={() => handleRemoveMovie(movies?.slug)}

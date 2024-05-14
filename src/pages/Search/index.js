@@ -1,9 +1,9 @@
 import clsx from 'clsx'
-import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import styles from './Search.module.scss'
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import Movie from '../../components/Layout/components/Movie';
+import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
+import Movie from '../../components/Layout/components/Movie'
 
 function Search() {
     const params = useParams()
@@ -12,10 +12,7 @@ function Search() {
     let [limit, setLimit] = useState(10)
 
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
 
     useEffect(() => {
@@ -25,8 +22,8 @@ function Search() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('limit', limit)
-                const res = await fetch(`https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword}&limit=${limit}`)
+                const res = await fetch(
+                    `https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword.trim()}&limit=${limit}`)
                 const data = await res.json()
                 setResultMovies(data?.data?.items)
                 setTitlePgae(data?.data?.titlePage)    
@@ -35,13 +32,11 @@ function Search() {
             }
         }
         fetchData()
-
     }, [params.keyword, limit])
-
 
     const handleSeeMoreResult = () => {
         if (resultMovies.length < limit) {
-            alert('het phim')
+            alert('Đã hết phim!')
             return
         }
         setLimit(prevLimit => prevLimit + 10);

@@ -1,83 +1,98 @@
 .comments {
+  h4 {
+    font-size: 3rem;
+    margin-bottom: 12px;
 
-    h4 {
-        font-size: 3rem;
-        margin-bottom: 12px;
+    i {
+      margin-left: 12px;
+    }
+  }
 
-        i {
-            margin-left: 12px;
-        }
+  textarea {
+    background-color: transparent;
+    color: var(--white-color);
+    font-size: 1.8rem;
+    min-height: 120px;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__box {
+    display: flex;
+    gap: 12px;
+    background-color: var(--sub-background);
+    border-radius: var(--border-radius);
+    flex-direction: column;
+    padding: 16px;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+
+    @media (max-width: 768px) {
+      padding: 12px;
     }
 
-    textarea {
-        background-color: transparent;
-        color: var(--white-color);
-        font-size: 1.8rem;
-        min-height: 120px;
+    button {
+      padding: 8px 12px;
+      margin-left: auto;
+      font-weight: 600;
     }
-    
-    &__box {
+  }
+
+  &__list_comment {
+    > span {
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    li {
+      background-color: var(--sub-background);
+      border-radius: var(--border-radius);
+      padding: 16px;
+      margin-bottom: 12px;
+
+      @media (max-width: 768px) {
+        padding: 12px;
+      }
+
+      .comments__user {
         display: flex;
         gap: 12px;
-        background-color: var(--sub-background);
-        border-radius: var(--border-radius);
-        flex-direction: column;
-        padding: 16px;
-        font-size: 1.8rem;
-        margin-bottom: 12px;
 
-
-        button {
-            padding: 8px 12px;
-            margin-left: auto;
+        figure {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: 1px solid #ccc;
+          overflow: hidden;
         }
+
+        .comments__user_content {
+          flex: 1;
+
+          span {
+            font-weight: 600;
+            color: var(--primary-color);
+          }
+        }
+      }
     }
 
-    &__list_comment {
+    .comments__actions {
+      display: flex;
+      gap: 12px;
+      justify-content: end;
+      align-items: center;
+      flex-wrap: wrap;
 
-        > span {
-            display: inline-block;
-            margin-bottom: 12px;
-        }
+      button {
+          font-weight: 600;
+      }
 
-        li {
-            background-color: var(--sub-background);
-            border-radius: var(--border-radius);
-            padding: 16px;
-            margin-bottom: 12px;
-
-            .comments__user {
-                display: flex;
-                gap: 12px;
-
-                figure {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
-                    border: 1px solid #ccc;
-                    overflow: hidden;
-                }
-
-                .comments__user_content {
-                    flex: 1;
-
-                    span {
-                        font-weight: 600;
-                        color: var(--primary-color);
-                    }
-                }
-            }
-        }
-
-        .comments__actions {
-            display: flex;
-            gap: 12px;
-            justify-content: end;
-
-            button {
-                padding: 4px 6px;
-                font-size: 1.4rem;
-            }
-        }
+      span {
+        font-size: 1.4rem;
+        color: #ccc;
+        white-space: nowrap;
+      }
     }
+  }
 }

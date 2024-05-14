@@ -1,59 +1,71 @@
-import { useRef, useState, useEffect } from "react";
-import clsx from "clsx";
+import { useRef, useState, useEffect } from "react"
+import clsx from "clsx"
 import styles from "./Comments.module.scss"
 import logo from './logo.jpg'
+import storage, { formatTime } from "../../../../util"
 
 function Comments({ slug }) {
     const [valueComment, setValueComment] = useState('')
     const [valueEditComment, setValueEditComment] = useState('')
     const [comments, setComments] = useState(() => {
-        const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+        const storedComments = storage.get('comments', {})
         return storedComments[slug] || []
     })
     const [indexEdit, setIndexEdit] = useState(-1)
     const commentRef = useRef()
     const commentEditRef = useRef()
 
+    useEffect(() => {
+        // element.setSelectionRange(start, end)
+        // nếu start = end con trỏ sẽ đặt tại vị trí đó mà không có văn bản được chọn
+        if (commentEditRef.current) {
+            commentEditRef.current.focus()
+            const length = commentEditRef.current.value.length
+            commentEditRef.current.setSelectionRange(length, length)
+        }
+    }, [indexEdit])
+
     const handleAddComment = () => {
         if (valueComment.trim() !== '') {
             const newComment = {
                 valueComment,
                 like: 0,
+                time: new Date()
             }
-            const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+            const storedComments = storage.get('comments', {})
             storedComments[slug] = [...(storedComments[slug] || []), newComment]
-            localStorage.setItem('comments', JSON.stringify(storedComments))
+            storage.set('comments', storedComments)
             setComments(storedComments[slug] || [])
             setValueComment('')
         }
     }
 
     const handleDeleteComment = (index) => {
-        const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+        const storedComments = storage.get('comments', {})
         storedComments[slug].splice(index, 1)
-        localStorage.setItem('comments', JSON.stringify(storedComments))
+        storage.set('comments', storedComments)
         setComments(storedComments[slug] || [])
     }
 
     const handleEditComment = (index) => {
         setIndexEdit(index)
-        setValueEditComment(comments[index].valueComment)                                                       
+        setValueEditComment(comments[index].valueComment)
     }
-    
+
     const handleSaveEditComment = () => {
-        const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+        const storedComments = storage.get('comments', {})
         storedComments[slug][indexEdit].valueComment = valueEditComment
-        localStorage.setItem('comments', JSON.stringify(storedComments))
+        storage.set('comments', storedComments)
         setComments(storedComments[slug] || [])
         setIndexEdit(-1)
     }
 
     const handleLikeComment = (index) => {
-        const storedComments = JSON.parse(localStorage.getItem('comments')) || {}
+        const storedComments = storage.get('comments', {})
         storedComments[slug][index].like++
-        localStorage.setItem('comments', JSON.stringify(storedComments))
+        storage.set('comments', storedComments)
         setComments(storedComments[slug] || [])
-    }   
+    }
 
     return (
         <div className={clsx(styles.comments)}>
@@ -110,7 +122,7 @@ function Comments({ slug }) {
                                 >
                                     {comment.like} lượt thích
                                 </button>
-                            }   
+                            }
                             {index !== indexEdit &&
                                 <button
                                     onClick={() => handleDeleteComment(index)}
@@ -129,8 +141,8 @@ function Comments({ slug }) {
                             }
                             {index === indexEdit &&
                                 <button
-                                onClick={() => setIndexEdit(-1)}
-                                className={clsx('btn btn--primary')}>Huỷ
+                                    onClick={() => setIndexEdit(-1)}
+                                    className={clsx('btn btn--primary')}>Huỷ
                                 </button>
                             }
                             {index === indexEdit &&
@@ -139,12 +151,15 @@ function Comments({ slug }) {
                                     className={clsx('btn btn--primary')}>Lưu
                                 </button>
                             }
+                            {index !== indexEdit &&
+                                 <span> · {formatTime(comment?.time)}</span>
+                            }
                         </div>
                     </li>
                 ))}
             </ul>
         </div>
-    );
+    )
 }
 
 export default Comments

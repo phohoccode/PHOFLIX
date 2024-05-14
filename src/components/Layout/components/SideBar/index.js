@@ -11,10 +11,19 @@ function SideBar() {
     const [showCategorys, setShowCategorys] = useState(false)
     const [showCountry, setShowCountry] = useState(false)
     const {handleToggleBar, isSideBarOpen } = useContext(Context)
+    const [width, setWidth] = useState(window.innerWidth)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth)
+        }
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     return (
         <div 
-            style={{display: window.innerWidth > 768 || isSideBarOpen ? 'block' : 'none'}}
+            style={{display: width > 768 || isSideBarOpen ? 'block' : 'none'}}
             className={clsx(styles.sidebar)}
         >
             <div className={clsx(styles.sidebar__item)}>

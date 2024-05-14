@@ -1,20 +1,21 @@
-import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
+import { useEffect, useState } from 'react'
 import clsx from "clsx"
+import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 import styles from "./RecentltyViewed.module.scss"
 import Movie from '../../components/Layout/components/Movie'
-import { useEffect, useState } from 'react'
+import storage from "../../util"
 
 function RecentlyViewed() {
     const [movies, setMovies] = useState([])
     
     useEffect(() => {
         document.title = 'Lịch sử đã xem gần đây'
-        const data = JSON.parse(localStorage.getItem('RecentltyViewed')) || []
+        const data = storage.get('recentlty-viewed', [])
         setMovies(data)
     }, [])
 
     const handleDeleteAll = () => {
-        localStorage.setItem('RecentltyViewed', JSON.stringify([]))
+        storage.set('recentlty-viewed', [])
         setMovies([])
     }
 
