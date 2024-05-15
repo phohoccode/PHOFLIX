@@ -16,7 +16,7 @@
 
 ::-webkit-scrollbar {
   width: 4px;
-  height: 6px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -91,9 +91,9 @@ i {
   color: var(--black-color);
   box-shadow: var(--box-shadow);
   transition: .3s;
-  cursor: pointer;
   white-space: nowrap;
   font-weight: 600;
+  cursor: pointer;
 }
 
 
@@ -185,6 +185,12 @@ i {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 

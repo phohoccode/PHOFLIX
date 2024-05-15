@@ -14,7 +14,7 @@ function Movies({ api }) {
         <div className={clsx(styles.movies__wrapper)}>
             <header>
                 <h4>{titlePage && titlePage}</h4>
-                <Link to={breadCrumb && `/PHOFLIX/detail${breadCrumb?.slug}`}>
+                <Link to={breadCrumb && `/detail${breadCrumb?.slug}`}>
                     Xem tất cả
                     <i className="fa-solid fa-chevron-right"></i>
                 </Link>

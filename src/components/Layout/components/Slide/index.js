@@ -11,7 +11,7 @@ function Slide({ data }) {
             <div className={clsx(styles.slide__info)}>
                 <h4>{data?.name}</h4>
                 <div>
-                    <Link to={`/PHOFLIX/watch/${data.slug}`} className={clsx('btn btn--sub')}>
+                    <Link to={`/watch/${data.slug}`} className={clsx('btn btn--sub')}>
                         <i className="fa-solid fa-play"></i>
                         Xem ngay
                     </Link>

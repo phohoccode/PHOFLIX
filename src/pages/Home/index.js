@@ -5,11 +5,8 @@ import { useEffect } from "react";
 function Home() {
 
     useEffect(() => {
-        document.title = 'Trang chủ'
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
+        document.title = 'Chào mừng đến với PHOFLIX!'
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
 
     return (

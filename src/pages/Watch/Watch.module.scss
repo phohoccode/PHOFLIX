@@ -81,7 +81,11 @@
                 cursor: pointer;
                 transition: .3s;
                 user-select: none;
-                white-space: nowrap;
+
+                @media (max-width: 1024px) {
+                    width: calc(12.5% - 11px);
+                    font-size: 1.6rem;
+                }
 
                 @media (max-width: 768px) {
                     width: calc(20% - 10px);

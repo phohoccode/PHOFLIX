@@ -1,5 +1,5 @@
 footer {
-    margin: 64px 32px 64px 20px;
+    margin: 64px 32px;
     padding: 16px;
     font-size: 1.8rem;
     background-color: var(--sub-background);
@@ -14,12 +14,16 @@ footer {
         display: flex;
         gap: 32px;
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             flex-wrap: wrap;
         }
 
         .footer__column {
             width: 25%;
+
+            @media (max-width: 1024px) {
+                width: calc(50% - 16px)
+            }
 
             @media (max-width: 768px) {
                 width: 100%;
@@ -92,7 +96,7 @@ footer {
 
         .footer__copyright {
                 margin: 32px auto;
-            
+                text-align: center;
         }
     }
 }

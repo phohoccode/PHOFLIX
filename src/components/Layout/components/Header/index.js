@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom"
+import { useState, useContext, useEffect } from "react"
 import logo from './logo.jpg'
 import styles from "./Header.module.scss"
 import clsx from 'clsx'
-import { useState, useContext, useEffect } from "react"
 import { Context } from "../../../../Provider"
 
 function Header() {
@@ -24,28 +24,34 @@ function Header() {
             <nav className={clsx(styles.navbar)}>
                 {!showOnMobile &&
                     <div onClick={handleToggleBar} className={clsx(styles.navbar__bar)}>
-                        {!isSideBarOpen && <i className="fa-solid fa-bars-staggered"></i>}
-                        {isSideBarOpen && <i className="fa-solid fa-xmark"></i>}
+                        {isSideBarOpen ? (
+                            <i className="fa-solid fa-xmark"></i>
+                        ) : (
+                            <i className="fa-solid fa-bars-staggered"></i>
+                        )}
                     </div>}
                 {!showOnMobile &&
                     <div className={clsx(styles.navbar__logo)}>
-                        <NavLink to="/PHOFLIX/">
+                        <NavLink to="/">
                             <img src={logo} />
                         </NavLink>
                         <h4>PHOFLIX</h4>
                     </div>}
                 <div
                     style={{ flex: showOnMobile ? 1 : '' }}
-                    className={clsx(styles.navbar__search)}>
+                    className={clsx(styles.navbar__search)}
+                >
                     <div
                         onClick={() => setShowOnMobile(!showOnMobile)}
                         style={{ display: showOnMobile ? 'block' : 'none' }}
-                        className={clsx(styles.navbar__search_left)}>
+                        className={clsx(styles.navbar__search_left)}
+                    >
                         <i className="fa-solid fa-arrow-left"></i>
                     </div>
                     <div
                         style={{ display: width > 768 || showOnMobile ? 'block' : 'none' }}
-                        className={clsx(styles.navbar__search_center)}>
+                        className={clsx(styles.navbar__search_center)}
+                    >
                         <input
                             placeholder="Tìm kiếm phim..."
                             value={valueSearch}
@@ -54,7 +60,7 @@ function Header() {
                         <span onClick={() => setValueSearch('')}>
                             <i className="fa-solid fa-xmark"></i>
                         </span>
-                        <NavLink to={`/PHOFLIX/search/${valueSearch}`}>
+                        <NavLink to={`/search/${valueSearch}`}>
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </NavLink>
                     </div>

@@ -36,5 +36,11 @@
     gap: 16px 0;
     flex-wrap: wrap;
     margin: 0 -8px 24px -8px;
+
+    @media (max-width: 768px) {
+        flex-wrap: unset;
+        overflow-x: auto;
+        padding-bottom: 12px;
+    }
   }
 }

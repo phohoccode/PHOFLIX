@@ -8,7 +8,10 @@ export default {
 }
 
 export function formatTime(time) {
-    const diff = Math.floor((new Date() - new Date(time)) / 1000)
+    const currentTime = new Date()
+    const storageTime = new Date(time)
+    const diff = Math.floor((currentTime - storageTime) / 1000) 
+
     if (diff < 60) {
         return `Vừa xong`
     } else if (diff < 3600) {
@@ -16,10 +19,9 @@ export function formatTime(time) {
     } else if (diff < 86400) {
         return `${Math.floor(diff / 3600)} giờ trước`
     } else {
-        const day = time.getDate()
-        const month = time.getMonth() + 1
-        const year = time.getFullYear()
+        const day = storageTime.getDate()
+        const month = storageTime.getMonth() + 1
+        const year = storageTime.getFullYear()
         return `${day}/${month}/${year}`
     }
-
 }
