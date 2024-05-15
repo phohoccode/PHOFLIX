@@ -33,37 +33,37 @@ function SideBar() {
                 </h4>
                 <ul>
                     <li
-                        className={pathname === '/PHOFLIX/' ?
+                        className={pathname === '/' ?
                             clsx(styles.active) : ''}>
-                        <NavLink onClick={handleToggleBar} to="/PHOFLIX/">
+                        <NavLink onClick={handleToggleBar} to="/">
                             Trang Chủ
                         </NavLink>
                     </li>
                     <li
-                        className={pathname === '/PHOFLIX/detail/danh-sach/phim-le' ?
+                        className={pathname === '/detail/danh-sach/phim-le' ?
                             clsx(styles.active) : ''} >
-                        <NavLink onClick={handleToggleBar} to="/PHOFLIX/detail/danh-sach/phim-le">
+                        <NavLink onClick={handleToggleBar} to="/detail/danh-sach/phim-le">
                             Phim Lẻ
                         </NavLink>
                     </li>
                     <li
-                        className={pathname === '/PHOFLIX/detail/danh-sach/phim-bo' ?
+                        className={pathname === '/detail/danh-sach/phim-bo' ?
                             clsx(styles.active) : ''} >
-                        <NavLink onClick={handleToggleBar} to="/PHOFLIX/detail/danh-sach/phim-bo">
+                        <NavLink onClick={handleToggleBar} to="/detail/danh-sach/phim-bo">
                             Phim Bộ
                         </NavLink>
                     </li>
                     <li
-                        className={pathname === '/PHOFLIX/detail/danh-sach/hoat-hinh' ?
+                        className={pathname === '/detail/danh-sach/hoat-hinh' ?
                             clsx(styles.active) : ''} >
-                        <NavLink onClick={handleToggleBar} to="/PHOFLIX/detail/danh-sach/hoat-hinh">
+                        <NavLink onClick={handleToggleBar} to="/detail/danh-sach/hoat-hinh">
                             Phim Hoạt Hình
                         </NavLink>
                     </li>
                     <li
-                        className={pathname === '/PHOFLIX/detail/danh-sach/tv-shows' ?
+                        className={pathname === '/detail/danh-sach/tv-shows' ?
                             clsx(styles.active) : ''} >
-                        <NavLink onClick={handleToggleBar} to="/PHOFLIX/detail/danh-sach/tv-shows">
+                        <NavLink onClick={handleToggleBar} to="/detail/danh-sach/tv-shows">
                             Tv Shows
                         </NavLink>
                     </li>
@@ -91,14 +91,14 @@ function SideBar() {
                 </h4>
                 <ul>
                     <li
-                        className={pathname === '/PHOFLIX/savemovie' ?
+                        className={pathname === '/savemovie' ?
                             clsx(styles.active) : ''} >
-                        <NavLink onClick={handleToggleBar} to="/PHOFLIX/savemovie">Phim đã lưu</NavLink>
+                        <NavLink onClick={handleToggleBar} to="/savemovie">Phim đã lưu</NavLink>
                     </li>
                     <li
-                        className={pathname === '/PHOFLIX/recenltyviewed' ?
+                        className={pathname === '/recenltyviewed' ?
                             clsx(styles.active) : ''} >
-                        <NavLink onClick={handleToggleBar} to="/PHOFLIX/recenltyviewed">Đã xem gần đây</NavLink>
+                        <NavLink onClick={handleToggleBar} to="/recenltyviewed">Đã xem gần đây</NavLink>
                     </li>
                 </ul>
             </div>

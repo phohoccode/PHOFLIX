@@ -17,10 +17,10 @@ function Country() {
             {countrys && countrys.map((country, index) => (
                 <li    
                     onClick={handleToggleBar} 
-                    className={pathname === `/PHOFLIX/detail/quoc-gia/${country.slug}` ? 
+                    className={pathname === `/detail/quoc-gia/${country.slug}` ? 
                         clsx(styles.active) : ''}
                     key={index}>
-                    <NavLink to={`/PHOFLIX/detail/quoc-gia/${country.slug}`}>
+                    <NavLink to={`/detail/quoc-gia/${country.slug}`}>
                         {country.name}
                     </NavLink>
                 </li>

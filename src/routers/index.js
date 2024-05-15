@@ -8,13 +8,14 @@ import Watch from "../pages/Watch"
 import Info from "../pages/Info"
 
 const publicRoutes = [
-    { path: '/PHOFLIX/', component: Home},
-    { path: '/PHOFLIX/savemovie', component: SaveMovie},
-    { path: '/PHOFLIX/recenltyviewed', component: RecenltyViewed},
-    { path: '/PHOFLIX/search/:keyword', component: Search},
-    { path: '/PHOFLIX/detail/:describe/:slug', component: Detail},
-    { path: '/PHOFLIX/info/:slug', component: Info},
-    { path: '/PHOFLIX/watch/:slug', component: Watch},
+    { path: '/', component: Home},
+    { path: '/savemovie', component: SaveMovie},
+    { path: '/recenltyviewed', component: RecenltyViewed},
+    { path: '/search/:keyword', component: Search},
+    { path: '/search/', component: Search},
+    { path: '/detail/:describe/:slug', component: Detail},
+    { path: '/info/:slug', component: Info},
+    { path: '/watch/:slug', component: Watch},
     { path: '*', component: NotFound}
 ]
 export default publicRoutes

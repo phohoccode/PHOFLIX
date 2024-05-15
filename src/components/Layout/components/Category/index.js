@@ -16,10 +16,10 @@ function Category() {
             {categorys && categorys.map((category, index) => (
                 <li 
                     onClick={handleToggleBar}
-                    className={pathname === `/PHOFLIX/detail/the-loai/${category.slug}` ? 
+                    className={pathname === `/detail/the-loai/${category.slug}` ? 
                         clsx(styles.active) : ''}
                     key={index}>
-                    <NavLink to={`/PHOFLIX/detail/the-loai/${category.slug}`}>
+                    <NavLink to={`/detail/the-loai/${category.slug}`}>
                         {category.name}
                     </NavLink>
                 </li>

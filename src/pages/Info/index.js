@@ -77,7 +77,7 @@ function Info() {
                                     Xoá phim
                                 </button>
                             }
-                            <Link to={movies?.slug && `/PHOFLIX/watch/${movies?.slug}`} className={clsx('btn btn--sub')}>
+                            <Link to={movies?.slug && `/watch/${movies?.slug}`} className={clsx('btn btn--sub')}>
                                 <i className="fa-solid fa-play"></i>
                                 Xem ngay
                             </Link>
@@ -93,7 +93,7 @@ function Info() {
                             <span className={clsx('text-primary')}>Quốc gia:</span>
                             {movies?.country.map((country, index) => (
                                 <li className={clsx('cursor-pointer')} key={index}>
-                                    <Link to={`/PHOFLIX/detail/quoc-gia/${country.slug}`}>
+                                    <Link to={`/detail/quoc-gia/${country.slug}`}>
                                         {country.name}
                                     </Link>
                                 </li>
@@ -103,7 +103,7 @@ function Info() {
                             <span className={clsx('text-primary')}>Thể loại:</span>
                             {movies?.category.map((category, index) => (
                                 <li className={clsx('cursor-pointer')} key={index}>
-                                    <Link to={`/PHOFLIX/detail/the-loai/${category.slug}`}>
+                                    <Link to={`/detail/the-loai/${category.slug}`}>
                                         {category.name}
                                     </Link>
                                 </li>

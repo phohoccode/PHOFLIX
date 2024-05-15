@@ -6,7 +6,7 @@ function Movie({ data }) {
 
     return (
         <div className={clsx(styles.movie)}>
-            <Link to={`/PHOFLIX/info/${data.slug}`}>
+            <Link to={`/info/${data.slug}`}>
                 <figure>
                     <img
                         src={data?.poster_url.includes('https://img.phimapi.com') ?

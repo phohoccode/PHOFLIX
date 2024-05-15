@@ -23,7 +23,7 @@ function Search() {
         const fetchData = async () => {
             try {
                 const res = await fetch(
-                    `https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword.trim()}&limit=${limit}`)
+                    `https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword}&limit=${limit}`)
                 const data = await res.json()
                 setResultMovies(data?.data?.items)
                 setTitlePgae(data?.data?.titlePage)    
