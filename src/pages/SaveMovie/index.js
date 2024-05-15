@@ -10,12 +10,12 @@ function SaveMovie() {
     
     useEffect(() => {
         document.title = 'Danh sách phim đã lưu gần đây'
-        const data = JSON.parse(localStorage.getItem('Save-Movie')) || []
+        const data = JSON.parse(localStorage.getItem('list-of-saved-movies')) || []
         setMovies(data)
     }, [])
 
     const handleDeleteAll = () => {
-        localStorage.setItem('Save-Movie', JSON.stringify([]))
+        localStorage.setItem('list-of-saved-movies', JSON.stringify([]))
         setMovies([])
     }
     return (
