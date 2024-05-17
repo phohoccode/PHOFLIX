@@ -4,35 +4,31 @@ import { useEffect, useState } from 'react'
 import styles from './Search.module.scss'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 import Movie from '../../components/Layout/components/Movie'
+import useFetch from '../../Hooks/useFetch'
 
 function Search() {
+    let [limit, setLimit] = useState(10)
     const params = useParams()
+    const [data] = useFetch(`https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword}&limit=${limit}`)
     const [resultMovies, setResultMovies] = useState([])
     const [titlePage, setTitlePgae] = useState('')
-    let [limit, setLimit] = useState(10)
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
 
     useEffect(() => {
-        setLimit(prevLimit => prevLimit * 0 + 10)
-    }, [params.keyword])
+        setResultMovies(data?.data?.items || [])
+        setTitlePgae(data?.data?.titlePage || '')
+    }, [data])
+    
+    useEffect(() => {
+        document.title = titlePage
+    }, [titlePage])
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch(
-                    `https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword}&limit=${limit}`)
-                const data = await res.json()
-                setResultMovies(data?.data?.items)
-                setTitlePgae(data?.data?.titlePage)    
-            } catch (error) {
-                console.error("Error fetching data:", error)
-            }
-        }
-        fetchData()
-    }, [params.keyword, limit])
+        setLimit(prevLimit => prevLimit * 0 + 10)
+    }, [params.keyword])
 
     const handleSeeMoreResult = () => {
         if (resultMovies.length < limit) {
@@ -43,8 +39,8 @@ function Search() {
     }
 
     return (
-        <div className={clsx(styles.Search)}>
-            <div className={clsx(stylesMovie.movies__wrapper)}>
+        <div className={styles.Search}>
+            <div className={stylesMovie.movies__wrapper}>
                 <header>
                     <h4>
                         {resultMovies.length > 0 ?
@@ -53,7 +49,7 @@ function Search() {
                         }
                     </h4>
                 </header>
-                <div className={clsx(stylesMovie.movies__list)}>
+                <div className={stylesMovie.movies__list}>
                     {resultMovies && resultMovies.map((movie, index) => (
                         <Movie key={index} data={movie} />
                     ))}
@@ -62,7 +58,7 @@ function Search() {
             {resultMovies.length > 0 &&
                 <button
                     onClick={handleSeeMoreResult}
-                    className={clsx('btn btn--primary')}
+                    className={clsx('btn', 'btn--primary')}
                 >
                     Xem thêm
                 </button>

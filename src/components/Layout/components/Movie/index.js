@@ -1,22 +1,21 @@
-import clsx from "clsx"
-import styles from "./Movie.module.scss"
 import { Link } from "react-router-dom"
+import styles from "./Movie.module.scss"
 
 function Movie({ data }) {
-
     return (
-        <div className={clsx(styles.movie)}>
-            <Link to={`/info/${data.slug}`}>
+        <div className={styles.movie}>
+            <Link to={`/info/${data?.slug}`}>
                 <figure>
                     <img
                         src={data?.poster_url.includes('https://img.phimapi.com') ?
-                            data?.poster_url : `https://img.phimapi.com/${data?.poster_url}`
+                            data?.poster_url : 
+                                `https://img.phimapi.com/${data?.poster_url}`
                         } 
                     />
                     <i className="fa-solid fa-play"></i>
-                    <span className={clsx(styles.status)}>{data.lang}</span>
+                    <span className={styles.status}>{data?.lang}</span>
                 </figure>
-                <span className={clsx(styles.name)}>{data.name}</span>
+                <span className={styles.name}>{data?.name}</span>
             </Link>
         </div>
     )

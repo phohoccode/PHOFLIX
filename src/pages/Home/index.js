@@ -1,6 +1,6 @@
+import { useEffect } from "react"
 import Slides from "../../components/Layout/components/Slides"
 import Movies from "../../components/Layout/components/Movies"
-import { useEffect } from "react";
 
 function Home() {
 
@@ -17,7 +17,7 @@ function Home() {
             <Movies api="https://phimapi.com/v1/api/danh-sach/hoat-hinh?page=1" />
             <Movies api="https://phimapi.com/v1/api/danh-sach/tv-shows?page=1" />
         </>
-    );
+    )
 }
 
-export default Home;
+export default Home

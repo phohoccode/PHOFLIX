@@ -68,12 +68,12 @@ function Comments({ slug }) {
     }
 
     return (
-        <div className={clsx(styles.comments)}>
+        <div className={styles.comments}>
             <h4>
                 Bình luận
                 <i className="fa-regular fa-comment"></i>
             </h4>
-            <div className={clsx(styles.comments__box)}>
+            <div className={styles.comments__box}>
                 <textarea
                     placeholder="Viết bình luận..."
                     value={valueComment}
@@ -82,24 +82,24 @@ function Comments({ slug }) {
                 </textarea>
                 <button
                     ref={commentRef}
-                    className={clsx('btn btn--primary')}
+                    className={clsx('btn', 'btn--primary')}
                     onClick={handleAddComment}
                 >
                     Bình luận
                 </button>
             </div>
-            <ul className={clsx(styles.comments__list_comment)}>
+            <ul className={styles.comments__list_comment}>
                 <span>{comments.length} bình luận</span>
-                {comments && comments.map((comment, index) => (
+                {comments.map((comment, index) => (
                     <li key={index}>
-                        <div className={clsx(styles.comments__user)}>
+                        <div className={styles.comments__user}>
                             <figure>
                                 <img src={logo} alt="user" />
                             </figure>
-                            <div className={clsx(styles.comments__user_content)}>
+                            <div className={styles.comments__user_content}>
                                 {index !== indexEdit &&
                                     <>
-                                        <span>Người dùng ẩn danh</span>
+                                        <span>Người xem trên trang PHOFLIX</span>
                                         <p>{comment.valueComment}</p>
                                     </>
                                 }
@@ -114,11 +114,11 @@ function Comments({ slug }) {
                             </div>
                         </div>
                         <div className="seperate"></div>
-                        <div className={clsx(styles.comments__actions)}>
+                        <div className={styles.comments__actions}>
                             {index !== indexEdit &&
                                 <button
                                     onClick={() => handleLikeComment(index)}
-                                    className={clsx('btn btn--primary')}
+                                    className={clsx('btn', 'btn--primary')}
                                 >
                                     {comment.like} lượt thích
                                 </button>
@@ -126,7 +126,7 @@ function Comments({ slug }) {
                             {index !== indexEdit &&
                                 <button
                                     onClick={() => handleDeleteComment(index)}
-                                    className={clsx('btn btn--primary')}
+                                    className={clsx('btn', 'btn--primary')}
                                 >
                                     Xoá
                                 </button>
@@ -134,7 +134,7 @@ function Comments({ slug }) {
                             {index !== indexEdit &&
                                 <button
                                     onClick={() => handleEditComment(index)}
-                                    className={clsx('btn btn--primary')}
+                                    className={clsx('btn', 'btn--primary')}
                                 >
                                     Chỉnh sửa
                                 </button>
@@ -142,13 +142,13 @@ function Comments({ slug }) {
                             {index === indexEdit &&
                                 <button
                                     onClick={() => setIndexEdit(-1)}
-                                    className={clsx('btn btn--primary')}>Huỷ
+                                    className={clsx('btn', 'btn--primary')}>Huỷ
                                 </button>
                             }
                             {index === indexEdit &&
                                 <button
                                     onClick={handleSaveEditComment}
-                                    className={clsx('btn btn--primary')}>Lưu
+                                    className={clsx('btn', 'btn--primary')}>Lưu
                                 </button>
                             }
                             {index !== indexEdit &&

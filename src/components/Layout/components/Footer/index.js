@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import clsx from 'clsx'
 import styles from './Footer.module.scss'
 
@@ -17,12 +17,12 @@ function Footer() {
 
     return (
         <footer>
-            <div className={clsx(styles.footer__row)}>
-                <div className={clsx(styles.footer__column)}>
+            <div className={styles.footer__row}>
+                <div className={styles.footer__column}>
                     <h3>Về chúng tôi</h3>
                     <p>PHOFLIX - Được thực hiện bởi Nhan Quốc Việt, là sinh viên Công nghệ thông tin tại trường Đại học Sư phạm Kỹ thuật Vĩnh Long. Trang web đem đến trải nghiệm xem phim mượt mà, không quảng cáo làm phiền. Tận hưởng bộ sưu tập phong phú từ mọi thể loại, không giới hạn, không gò bó. Chỉ cần tập trung vào việc thưởng thức và khám phá, PHOFLIX sẽ lo phần còn lại.</p>
                 </div>
-                <div className={clsx(styles.footer__column)}>
+                <div className={styles.footer__column}>
                     <h3>Mạng xã hội</h3>
                     <ul>
                         <li>
@@ -52,16 +52,16 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className={clsx(styles.footer__column)}>
+                <div className={styles.footer__column}>
                     <h3>Nguồn phim kkphim.com</h3>
                     <p>
                         Tất cả nội dung của trang web này đều được tìm kiếm và thu thập ở các trang web phát video trực tuyến chính thống trên Internet, cũng như không cung cấp phát trực tuyến chính hãng.
                         Nếu quyền lợi của bạn bị vi phạm, hãy liên hệ với chúng tôi. Chúng tôi sẽ xử lý và xóa các nội dung liên quan đó kịp thời. Xin cảm ơn!
                     </p>
                 </div>
-                <div className={clsx(styles.footer__column)}>
+                <div className={styles.footer__column}>
                     <h3>Gửi phản hồi</h3>
-                    <form className={clsx(styles.footer__form)}>
+                    <form className={styles.footer__form}>
                         <label>
                             <i className="fa-regular fa-message"></i>
                             Lời nhắn
@@ -74,15 +74,15 @@ function Footer() {
                         
                         <button
                             onClick={(e) => handleSubmit(e)}
-                            className={clsx('btn btn--primary')}
+                            className={clsx('btn', 'btn--primary')}
                         >
                             Gửi
                         </button>
                     </form>
                 </div>
             </div>
-            <div className={clsx(styles.footer__row)}>
-                <p className={clsx(styles.footer__copyright)}>© 2024 - PHOFLIX. Web xem phim chất lượng hàng đầu Việt Nam</p>
+            <div className={styles.footer__row}>
+                <p className={styles.footer__copyright}>© 2024 - PHOFLIX. Web xem phim chất lượng hàng đầu Việt Nam</p>
             </div>
         </footer>
     );

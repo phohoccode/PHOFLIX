@@ -4,26 +4,33 @@ import { useEffect, useRef, useState } from "react"
 import styles from "./Watch.module.scss"
 import Comment from "../../components/Layout/components/Comments"
 import storage from "../../util"
+import useFetch from "../../Hooks/useFetch"
 
 function Watch() {
-    const [movie, setMovie] = useState([])
-    const [slug, setSlug] = useState('')
-    const [movieName, setMovieName] = useState('')
-    const [episode, setEpisode] = useState(1)
-    const [linkEmbed, setLinkEmbed] = useState('')
     const params = useParams()
     const movieRef = useRef()
+    const [data] = useFetch(`https://phimapi.com/phim/${params.slug}`)
+    const [episode, setEpisode] = useState(1)
+    const [linkEmbed, setLinkEmbed] = useState('')
+    const movie = data?.episodes[0]?.server_data || []
+    const slug = data?.movie?.slug || ''
+    const movieName = data?.movie?.name || ''
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
+
+    useEffect(() => {
+        handleRecenltyViewed(data)
+        handleSetEpisode(data)
+        document.title = `Bạn đang xem: ${movieName}`
+    }, [data])
 
     const handleSetEpisode = (data) => {
         const currentMovie = storage.get('save-watched-episodes', [])
         const movieExist = currentMovie.find(
             movie => movie?.link_embed ===
                 data?.episodes[0]?.server_data[movie.episode - 1]?.link_embed)
-        console.log(movieExist)
         if (movieExist) {
             alert(`Chào mừng bạn đã quay lại lúc trước bạn đang xem tập ${movieExist.episode}`)
             setEpisode(movieExist.episode)
@@ -33,24 +40,6 @@ function Watch() {
         setEpisode(1)
         setLinkEmbed(data?.episodes[0]?.server_data[0]?.link_embed)
     }
-
-    useEffect(() => {
-        const getMovie = async () => {
-            try {
-                const res = await fetch(`https://phimapi.com/phim/${params.slug}`)
-                const data = await res.json()
-                setMovie(data?.episodes[0]?.server_data)
-                setSlug(data?.movie?.slug)
-                setMovieName(data?.movie?.name)
-                handleRecenltyViewed(data)
-                handleSetEpisode(data)
-                document.title = `Bạn đang xem: ${data?.movie.name}`
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        getMovie()
-    }, [params.slug])
 
     const handleRecenltyViewed = (data) => {
         const recenltyViewed = storage.get('recentlty-viewed', [])
@@ -90,12 +79,12 @@ function Watch() {
             .catch(err => {
                 console.error('Failed to copy: ', err)
             })
-    }   
+    }
 
     return (
-        <div className={clsx(styles.watch)}>
+        <div className={styles.watch}>
             <h4>{movieName}</h4>
-            <div className={clsx(styles.watch__iframe)}>
+            <div className={styles.watch__iframe}>
                 <iframe
                     src={linkEmbed}
                     frameBorder="0"
@@ -103,30 +92,30 @@ function Watch() {
                     allow="fullscreen">
                 </iframe>
             </div>
-            <div className={clsx(styles.watch__listOfEpisodes)}>
+            <div className={styles.watch__listOfEpisodes}>
                 <h4>Danh sách tập phim</h4>
                 <ul className={clsx(styles.watch__episodes)}>
                     {movie.map((movie, index) => (
                         <li
                             ref={movieRef}
-                            className={
-                                ++index === episode ?
-                                    clsx(styles.active) : ''
-                            }
+                            className={clsx({
+                                [styles.active]: ++index === episode
+                            })}
                             key={index}
-                            onClick={() => hanleChangeEpisode(movie.link_embed, index, slug)}
+                            onClick={() =>
+                                hanleChangeEpisode(movie.link_embed, index, slug)}
                         >
                             {movie.name}
                         </li>
                     ))}
                 </ul>
             </div>
-            <div className={clsx(styles.watch__copy_link_m3u8)}>
+            <div className={(styles.watch__copy_link_m3u8)}>
                 <h4>Link m3u8</h4>
                 <div>
                     <button
                         onClick={handleCopyLinkM3u8}
-                        className={clsx('btn btn--primary')}>Copy</button>
+                        className={clsx('btn', 'btn--primary')}>Copy</button>
                     <p>{linkEmbed}</p>
                 </div>
             </div>

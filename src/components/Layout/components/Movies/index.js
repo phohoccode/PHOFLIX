@@ -1,29 +1,36 @@
-import clsx from "clsx"
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import styles from "./Movies.module.scss"
 import Movie from "../Movie"
-import { Link } from "react-router-dom"
 import useFetch from "../../../../Hooks/useFetch"
 
 function Movies({ api }) {
     const [data] = useFetch(api)
-    const titlePage = data?.data?.titlePage
-    const movies = data?.data?.items
-    const breadCrumb = data?.data?.breadCrumb[0]
+    const [titlePage, setTitlePage] = useState('')
+    const [movies, setMovies] = useState([])
+    const [breadCrumb, setBreadCrumb] = useState('')
+
+    useEffect(() => {
+        setTitlePage(data?.data?.titlePage || '')
+        setMovies(data?.data?.items || [])
+        setBreadCrumb(data?.data?.breadCrumb[0] || '/')
+    }, [data])
+
 
     return (
-        <div className={clsx(styles.movies__wrapper)}>
+        <div className={styles.movies__wrapper}>
             <header>
-                <h4>{titlePage && titlePage}</h4>
-                <Link to={breadCrumb && `/detail${breadCrumb?.slug}`}>
+                <h4>{titlePage}</h4>
+                <Link to={`/detail${breadCrumb?.slug}`}>
                     Xem tất cả
                     <i className="fa-solid fa-chevron-right"></i>
                 </Link>
             </header>
-            <div className={clsx(styles.movies__list)}>
-                {movies && movies.map((movie, index) => (
+            <div className={styles.movies__list}>
+                {movies.map((movie, index) => (
                     <Movie key={index} data={movie} />
                 ))}
-            </div>  
+            </div>
         </div>
     )
 }

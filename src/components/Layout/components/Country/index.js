@@ -5,12 +5,10 @@ import useFetch from "../../../../Hooks/useFetch"
 import { Context } from "../../../../Provider";
 import { useContext } from "react";
 
-
 function Country() {
     const [countrys] = useFetch('https://phimapi.com/quoc-gia')
     const { pathname } = useLocation()
     const {handleToggleBar } = useContext(Context)
-
 
     return ( 
         <ul className={clsx(styles.country)}>

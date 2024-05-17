@@ -4,13 +4,27 @@ import clsx from "clsx"
 import Movie from "../../components/Layout/components/Movie"
 import styles from './Detail.module.scss'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
+import useFetch from "../../Hooks/useFetch"
 
 function Detail() {
     const params = useParams()
-    const [movies, setMovies] = useState([])
+    const [page, setPage] = useState(1)
+    const [data] = useFetch(`https://phimapi.com/v1/api/${params.describe}/${params.slug}?page=${page}`)
+    const [movies, setMovie] = useState([])
     const [titleName, setTitleName] = useState('')
     const [totalPages, setTotalPages] = useState(0)
-    const [page, setPage] = useState(1)
+    const [titleDocument, setTitleDocument] = useState('')
+
+    useEffect(() => {
+        setMovie(data?.data?.items || [])
+        setTitleName(data?.data?.breadCrumb[0]?.name || '')
+        setTotalPages(data?.data?.params?.pagination?.totalPages || 0)
+        setTitleDocument(data?.data?.seoOnPage?.titleHead || 'Movie detail')
+    }, [data])
+    
+    useEffect(() => {
+        document.title = titleDocument
+    }, [titleDocument])
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -18,39 +32,25 @@ function Detail() {
     }, [params.slug])
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch(
-                    `https://phimapi.com/v1/api/${params.describe}/${params.slug}?page=${page}`)
-                const data = await res.json()
-                setMovies(data?.data?.items)
-                setTitleName(data?.data?.breadCrumb[0]?.name)
-                setTotalPages(data?.data?.params?.pagination?.totalPages)
-                document.title = data?.data?.seoOnPage?.titleHead || 'Movie detail'
-            } catch (error) {
-                console.error("Error fetching data:", error)
-            }
-        }
-        fetchData()
-    }, [params.describe, params.slug, page])
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, [page])
 
     const handleChangePage = (index) => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
         setPage(index)
     }
 
     const renderPaginations = () => {
         const paginationItems = []
-        for (let i = 1; i <= totalPages; i++) {
+        for (let index = 1; index <= totalPages; index++) {
             paginationItems.push(
                 <li
                     className={clsx({
-                        [styles.active] : i === page
+                        [styles.active] : index === page
                     })}
-                    onClick={() => handleChangePage(i)}
-                    key={i}
+                    onClick={() => handleChangePage(index)}
+                    key={index}
                 >
-                    {i}
+                    {index}
                 </li>
             )
         }
@@ -65,7 +65,7 @@ function Detail() {
                     <span>Trang {page}</span>
                 </header>
                 <div className={clsx(stylesMovie.movies__list)}>
-                    {movies && movies.map((movie, index) => (
+                    {movies.map((movie, index) => (
                         <Movie key={index} data={movie} />
                     ))}
                 </div>
