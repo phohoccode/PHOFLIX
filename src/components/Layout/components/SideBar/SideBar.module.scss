@@ -32,11 +32,11 @@
     padding: 16px;
   }
 
-  &__item {
+  &__row {
     display: flex;
     flex-direction: column;
 
-    h4 {
+    > h4 {
       display: flex;
       align-items: center;
       font-size: 2rem;
@@ -45,54 +45,81 @@
       gap: 8px;
     }
 
-    ul {
-        margin: 0 -6px;
-        
-        li {
+    .sidebar__list {
+      margin: 0 -6px;
+
+      .sidebar__item {
+        display: block;
+        color: #fff;
+        padding: 6px;
+        transition: 0.3s;
+        font-size: 1.8rem;
+        position: relative;
+        cursor: pointer;
+
+        ::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 0;
+          height: 100%;
+          width: 3px;
+          border-radius: var(--border-radius);
+
+          @media (max-width: 768px) {
+            left: -3px;
+            right: unset;
+          }
+        }
+
+        &:hover {
+          color: var(--primary-color);
+        }
+
+        span > i {
+          margin-left: 8px;
+        }
+
+        a {
           display: block;
-          color: #fff;
+          color: inherit;
+
+          i {
+            margin-right: 8px;
+          }
+        }
+
+        .sidebar__sub_list {
+          overflow-y: auto;
+          height: 200px;
+          overscroll-behavior-y: none;
+          margin-left: 6px;
           padding: 6px;
-          transition: 0.3s;
-          font-size: 1.8rem;
-          position: relative;
-          cursor: pointer;
-    
-          ::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: 3px;
-            border-radius: var(--border-radius);
+
+          @media (max-width: 768px) {
+            display: flex;
+            flex-wrap: wrap;
           }
-    
-          &:hover {
-            color: var(--primary-color);
-          }
-    
-          span > i {
-            margin-left: 8px;
-          }
-    
-          a {
-            display: block;
-            color: inherit;
-    
-            i {
-              margin-right: 8px;
+
+          li {
+            font-size: 1.6rem;
+            position: relative;
+
+            @media (max-width: 768px) {
+              width: 50%;
             }
           }
         }
-    
-        li.active {
-          color: var(--primary-color);
-    
-          ::after {
-            background-color: var(--primary-color);
-          }
-        }
-    }
+      }
 
+      .sidebar__item.active {
+        color: var(--primary-color);
+        font-weight: 600;
+
+        ::after {
+          background-color: var(--primary-color);
+        }
+      }
+    }
   }
 }

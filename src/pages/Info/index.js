@@ -24,11 +24,11 @@ function Info() {
         setCountrys(data?.movie?.country || [])
         setCategorys(data?.movie?.category || [])
         setActors(data?.movie?.actor || [])
-        setTitleDocument(movie?.name || 'Info Movie')
+        setTitleDocument(data?.movie?.name || 'Info Movie')
     }, [data])
 
     useEffect(() => {
-        document.title = `Thông tin phim: ${titleDocument}` 
+        document.title = `Thông tin phim: ${titleDocument}`
     }, [titleDocument])
 
     useEffect(() => {
@@ -92,8 +92,8 @@ function Info() {
                                     Xoá phim
                                 </button>
                             }
-                            <Link 
-                                to={`/watch/${movie?.slug}`} 
+                            <Link
+                                to={`/watch/${movie?.slug}`}
                                 className={clsx('btn', 'btn--sub')}
                             >
                                 <i className="fa-solid fa-play"></i>
@@ -145,7 +145,7 @@ function Info() {
             <div className={styles.info__trailer}>
                 <h4>Xem Trailer</h4>
                 <iframe
-                    src={movie?.trailer_url && 
+                    src={movie?.trailer_url &&
                         movie?.trailer_url.replace('watch?v=', '/embed/')}
                     frameBorder="0"
                     allowFullScreen

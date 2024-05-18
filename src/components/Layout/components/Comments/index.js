@@ -70,8 +70,8 @@ function Comments({ slug }) {
     return (
         <div className={styles.comments}>
             <h4>
-                Bình luận
                 <i className="fa-regular fa-comment"></i>
+                Bình luận
             </h4>
             <div className={styles.comments__box}>
                 <textarea
@@ -152,7 +152,7 @@ function Comments({ slug }) {
                                 </button>
                             }
                             {index !== indexEdit &&
-                                 <span> · {formatTime(comment?.time)}</span>
+                                <span> · {formatTime(comment?.time)}</span>
                             }
                         </div>
                     </li>

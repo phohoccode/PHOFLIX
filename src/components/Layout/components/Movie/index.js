@@ -8,11 +8,11 @@ function Movie({ data }) {
                 <figure>
                     <img
                         src={data?.poster_url.includes('https://img.phimapi.com') ?
-                            data?.poster_url : 
-                                `https://img.phimapi.com/${data?.poster_url}`
-                        } 
+                            data?.poster_url :
+                            `https://img.phimapi.com/${data?.poster_url}`
+                        }
                     />
-                    <i className="fa-solid fa-play"></i>
+                    <i className="fa-brands fa-google-play"></i>
                     <span className={styles.status}>{data?.lang}</span>
                 </figure>
                 <span className={styles.name}>{data?.name}</span>

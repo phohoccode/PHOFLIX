@@ -21,10 +21,12 @@ function Movies({ api }) {
         <div className={styles.movies__wrapper}>
             <header>
                 <h4>{titlePage}</h4>
-                <Link to={`/detail${breadCrumb?.slug}`}>
-                    Xem tất cả
-                    <i className="fa-solid fa-chevron-right"></i>
-                </Link>
+                {data &&
+                    <Link to={`/detail${breadCrumb?.slug}`}>
+                        Xem tất cả
+                        <i className="fa-solid fa-chevron-right"></i>
+                    </Link>
+                }
             </header>
             <div className={styles.movies__list}>
                 {movies.map((movie, index) => (

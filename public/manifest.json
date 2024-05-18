@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PHOFLIX",
+  "name": "Trang web xem phim miễn phí",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,23 +1,24 @@
 import { NavLink, useLocation } from "react-router-dom"
-import styles from "./Category.module.scss"
 import clsx from "clsx"
+import { useContext } from "react"
 import useFetch from "../../../../Hooks/useFetch"
-import { Context } from "../../../../Provider";
-import { useContext } from "react";
+import { Context } from "../../../../Provider"
+import styles from "../SideBar/SideBar.module.scss"
 
 
 function Category() {
-    const [categorys] = useFetch('https://phimapi.com/the-loai')
-    const { pathname} = useLocation()
-    const {handleToggleBar} = useContext(Context)
+    const [data] = useFetch('https://phimapi.com/the-loai')
+    const { pathname } = useLocation()
+    const { handleToggleBar } = useContext(Context)
 
-    return ( 
-        <ul className={clsx(styles.category)}>
-            {categorys && categorys.map((category, index) => (
-                <li 
+    return (
+        <ul className={clsx(styles.sidebar__sub_list)}>
+            {data && data.map((category, index) => (
+                <li
                     onClick={handleToggleBar}
-                    className={pathname === `/detail/the-loai/${category.slug}` ? 
-                        clsx(styles.active) : ''}
+                    className={clsx({
+                        [styles.active]: pathname === `/detail/the-loai/${category.slug}`
+                    }, styles.sidebar__item)}
                     key={index}>
                     <NavLink to={`/detail/the-loai/${category.slug}`}>
                         {category.name}
@@ -25,7 +26,7 @@ function Category() {
                 </li>
             ))}
         </ul>
-     )
+    )
 }
 
 export default Category

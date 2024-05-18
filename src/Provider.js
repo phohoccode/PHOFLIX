@@ -4,11 +4,11 @@ const Context = createContext()
 
 function Provider({ children }) {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false)
-    
+
     const handleToggleBar = () => {
         setIsSideBarOpen(!isSideBarOpen);
     }
-    
+
     const value = {
         handleToggleBar,
         isSideBarOpen

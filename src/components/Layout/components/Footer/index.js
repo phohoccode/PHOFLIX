@@ -71,7 +71,7 @@ function Footer() {
                             onChange={(e) => setValueSubmit(e.target.value)}
                             placeholder='Hãy phản hồi một cách văn minh và lịch sự!'>
                         </textarea>
-                        
+
                         <button
                             onClick={(e) => handleSubmit(e)}
                             className={clsx('btn', 'btn--primary')}

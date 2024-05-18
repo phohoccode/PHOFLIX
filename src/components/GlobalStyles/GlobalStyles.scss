@@ -1,5 +1,5 @@
 @import "normalize.css";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --border-radius: 4px;
@@ -20,7 +20,7 @@
 }
 
 ::-webkit-scrollbar-track {
-   background-color: transparent;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -68,7 +68,7 @@ textarea {
 }
 
 textarea {
-    resize: unset;
+  resize: unset;
 }
 
 ul {
@@ -81,7 +81,7 @@ a {
 }
 
 i {
-    outline: none;
+  outline: none;
 }
 
 .btn {
@@ -90,18 +90,17 @@ i {
   font-size: 1.8rem;
   color: var(--black-color);
   box-shadow: var(--box-shadow);
-  transition: .3s;
+  transition: 0.3s;
   white-space: nowrap;
   font-weight: 600;
   cursor: pointer;
 }
 
-
 @media (max-width: 768px) {
-    .btn {
-        font-size: 1.6rem;
-        padding: 8px;
-    }
+  .btn {
+    font-size: 1.6rem;
+    padding: 8px;
+  }
 }
 
 .btn:hover {
@@ -110,7 +109,7 @@ i {
 }
 
 .btn.active {
-    outline-color: var(--blue-custom-color);
+  outline-color: var(--blue-custom-color);
 }
 
 .btn.btn--primary {
@@ -173,24 +172,26 @@ i {
   background-color: var(--blue-custom-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+
+  i {
+    margin-right: 8px;
+  }
 }
 
 .text-primary {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .text-white {
-    color: var(--white-color);
+  color: var(--white-color);
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-

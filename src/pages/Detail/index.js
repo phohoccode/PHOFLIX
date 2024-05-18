@@ -21,7 +21,7 @@ function Detail() {
         setTotalPages(data?.data?.params?.pagination?.totalPages || 0)
         setTitleDocument(data?.data?.seoOnPage?.titleHead || 'Movie detail')
     }, [data])
-    
+
     useEffect(() => {
         document.title = titleDocument
     }, [titleDocument])
@@ -45,7 +45,7 @@ function Detail() {
             paginationItems.push(
                 <li
                     className={clsx({
-                        [styles.active] : index === page
+                        [styles.active]: index === page
                     })}
                     onClick={() => handleChangePage(index)}
                     key={index}
@@ -62,7 +62,7 @@ function Detail() {
             <div className={clsx(stylesMovie.movies__wrapper)}>
                 <header>
                     <h4>{titleName}</h4>
-                    <span>Trang {page}</span>
+                    {data && <span>Trang {page}</span>}
                 </header>
                 <div className={clsx(stylesMovie.movies__list)}>
                     {movies.map((movie, index) => (

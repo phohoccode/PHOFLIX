@@ -1,19 +1,19 @@
 .Container {
-    display: flex;
-    
-    .Container__content {
-        overflow: hidden;
+  display: flex;
 
-        @media (max-width: 1024px) {
-            padding: 0 24px;
-        }
+  .Container__content {
+    overflow: hidden;
 
-        @media (max-width: 768px) {
-            width: 100%;
-            padding: 0 16px;
-        }
-        margin-top: 10px;
-        width: calc(100% - 20px);
-        padding: 0 32px 32px 20px;
+    @media (max-width: 1024px) {
+      padding: 0 24px;
     }
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0 16px;
+    }
+    margin-top: 10px;
+    width: calc(100% - 20px);
+    padding: 0 32px 32px 20px;
+  }
 }

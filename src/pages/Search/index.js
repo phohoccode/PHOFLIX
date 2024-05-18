@@ -21,7 +21,7 @@ function Search() {
         setResultMovies(data?.data?.items || [])
         setTitlePgae(data?.data?.titlePage || '')
     }, [data])
-    
+
     useEffect(() => {
         document.title = titlePage
     }, [titlePage])

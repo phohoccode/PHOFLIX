@@ -1,10 +1,15 @@
 .comments {
+
   h4 {
     font-size: 3rem;
     margin-bottom: 12px;
 
+    @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+
     i {
-      margin-left: 12px;
+      margin-right: 8px;
     }
   }
 
@@ -85,7 +90,7 @@
       flex-wrap: wrap;
 
       button {
-          font-weight: 600;
+        font-weight: 600;
       }
 
       span {

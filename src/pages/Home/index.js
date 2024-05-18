@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Slides from "../../components/Layout/components/Slides"
 import Movies from "../../components/Layout/components/Movies"
 

@@ -10,7 +10,7 @@ function SideBar() {
     const { pathname } = useLocation()
     const [showCategorys, setShowCategorys] = useState(false)
     const [showCountry, setShowCountry] = useState(false)
-    const {handleToggleBar, isSideBarOpen } = useContext(Context)
+    const { handleToggleBar, isSideBarOpen } = useContext(Context)
     const [width, setWidth] = useState(window.innerWidth)
 
     useEffect(() => {
@@ -23,23 +23,25 @@ function SideBar() {
 
 
     return (
-        <div 
-            style={{display: width > 768 ||
-                 isSideBarOpen ? 'block' : 'none'}}
+        <div
+            style={{
+                display: width > 768 ||
+                    isSideBarOpen ? 'block' : 'none'
+            }}
             className={styles.sidebar}
         >
-            <div className={styles.sidebar__item}>
+            <div className={styles.sidebar__row}>
                 <h4>
-                    <i className="fa-regular fa-rectangle-list"></i>
+                    <i className="fa-solid fa-grip"></i>
                     Danh mục
                 </h4>
-                <ul>
+                <ul className={styles.sidebar__list}>
                     <li
                         className={clsx({
-                            [styles.active] : pathname === '/'
-                        })}>
-                        <NavLink 
-                            onClick={handleToggleBar} 
+                            [styles.active]: pathname === '/'
+                        }, styles.sidebar__item)}>
+                        <NavLink
+                            onClick={handleToggleBar}
                             to="/"
                         >
                             Trang Chủ
@@ -47,10 +49,10 @@ function SideBar() {
                     </li>
                     <li
                         className={clsx({
-                            [styles.active] : pathname === '/detail/danh-sach/phim-le'
-                        })} >
-                        <NavLink 
-                            onClick={handleToggleBar} 
+                            [styles.active]: pathname === '/detail/danh-sach/phim-le'
+                        }, styles.sidebar__item)} >
+                        <NavLink
+                            onClick={handleToggleBar}
                             to="/detail/danh-sach/phim-le"
                         >
                             Phim Lẻ
@@ -58,10 +60,10 @@ function SideBar() {
                     </li>
                     <li
                         className={clsx({
-                            [styles.active] : pathname === '/detail/danh-sach/phim-bo'
-                        })} >
-                        <NavLink 
-                            onClick={handleToggleBar} 
+                            [styles.active]: pathname === '/detail/danh-sach/phim-bo'
+                        }, styles.sidebar__item)} >
+                        <NavLink
+                            onClick={handleToggleBar}
                             to="/detail/danh-sach/phim-bo"
                         >
                             Phim Bộ
@@ -69,10 +71,10 @@ function SideBar() {
                     </li>
                     <li
                         className={clsx({
-                            [styles.active] : pathname === '/detail/danh-sach/hoat-hinh'
-                        })} >
-                        <NavLink 
-                            onClick={handleToggleBar} 
+                            [styles.active]: pathname === '/detail/danh-sach/hoat-hinh'
+                        }, styles.sidebar__item)} >
+                        <NavLink
+                            onClick={handleToggleBar}
                             to="/detail/danh-sach/hoat-hinh"
                         >
                             Phim Hoạt Hình
@@ -80,44 +82,56 @@ function SideBar() {
                     </li>
                     <li
                         className={clsx({
-                            [styles.active] : pathname === '/detail/danh-sach/tv-shows'
-                        })} >
-                        <NavLink 
-                            onClick={handleToggleBar} 
+                            [styles.active]: pathname === '/detail/danh-sach/tv-shows'
+                        }, styles.sidebar__item)} >
+                        <NavLink
+                            onClick={handleToggleBar}
                             to="/detail/danh-sach/tv-shows"
                         >
                             Tv Shows
                         </NavLink>
                     </li>
-                    <li onClick={() => setShowCategorys(!showCategorys)}>
+                    <li
+                        className={styles.sidebar__item}
+                        onClick={() => setShowCategorys(!showCategorys)}>
                         <span>
                             Thể Loại
-                            <i className="fa-solid fa-chevron-down"></i>
+                            {showCategorys ? (
+                                <i classN="fa-solid fa-chevron-right"></i>
+                            ) : (
+                                <i className="fa-solid fa-chevron-down"></i>
+                            )}
                         </span>
                         {showCategorys && <Category />}
                     </li>
-                    <li onClick={() => setShowCountry(!showCountry)}>
+                    <li
+                        className={styles.sidebar__item}
+                        onClick={() => setShowCountry(!showCountry)}>
                         <span>
                             Quốc Gia
-                            <i className="fa-solid fa-chevron-down"></i>
+                            {showCountry ? (
+                                <i classN="fa-solid fa-chevron-right"></i>
+                            ) : (
+                                <i className="fa-solid fa-chevron-down"></i>
+                            )}
                         </span>
                         {showCountry && <Country />}
                     </li>
                 </ul>
             </div>
             <div className='seperate'></div>
-            <div className={styles.sidebar__item}>
+            <div className={styles.sidebar__row}>
                 <h4>
                     <i className="fa-solid fa-user"></i>
                     Cá nhân
                 </h4>
-                <ul>
+                <ul className={styles.sidebar__list}>
                     <li
                         className={clsx({
-                            [styles.active] : pathname === '/savemovie'
-                        })} >
-                        <NavLink 
-                            onClick={handleToggleBar} 
+                            [styles.active]: pathname === '/savemovie'
+                        }, styles.sidebar__item)} >
+                        <NavLink
+                            onClick={handleToggleBar}
                             to="/savemovie"
                         >
                             Phim đã lưu
@@ -125,10 +139,10 @@ function SideBar() {
                     </li>
                     <li
                         className={clsx({
-                            [styles.active] : pathname === '/recenltyviewed'
-                        })} >
-                        <NavLink 
-                            onClick={handleToggleBar} 
+                            [styles.active]: pathname === '/recenltyviewed'
+                        }, styles.sidebar__item)} >
+                        <NavLink
+                            onClick={handleToggleBar}
                             to="/recenltyviewed"
                         >
                             Đã xem gần đây

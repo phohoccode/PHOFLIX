@@ -9,6 +9,7 @@ function SaveMovie() {
 
     useEffect(() => {
         document.title = 'Danh sách phim đã lưu gần đây'
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         const data = JSON.parse(localStorage.getItem('list-of-saved-movies')) || []
         setMovies(data)
     }, [])
@@ -26,6 +27,7 @@ function SaveMovie() {
                 {
                     movies.length > 0 &&
                     <button
+                        style={{marginTop: '6px'}}
                         onClick={handleDeleteAll}
                         className={clsx('btn btn--primary')}
                     >

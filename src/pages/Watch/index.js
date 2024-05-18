@@ -83,7 +83,7 @@ function Watch() {
 
     return (
         <div className={styles.watch}>
-            <h4>{movieName}</h4>
+            <h4 className={styles.watch__title}>{movieName}</h4>
             <div className={styles.watch__iframe}>
                 <iframe
                     src={linkEmbed}
@@ -93,7 +93,10 @@ function Watch() {
                 </iframe>
             </div>
             <div className={styles.watch__listOfEpisodes}>
-                <h4>Danh sách tập phim</h4>
+                <h4>
+                    <i className="fa-solid fa-grip"></i>
+                    Danh sách tập phim
+                </h4>
                 <ul className={clsx(styles.watch__episodes)}>
                     {movie.map((movie, index) => (
                         <li
@@ -111,7 +114,10 @@ function Watch() {
                 </ul>
             </div>
             <div className={(styles.watch__copy_link_m3u8)}>
-                <h4>Link m3u8</h4>
+                <h4>
+                    <i className="fa-solid fa-link"></i>
+                    Link m3u8
+                </h4>
                 <div>
                     <button
                         onClick={handleCopyLinkM3u8}

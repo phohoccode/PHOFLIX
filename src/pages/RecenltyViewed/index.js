@@ -9,6 +9,7 @@ function RecentlyViewed() {
 
     useEffect(() => {
         document.title = 'Lịch sử đã xem gần đây'
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         const data = storage.get('recentlty-viewed', [])
         setMovies(data)
     }, [])
@@ -27,6 +28,7 @@ function RecentlyViewed() {
                 {
                     movies.length > 0 &&
                     <button
+                        style={{ marginTop: '6px' }}
                         onClick={handleDeleteAll}
                         className={clsx('btn btn--primary')}
                     >

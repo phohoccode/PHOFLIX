@@ -3,7 +3,6 @@ import DefaultLayout from './components/Layout/DefaultLayout'
 import publicRoutes from './routers'
 
 function App() {
-
     return (
         <Router>
             <Routes>
