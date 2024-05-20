@@ -11,12 +11,15 @@ function Slide({ data }) {
             <div className={styles.slide__info}>
                 <h4>{data?.name}</h4>
                 <div>
-                    <Link to={`/watch/${data.slug}`} className={clsx('btn', 'btn--sub')}>
+                    <Link 
+                        to={`/watch/${data.slug}`} 
+                        className={clsx('btn', 'btn--sub')}
+                    >
                         <i className="fa-brands fa-google-play"></i>
                         Xem ngay
                     </Link>
                     <span className='year'>
-                        <i class="fa-regular fa-calendar"></i>
+                        <i className="fa-regular fa-calendar"></i>
                         {data?.year}
                     </span>
                 </div>

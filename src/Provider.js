@@ -1,12 +1,11 @@
-import { createContext, useState } from "react";
-
-const Context = createContext()
+import { useState } from "react"
+import Context from "./Context"
 
 function Provider({ children }) {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false)
 
     const handleToggleBar = () => {
-        setIsSideBarOpen(!isSideBarOpen);
+        setIsSideBarOpen(!isSideBarOpen)
     }
 
     const value = {
@@ -21,4 +20,4 @@ function Provider({ children }) {
     )
 }
 
-export { Provider, Context }
+export default Provider

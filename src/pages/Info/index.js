@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import clsx from "clsx"
+import { toast } from 'react-toastify';
 import useFetch from "../../Hooks/useFetch"
 import styles from "./Info.module.scss"
 import storage from "../../util"
@@ -45,6 +46,16 @@ function Info() {
                 ...saveMovies, data
             ]))
             setIsShow(true)
+            toast.success('Lưu phim thành công!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
         } catch (error) {
             console.error(error)
         }
@@ -56,6 +67,16 @@ function Info() {
             saveMovie => saveMovie?.movie?.slug !== slug)
         storage.set('list-of-saved-movies', newSaveMovies)
         setIsShow(false)
+        toast.success('Xoá phim thành công!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
     }
 
     return (
@@ -96,7 +117,7 @@ function Info() {
                                 to={`/watch/${movie?.slug}`}
                                 className={clsx('btn', 'btn--sub')}
                             >
-                                <i className="fa-solid fa-play"></i>
+                                <i className="fa-brands fa-google-play"></i>
                                 Xem ngay
                             </Link>
                         </div>
@@ -110,7 +131,11 @@ function Info() {
                         <ul>
                             <span className='text-primary'>Quốc gia:</span>
                             {countrys.map((country, index) => (
-                                <li className='cursor-pointer' key={index}>
+                                <li
+                                    style={{ padding: '0 2px' }}
+                                    className='cursor-pointer btn btn--primary'
+                                    key={index}
+                                >
                                     <Link to={`/detail/quoc-gia/${country?.slug}`}>
                                         {country?.name}
                                     </Link>
@@ -118,9 +143,13 @@ function Info() {
                             ))}
                         </ul>
                         <ul>
-                            <span className='text-primary'>Thể loại:</span>
+                            <span className='text-primary '>Thể loại:</span>
                             {categorys.map((category, index) => (
-                                <li className='cursor-pointer' key={index}>
+                                <li
+                                    style={{ padding: '0 2px' }}
+                                    className='cursor-pointer btn btn--primary'
+                                    key={index}
+                                >
                                     <Link to={`/detail/the-loai/${category?.slug}`}>
                                         {category?.name}
                                     </Link>

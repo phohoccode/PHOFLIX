@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import clsx from "clsx"
+import { toast } from 'react-toastify'
 import Movie from "../../components/Layout/components/Movie"
 import styles from './Detail.module.scss'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
@@ -58,6 +59,7 @@ function Detail() {
     }
 
     return (
+
         <div className={clsx(styles.detail)}>
             <div className={clsx(stylesMovie.movies__wrapper)}>
                 <header>

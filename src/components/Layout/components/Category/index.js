@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router-dom"
 import clsx from "clsx"
 import { useContext } from "react"
 import useFetch from "../../../../Hooks/useFetch"
-import { Context } from "../../../../Provider"
+import Context from "../../../../Context"
 import styles from "../SideBar/SideBar.module.scss"
 
 

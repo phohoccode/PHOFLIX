@@ -1,15 +1,26 @@
 import { useState } from 'react'
 import clsx from 'clsx'
+import { toast } from 'react-toastify';
 import styles from './Footer.module.scss'
 
 function Footer() {
     const [valueSubmid, setValueSubmit] = useState('')
 
     const handleSubmit = (e) => {
-        if (valueSubmid === '') {
-            alert('Chưa nhập lời nhắn!')
-        }
         e.preventDefault()
+        if (valueSubmid === '') {
+            toast.info('Chưa nhập lời nhắn!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored"
+            });
+            return
+        }
         const subject = encodeURIComponent('Xin chào tôi đến từ PHOFLIX!')
         const body = encodeURIComponent(valueSubmid)
         window.location.href = `mailto:qviet092@gmail.com?subject=${subject}&body=${body}`
@@ -82,7 +93,7 @@ function Footer() {
                 </div>
             </div>
             <div className={styles.footer__row}>
-                <p className={styles.footer__copyright}>© 2024 - PHOFLIX. Web xem phim chất lượng hàng đầu Việt Nam</p>
+                <p className={styles.footer__copyright}>© 2024 - PHOFLIX. Web xem phim chất lượng, không quảng cáo làm phiền.</p>
             </div>
         </footer>
     );

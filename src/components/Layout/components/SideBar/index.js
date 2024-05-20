@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import styles from "./SideBar.module.scss"
 import Category from "../Category"
 import Country from "../Country"
-import { Context } from "../../../../Provider"
+import Context from "../../../../Context"
 
 function SideBar() {
     const { pathname } = useLocation()
@@ -97,7 +97,7 @@ function SideBar() {
                         <span>
                             Thể Loại
                             {showCategorys ? (
-                                <i classN="fa-solid fa-chevron-right"></i>
+                                <i className="fa-solid fa-chevron-up"></i>
                             ) : (
                                 <i className="fa-solid fa-chevron-down"></i>
                             )}
@@ -110,7 +110,7 @@ function SideBar() {
                         <span>
                             Quốc Gia
                             {showCountry ? (
-                                <i classN="fa-solid fa-chevron-right"></i>
+                                <i className="fa-solid fa-chevron-up"></i>
                             ) : (
                                 <i className="fa-solid fa-chevron-down"></i>
                             )}

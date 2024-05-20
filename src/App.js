@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import DefaultLayout from './components/Layout/DefaultLayout'
 import publicRoutes from './routers'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
     return (
@@ -16,6 +18,7 @@ function App() {
                             element={
                                 <Layout>
                                     <Page />
+                                    <ToastContainer/>
                                 </Layout>
                             }
                         />

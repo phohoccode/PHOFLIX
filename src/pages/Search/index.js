@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import styles from './Search.module.scss'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 import Movie from '../../components/Layout/components/Movie'
@@ -32,10 +33,29 @@ function Search() {
 
     const handleSeeMoreResult = () => {
         if (resultMovies.length < limit) {
-            alert('Đã hết phim!')
+            toast.error('Đã hết phim phù hợp!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
             return
         }
-        setLimit(prevLimit => prevLimit + 10);
+        setLimit(prevLimit => prevLimit + 10)
+        toast.success('Tải phim thành công!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        })
     }
 
     return (
@@ -44,7 +64,7 @@ function Search() {
                 <header>
                     <h4>
                         {resultMovies.length > 0 ?
-                            titlePage && titlePage :
+                            titlePage :
                             'Không tìm thấy kết quả phù hợp!'
                         }
                     </h4>
@@ -55,7 +75,7 @@ function Search() {
                     ))}
                 </div>
             </div>
-            {resultMovies.length > 0 &&
+            {resultMovies.length >= 10 &&
                 <button
                     onClick={handleSeeMoreResult}
                     className={clsx('btn', 'btn--primary')}
@@ -64,7 +84,8 @@ function Search() {
                 </button>
             }
         </div>
-    );
+
+    )
 }
 
-export default Search;
+export default Search

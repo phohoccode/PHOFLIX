@@ -1,6 +1,7 @@
 import clsx from "clsx"
 import { useParams } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
+import { toast } from 'react-toastify';
 import styles from "./Watch.module.scss"
 import Comment from "../../components/Layout/components/Comments"
 import storage from "../../util"
@@ -32,7 +33,6 @@ function Watch() {
             movie => movie?.link_embed ===
                 data?.episodes[0]?.server_data[movie.episode - 1]?.link_embed)
         if (movieExist) {
-            alert(`Chào mừng bạn đã quay lại lúc trước bạn đang xem tập ${movieExist.episode}`)
             setEpisode(movieExist.episode)
             setLinkEmbed(movieExist.link_embed)
             return
@@ -45,7 +45,7 @@ function Watch() {
         const recenltyViewed = storage.get('recentlty-viewed', [])
         const isExist = recenltyViewed.some(
             movie => movie?.movie?.slug === data?.movie?.slug)
-        if (!isExist) {
+        if (!isExist && data !== null) {
             storage.set('recentlty-viewed', [...recenltyViewed, data])
         }
     }
@@ -74,7 +74,16 @@ function Watch() {
     const handleCopyLinkM3u8 = () => {
         navigator.clipboard.writeText(linkEmbed) // trả về promise
             .then(() => {
-                alert('Copied the link: ' + linkEmbed)
+                toast.success('Đã copy thành công!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
             })
             .catch(err => {
                 console.error('Failed to copy: ', err)
@@ -82,6 +91,7 @@ function Watch() {
     }
 
     return (
+
         <div className={styles.watch}>
             <h4 className={styles.watch__title}>{movieName}</h4>
             <div className={styles.watch__iframe}>
@@ -125,7 +135,6 @@ function Watch() {
                     <p>{linkEmbed}</p>
                 </div>
             </div>
-
             {slug && <Comment slug={slug} />}
         </div>
     )

@@ -1,5 +1,6 @@
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 import clsx from "clsx"
+import { toast } from 'react-toastify';
 import Movie from '../../components/Layout/components/Movie'
 import { useEffect, useState } from 'react'
 
@@ -17,6 +18,16 @@ function SaveMovie() {
     const handleDeleteAll = () => {
         localStorage.setItem('list-of-saved-movies', JSON.stringify([]))
         setMovies([])
+        toast.success('Đã xoá danh sách phim đã lưu!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
     }
     return (
         <div className={clsx(stylesMovie.movies__wrapper)}>
@@ -27,7 +38,7 @@ function SaveMovie() {
                 {
                     movies.length > 0 &&
                     <button
-                        style={{marginTop: '6px'}}
+                        style={{ marginTop: '6px' }}
                         onClick={handleDeleteAll}
                         className={clsx('btn btn--primary')}
                     >
@@ -41,6 +52,7 @@ function SaveMovie() {
                 ))}
             </div>
         </div>
+
     )
 }
 

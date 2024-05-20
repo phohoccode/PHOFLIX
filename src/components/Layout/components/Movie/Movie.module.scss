@@ -1,6 +1,11 @@
 .movie {
   width: 20%;
   padding: 0 8px;
+  transition: .3s;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
 
   @media (max-width: 1024px) {
     width: 25%;
@@ -38,11 +43,9 @@
       transition: 0.3s;
     }
 
-    &:hover {
-      transform: scale(1.06);
-    }
     &:hover img {
-        opacity: .3;        
+        opacity: .3;   
+        transform: scale(1.1)     
     }
     &:hover i {
       opacity: 1;

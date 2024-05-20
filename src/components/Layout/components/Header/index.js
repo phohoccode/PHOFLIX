@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import { useState, useContext, useEffect } from "react"
 import logo from './logo.jpg'
 import styles from "./Header.module.scss"
-import { Context } from "../../../../Provider"
+import Context from "../../../../Context"
 
 function Header() {
     const [valueSearch, setValueSearch] = useState('')

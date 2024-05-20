@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react"
 import clsx from "clsx"
+import { toast } from 'react-toastify';
 import styles from "./Comments.module.scss"
 import logo from './logo.jpg'
 import storage, { formatTime } from "../../../../util"
@@ -37,6 +38,16 @@ function Comments({ slug }) {
             storage.set('comments', storedComments)
             setComments(storedComments[slug] || [])
             setValueComment('')
+            toast.success('Bình luận thành công!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored"
+            });
         }
     }
 
@@ -45,6 +56,16 @@ function Comments({ slug }) {
         storedComments[slug].splice(index, 1)
         storage.set('comments', storedComments)
         setComments(storedComments[slug] || [])
+        toast.success('Xoá bình luận thành công!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored"
+        });
     }
 
     const handleEditComment = (index) => {
@@ -58,6 +79,16 @@ function Comments({ slug }) {
         storage.set('comments', storedComments)
         setComments(storedComments[slug] || [])
         setIndexEdit(-1)
+        toast.info('Bình luận đã được chỉnh sửa thành công!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored"
+        });
     }
 
     const handleLikeComment = (index) => {
@@ -159,6 +190,7 @@ function Comments({ slug }) {
                 ))}
             </ul>
         </div>
+
     )
 }
 
