@@ -1,13 +1,18 @@
 import clsx from "clsx";
 import styles from './MovieSuggestions.module.scss'
 import Movies from "../Movies";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function MovieSuggestions({ data }) {
-    const [categorys, setCategorys] = useState(data?.movie?.category || [])
-    const [currentApi, setCurrentApi] = useState(
-        `https://phimapi.com/v1/api/the-loai/${data?.movie?.category[0]?.slug}?page=2&limit=12`)
+    const [categorys, setCategorys] = useState([])
+    const [currentApi, setCurrentApi] = useState('')
     const [currentIndex, setCurrentIndex] = useState(0)
+
+    useEffect(() => {
+        setCategorys(data?.movie?.category || [])
+        setCurrentApi(`https://phimapi.com/v1/api/the-loai/${data?.movie?.category[0]?.slug}?page=2&limit=12` || '') 
+        setCurrentIndex(0)
+    }, [data])
 
     const handleSetApi = (index, slug) => {
         setCurrentIndex(index)
