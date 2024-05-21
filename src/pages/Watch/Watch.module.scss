@@ -1,3 +1,5 @@
+@import "../../Scss/mixin";
+
 .watch {
   &__title {
     font-size: 4rem;
@@ -41,10 +43,7 @@
     margin: 24px 0;
 
     div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      @include flex-custom(center, space-between, null, null, 12px);
       padding: 12px;
       border-radius: var(--border-radius);
       background-color: var(--sub-background);
@@ -55,36 +54,32 @@
       }
 
       p {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
+        @include ellipsis-text();
       }
     }
   }
 
-  &__listOfEpisodes {
+  &__episodes {
     margin-bottom: 32px;
 
-    .watch__episodes {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 6px;
+    ul {
+      @include flex-custom(null, null, null, wrap, 12px);
+      margin: 0 0 6px 5px;
 
       li {
+        @include flex-custom(center, center);
         width: calc(8.33333% - 11px);
+        min-height: 40px;
+        padding: 4px;
         background-color: var(--primary-color);
-        padding: 8px 12px;
         border-radius: var(--border-radius);
         font-size: 1.8rem;
         color: var(--black-color);
         font-weight: 600;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
         transition: 0.3s;
         user-select: none;
+        box-shadow: var(--box-shadow);
+        cursor: pointer;
 
         @media (max-width: 1024px) {
           width: calc(12.5% - 11px);
@@ -100,18 +95,12 @@
         &:hover:not(.active) {
           opacity: 0.8;
         }
-
-        &:active {
-          outline: 3px solid var(--primary-color);
-          outline-offset: 3px;
-        }
       }
 
       li.active {
         background-color: var(--blue-custom-color);
         cursor: default;
-        outline: 3px solid var(--blue-custom-color);
-        outline-offset: 3px;
+        @include outline-default(var(--blue-custom-color))
       }
     }
   }

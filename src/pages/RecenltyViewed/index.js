@@ -31,11 +31,12 @@ function RecentlyViewed() {
     }
 
     return (
-
         <div className={clsx(stylesMovie.movies__wrapper)}>
             <header>
                 <h4>
-                    {movies.length > 0 ? 'Lịch sử đã xem gần đây' : 'Lịch sử xem trống!'}
+                    {movies.length > 0 ? 
+                        `Lịch sử đã xem gần đây ( ${movies.length} )` : 
+                        'Lịch sử xem trống!'}
                 </h4>
                 {
                     movies.length > 0 &&

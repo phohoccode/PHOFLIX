@@ -1,0 +1,34 @@
+@import "../../../../Scss/mixin";
+
+.filter_movie {
+  margin-top: 24px;
+
+  > header {
+    @include flex-custom(center, space-between);
+    margin-bottom: 24px;
+
+    > h4 {
+      color: var(--primary-color);
+      font-size: 3rem;
+
+      @media (max-width: 768px) {
+        font-size: 2.6rem;
+      }
+    }
+
+    .filter__options {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        button.active {
+           @include active-btn();
+        }
+    }
+  }
+
+  .filter__item {
+    margin: 24px 0;
+    @include flex-custom(center, null, null, null, 12px);
+  }
+}

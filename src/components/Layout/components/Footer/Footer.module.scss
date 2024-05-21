@@ -1,3 +1,5 @@
+@import '../../../../Scss/mixin';
+
 footer {
   margin: 64px 32px;
   padding: 16px;
@@ -62,9 +64,7 @@ footer {
       }
 
       .footer__form {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+        @include flex-custom(null, null, column, null, 12px);
         padding: 16px;
         border-radius: var(--border-radius);
         border: 1px solid var(--white-color);

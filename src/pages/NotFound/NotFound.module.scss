@@ -1,9 +1,7 @@
+@import "../../Scss/mixin";
+
 .not_found {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  flex-direction: column;
+  @include flex-custom(center, center, column, null, 24px);
 
   h1 {
     font-size: 10rem;

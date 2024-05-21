@@ -1,27 +1,32 @@
 import clsx from "clsx"
 import { useParams } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 import styles from "./Watch.module.scss"
 import Comment from "../../components/Layout/components/Comments"
 import storage from "../../util"
 import useFetch from "../../Hooks/useFetch"
+import MovieSuggestions from "../../components/Layout/components/MovieSuggestions"
 
 function Watch() {
     const params = useParams()
     const movieRef = useRef()
     const [data] = useFetch(`https://phimapi.com/phim/${params.slug}`)
+    const [movie, setMovie] = useState([])
+    const [slug, setSlug] = useState('')
+    const [movieName, setMovieName] = useState('')
     const [episode, setEpisode] = useState(1)
     const [linkEmbed, setLinkEmbed] = useState('')
-    const movie = data?.episodes[0]?.server_data || []
-    const slug = data?.movie?.slug || ''
-    const movieName = data?.movie?.name || ''
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
 
     useEffect(() => {
+        setMovie(data?.episodes[0]?.server_data || [])
+        setSlug(data?.movie?.slug || '')
+        data && setMovieName(
+            `${data?.movie?.name} - ${data?.episodes[0]?.server_data[0]?.name}` || '')
         handleRecenltyViewed(data)
         handleSetEpisode(data)
         document.title = `Bạn đang xem: ${movieName}`
@@ -56,6 +61,8 @@ function Watch() {
             episode: index,
             slug
         }
+        setMovieName(
+            `${data?.movie?.name} - ${data?.episodes[0]?.server_data[index - 1]?.name}`)
         setEpisode(index)
         setLinkEmbed(link_embed)
         const currentMovieStorage = storage.get('save-watched-episodes', [])
@@ -83,7 +90,7 @@ function Watch() {
                     draggable: true,
                     progress: undefined,
                     theme: "colored",
-                });
+                })
             })
             .catch(err => {
                 console.error('Failed to copy: ', err)
@@ -91,7 +98,6 @@ function Watch() {
     }
 
     return (
-
         <div className={styles.watch}>
             <h4 className={styles.watch__title}>{movieName}</h4>
             <div className={styles.watch__iframe}>
@@ -102,12 +108,14 @@ function Watch() {
                     allow="fullscreen">
                 </iframe>
             </div>
-            <div className={styles.watch__listOfEpisodes}>
-                <h4>
-                    <i className="fa-solid fa-grip"></i>
-                    Danh sách tập phim
-                </h4>
-                <ul className={clsx(styles.watch__episodes)}>
+            <div className={styles.watch__episodes}>
+                {movie &&
+                    <h4>
+                        <i className="fa-solid fa-grip"></i>
+                        Danh sách tập phim ( {data?.movie?.lang} )
+                    </h4>
+                }
+                <ul>
                     {movie.map((movie, index) => (
                         <li
                             ref={movieRef}
@@ -136,6 +144,8 @@ function Watch() {
                 </div>
             </div>
             {slug && <Comment slug={slug} />}
+
+            {data && <MovieSuggestions data={data}/>}
         </div>
     )
 }

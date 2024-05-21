@@ -1,4 +1,7 @@
+@import "../../../../Scss/mixin";
+
 .navbar {
+  @include flex-custom(center, space-between);
   position: sticky;
   height: 60px;
   top: 0;
@@ -6,9 +9,6 @@
   right: 0;
   padding: 0 32px;
   border-bottom: 0.1px solid var(--seperate-color);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   z-index: 9999;
   background-color: var(--background);
 
@@ -21,8 +21,7 @@
   }
 
   &__logo {
-    display: flex;
-    align-items: center;
+    @include flex-custom(center);
     gap: 0 12px;
 
     a {
@@ -41,16 +40,14 @@
   }
 
   &__search {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-custom(center, space-between);
 
     .navbar__search_left {
       display: none;
-      cursor: pointer;
       font-size: 2.6rem;
       padding: 0 6px;
       margin-left: -6px;
+      cursor: pointer;
     }
 
     .navbar__search_center {
@@ -66,7 +63,7 @@
         width: 100%;
         height: 40px;
         border-radius: var(--border-radius);
-        padding: 0 64px 0 12px;
+        padding: 0 68px 0 12px;
         background-color: var(--sub-background);
         color: var(--white-color);
         font-size: 1.8rem;
@@ -74,22 +71,21 @@
         margin-left: auto;
 
         &:focus {
-          outline: 3px solid var(--sub-background);
-          outline-offset: 3px;
+          @include outline-default(var(--sub-background));
         }
       }
+
       input:focus + span {
         opacity: 1;
       }
 
       a,
       span {
-        position: absolute;
-        top: 50%;
+        @include absolute-center("top");
         font-size: 2rem;
         color: #fff;
-        transform: translateY(-50%);
         transition: 0.3s;
+        padding: 0 4px;
         cursor: pointer;
 
         &:hover {
@@ -99,11 +95,19 @@
 
       a {
         right: 3%;
+
+        @media (max-width: 768px) {
+          right: 1%;
+        }
       }
 
       span {
         opacity: 0;
-        right: 40px;
+        right: 44px;
+
+        @media (max-width: 768px) {
+          right: 40px;
+        }
       }
     }
 
@@ -112,6 +116,7 @@
       cursor: pointer;
       font-size: 2.6rem;
       padding: 0 6px;
+
       @media (max-width: 768px) {
         display: block;
       }
@@ -124,6 +129,7 @@
     padding: 0 6px;
     margin-left: -6px;
     font-size: 2.6rem;
+
     @media (max-width: 768px) {
       display: block;
     }

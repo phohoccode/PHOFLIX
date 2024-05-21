@@ -13,9 +13,13 @@ function Movie({ data }) {
                         }
                     />
                     <i className="fa-brands fa-google-play"></i>
-                    <span className={styles.status}>{data?.lang}</span>
+                    <div className={styles.movie__info}>
+                        <span className={styles.status}>{data?.lang}</span>
+                        <span className={styles.quality}>{data?.quality}</span>
+                        <span className={styles.episode_current}>{data?.episode_current}</span>
+                    </div>
                 </figure>
-                <span className={styles.name}>{data?.name}</span>
+                <span className={styles.movie__name}>{data?.name}</span>
             </Link>
         </div>
     )

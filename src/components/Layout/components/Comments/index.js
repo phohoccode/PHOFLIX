@@ -79,7 +79,7 @@ function Comments({ slug }) {
         storage.set('comments', storedComments)
         setComments(storedComments[slug] || [])
         setIndexEdit(-1)
-        toast.info('Bình luận đã được chỉnh sửa thành công!', {
+        toast.success('Chỉnh sửa bình luận thành công!', {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,

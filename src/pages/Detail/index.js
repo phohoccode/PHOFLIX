@@ -10,7 +10,7 @@ import useFetch from "../../Hooks/useFetch"
 function Detail() {
     const params = useParams()
     const [page, setPage] = useState(1)
-    const [data] = useFetch(`https://phimapi.com/v1/api/${params.describe}/${params.slug}?page=${page}`)
+    const [data] = useFetch(`https://phimapi.com/v1/api/${params.describe}/${params.slug}?page=${page}&limit=12`)
     const [movies, setMovie] = useState([])
     const [titleName, setTitleName] = useState('')
     const [totalPages, setTotalPages] = useState(0)

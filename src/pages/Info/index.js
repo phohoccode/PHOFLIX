@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import useFetch from "../../Hooks/useFetch"
 import styles from "./Info.module.scss"
 import storage from "../../util"
+import MovieSuggestions from "../../components/Layout/components/MovieSuggestions";
 
 function Info() {
     const params = useParams()
@@ -26,6 +27,7 @@ function Info() {
         setCategorys(data?.movie?.category || [])
         setActors(data?.movie?.actor || [])
         setTitleDocument(data?.movie?.name || 'Info Movie')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [data])
 
     useEffect(() => {
@@ -88,9 +90,6 @@ function Info() {
                 <div className={styles.info__background_outer}>
                     <figure>
                         <img src={movie?.poster_url} />
-                        <span className={clsx('quality', styles.info__quality)}>
-                            {movie?.quality}
-                        </span>
                     </figure>
                     <div className={styles.info__movie}>
                         <h4>{movie?.name}</h4>
@@ -132,8 +131,8 @@ function Info() {
                             <span className='text-primary'>Quốc gia:</span>
                             {countrys.map((country, index) => (
                                 <li
-                                    style={{ padding: '0 2px' }}
-                                    className='cursor-pointer btn btn--primary'
+                                    style={{ padding: '0 2px'}}
+                                    className={clsx('cursor-pointer', 'btn', 'btn--primary')}
                                     key={index}
                                 >
                                     <Link to={`/detail/quoc-gia/${country?.slug}`}>
@@ -146,8 +145,8 @@ function Info() {
                             <span className='text-primary '>Thể loại:</span>
                             {categorys.map((category, index) => (
                                 <li
-                                    style={{ padding: '0 2px' }}
-                                    className='cursor-pointer btn btn--primary'
+                                    style={{ padding: '0 2px'}}
+                                    className={clsx('cursor-pointer', 'btn', 'btn--primary')}
                                     key={index}
                                 >
                                     <Link to={`/detail/the-loai/${category?.slug}`}>
@@ -167,12 +166,12 @@ function Info() {
             </div>
 
             <div className={styles.info__content}>
-                <h4>Tóm tắt nội dung phim</h4>
+                <h4 className={styles.info__title}>Tóm tắt nội dung phim</h4>
                 <p>{movie?.content}</p>
             </div>
 
             <div className={styles.info__trailer}>
-                <h4>Xem Trailer</h4>
+                <h4 className={styles.info__title}>Xem Trailer</h4>
                 <iframe
                     src={movie?.trailer_url &&
                         movie?.trailer_url.replace('watch?v=', '/embed/')}
@@ -183,6 +182,9 @@ function Info() {
                 >
                 </iframe>
             </div>
+
+            {data && <MovieSuggestions data={data}/>}
+            
         </div>
     )
 }

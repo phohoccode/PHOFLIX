@@ -1,7 +1,7 @@
+@import "../../../../Scss/mixin";
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-custom(center, center);
   width: 100vw;
   height: 100vh;
 

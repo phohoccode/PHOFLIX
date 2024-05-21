@@ -1,12 +1,13 @@
-.comments {
+@import "../../../../Scss/mixin";
 
+.comments {
   h4 {
     font-size: 3rem;
     margin-bottom: 12px;
 
     @media (max-width: 768px) {
-        font-size: 2rem;
-      }
+      font-size: 2rem;
+    }
 
     i {
       margin-right: 8px;
@@ -23,11 +24,9 @@
   }
 
   &__box {
-    display: flex;
-    gap: 12px;
+    @include flex-custom(null, null, column, null, 12px);
     background-color: var(--sub-background);
     border-radius: var(--border-radius);
-    flex-direction: column;
     padding: 16px;
     font-size: 1.8rem;
     margin-bottom: 12px;
@@ -83,11 +82,7 @@
     }
 
     .comments__actions {
-      display: flex;
-      gap: 12px;
-      justify-content: end;
-      align-items: center;
-      flex-wrap: wrap;
+      @include flex-custom(center, end, null, wrap, 12px);
 
       button {
         font-weight: 600;

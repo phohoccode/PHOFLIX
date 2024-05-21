@@ -33,7 +33,9 @@ function SaveMovie() {
         <div className={clsx(stylesMovie.movies__wrapper)}>
             <header>
                 <h4>
-                    {movies.length > 0 ? 'Danh sách phim đã lưu' : 'Danh sách phim trống!'}
+                    {movies.length > 0 ? 
+                        `Danh sách phim đã lưu ( ${movies.length} )` : 
+                        'Danh sách phim trống!'}
                 </h4>
                 {
                     movies.length > 0 &&

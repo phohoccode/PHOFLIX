@@ -1,0 +1,83 @@
+@mixin flex-custom(
+  $align: null,
+  $justify: null,
+  $direction: null,
+  $wrap: null,
+  $gap: null
+) {
+  display: flex;
+
+  @if $align != null {
+    align-items: $align;
+  }
+
+  @if $justify != null {
+    justify-content: $justify;
+  }
+
+  @if $direction != null {
+    flex-direction: $direction;
+  }
+
+  @if $wrap != null {
+    flex-wrap: $wrap;
+  }
+
+  @if $gap != null {
+    gap: $gap;
+  }
+}
+
+@mixin absolute-center($direction) {
+  position: absolute;
+
+  @if $direction == "left" {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @if $direction == "top" {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @if $direction == "both" {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin outline-default($color: null, $width: 3px) {
+  outline: $width solid;
+  outline-offset: $width;
+
+  @if $color != null {
+    outline-color: $color;
+  }
+}
+
+@mixin scroll-y() {
+  overflow-y: auto;
+  overscroll-behavior-y: none;
+}
+
+@mixin ellipsis-text($row: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if $row == 1 {
+    white-space: nowrap;
+  }
+
+  @if $row > 1 {
+    display: -webkit-box;
+    -webkit-line-clamp: $row;
+    -webkit-box-orient: vertical;
+  }
+}
+
+@mixin active-btn() {
+    background-color: var(--blue-custom-color);
+    @include outline-default(var(--blue-custom-color))
+}

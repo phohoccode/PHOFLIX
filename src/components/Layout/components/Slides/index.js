@@ -16,7 +16,8 @@ function Slides({ api }) {
     }, [index])
     
     useEffect(() => {
-        slideInnerRef.current.style.transform = `translateX(-${slideInnerRef.current.clientWidth * index}px)`
+        slideInnerRef.current.style.transform = 
+            `translateX(-${slideInnerRef.current.clientWidth * index}px)`
     }, [index])
 
     const handlePrev = () => {

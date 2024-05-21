@@ -1,3 +1,5 @@
+@import "../../../../Scss/mixin";
+
 .slide {
   position: relative;
   width: 100%;
@@ -40,10 +42,8 @@
       margin-bottom: 12px;
       text-transform: uppercase;
       color: var(--white-color);
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
       text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+      @include ellipsis-text();
 
       @media (max-width: 768px) {
         font-size: 2rem;
@@ -51,17 +51,15 @@
     }
 
     div {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
+      @include flex-custom(center, null, null, null, 12px);
+      
+      a {
+        transition: 0.3s;
+        color: var(--white-color);
 
-    a {
-      transition: 0.3s;
-      color: var(--white-color);
-
-      i {
-        margin-right: 8px;
+        i {
+          margin-right: 8px;
+        }
       }
     }
   }

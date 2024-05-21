@@ -1,3 +1,5 @@
+@import "../../../../Scss/mixin";
+
 .sidebar {
   position: sticky;
   top: 70px;
@@ -9,11 +11,10 @@
   border-radius: var(--border-radius);
   background-color: var(--sub-background);
   height: calc(100vh - 80px);
-  overflow-y: auto;
   user-select: none;
   z-index: 999;
-  overscroll-behavior-y: none;
   box-shadow: var(--box-shadow);
+  @include scroll-y();
 
   @media (max-width: 1024px) {
     margin-left: 24px;
@@ -33,12 +34,10 @@
   }
 
   &__row {
-    display: flex;
-    flex-direction: column;
+    @include flex-custom(null, null, column);
 
     > h4 {
-      display: flex;
-      align-items: center;
+      @include flex-custom(center);
       font-size: 2rem;
       margin-bottom: 8px;
       text-transform: uppercase;
@@ -90,15 +89,13 @@
         }
 
         .sidebar__sub_list {
-          overflow-y: auto;
+          @include scroll-y();
           height: 200px;
-          overscroll-behavior-y: none;
           margin-left: 6px;
           padding: 6px;
 
           @media (max-width: 768px) {
-            display: flex;
-            flex-wrap: wrap;
+            @include flex-custom(null, null, null, wrap);
           }
 
           li {

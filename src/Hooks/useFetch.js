@@ -16,7 +16,7 @@ function useFetch(url) {
             .then(data => setData(data))
             .catch(error => {
                 console.error(error)
-                toast.error(`Error: ${error}`, {
+                toast.error(`Đã xảy ra lỗi trong quá trình tải phim!`, {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,

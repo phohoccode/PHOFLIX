@@ -8,7 +8,7 @@ import Movie from '../../components/Layout/components/Movie'
 import useFetch from '../../Hooks/useFetch'
 
 function Search() {
-    let [limit, setLimit] = useState(10)
+    let [limit, setLimit] = useState(12)
     const params = useParams()
     const [data] = useFetch(`https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword}&limit=${limit}`)
     const [resultMovies, setResultMovies] = useState([])
@@ -28,7 +28,7 @@ function Search() {
     }, [titlePage])
 
     useEffect(() => {
-        setLimit(prevLimit => prevLimit * 0 + 10)
+        setLimit(prevLimit => prevLimit * 0 + 12)
     }, [params.keyword])
 
     const handleSeeMoreResult = () => {
@@ -75,7 +75,7 @@ function Search() {
                     ))}
                 </div>
             </div>
-            {resultMovies.length >= 10 &&
+            {resultMovies.length >= 12 &&
                 <button
                     onClick={handleSeeMoreResult}
                     className={clsx('btn', 'btn--primary')}

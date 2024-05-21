@@ -1,7 +1,7 @@
+@import "../../Scss/mixin";
+
 .Search {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  @include flex-custom(null, null, column, null, 12px);
 
   button {
     color: #000;

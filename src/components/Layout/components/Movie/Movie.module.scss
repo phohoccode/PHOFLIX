@@ -1,10 +1,36 @@
+@import "../../../../Scss/mixin";
+
 .movie {
-  width: 20%;
+  width: 16.66667%;
   padding: 0 8px;
-  transition: .3s;
+  transition: 0.3s;
+  transition-delay: 0.1s;
 
   &:hover {
     transform: translateY(-10px);
+
+    @media (max-width: 768px) {
+      transform: unset;
+    }
+  }
+
+  &:hover img {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+
+  &:hover i {
+    opacity: 1;
+    color: var(--primary-color);
+  }
+
+  &:hover .movie__info {
+    top: 4px;
+    opacity: 1;
+  }
+
+  &:hover .movie__name {
+    color: var(--primary-color);
   }
 
   @media (max-width: 1024px) {
@@ -18,7 +44,7 @@
 
   figure {
     border-radius: var(--border-radius);
-    height: 350px;
+    height: 320px;
     position: relative;
     overflow: hidden;
     transition: 0.3s;
@@ -43,42 +69,52 @@
       transition: 0.3s;
     }
 
-    &:hover img {
-        opacity: .3;   
-        transform: scale(1.1)     
-    }
-    &:hover i {
-      opacity: 1;
-    }
-
-    .status {
+    .movie__info {
       position: absolute;
-      top: 4px;
+      top: -40px;
       right: 4px;
+      gap: 4px;
       max-width: 90%;
-      font-size: 1.4rem;
-      text-transform: uppercase;
-      padding: 4px 6px;
-      background-color: var(--primary-color);
-      border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow);
-      user-select: none;
+      opacity: 0;
+      transition: 0.3s;
+      @include flex-custom(null, null, column);
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+
+      .quality,
+      .status,
+      .episode_current {
+        text-align: center;
+        text-transform: uppercase;
+        padding: 4px 8px;
+        color: var(--white-color);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        user-select: none;
+        font-size: 1.4rem;
+      }
+
+      .quality {
+        background-color: var(--blue-custom-color);
+      }
+
+      .status {
+        background-color: var(--primary-color);
+      }
+
+      .episode_current {
+        background-color: var(--pink-custom-color);
+      }
     }
   }
 
-  .name {
-    display: -webkit-box;
+  &__name {
     margin-top: 8px;
     color: var(--white-color);
     font-size: 1.6rem;
     transition: 0.3s;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
-
-    &:hover {
-      color: var(--primary-color);
-    }
+    @include ellipsis-text(2);
   }
 }

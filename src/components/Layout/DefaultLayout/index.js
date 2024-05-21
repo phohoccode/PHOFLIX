@@ -14,7 +14,7 @@ function DefaultLayout({ children }) {
         setTimeout(() => {
             setIsLoading(false)
         }, 2000)
-        toast.info('Chào mừng bạn đến với PHOFLIX!, chúc bạn có trải nghiệm xem phim vui vẻ nhất.', {
+        toast.info('Chào mừng bạn đến với PHOFLIX! Chúc bạn có trải nghiệm xem phim vui vẻ nhất.', {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
