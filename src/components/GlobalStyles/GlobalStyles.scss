@@ -96,6 +96,7 @@ i {
   white-space: nowrap;
   font-weight: 600;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     @include outline-default();
@@ -133,10 +134,10 @@ i {
 .next {
   @include flex-custom(center, center);
   @include absolute-center("top");
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 60px;
   font-size: 2rem;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   color: rgba(255, 255, 255, 0.5);
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;
@@ -183,4 +184,16 @@ i {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 6px 12px;
+    opacity: .5;
+
+    &:hover {
+        opacity: 1;
+    }
 }

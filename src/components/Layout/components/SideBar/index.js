@@ -2,9 +2,9 @@ import { NavLink, useLocation } from "react-router-dom"
 import { useState, useContext, useEffect } from "react"
 import clsx from 'clsx'
 import styles from "./SideBar.module.scss"
+import Context from "../../../../Context"
 import Category from "../Category"
 import Country from "../Country"
-import Context from "../../../../Context"
 
 function SideBar() {
     const { pathname } = useLocation()

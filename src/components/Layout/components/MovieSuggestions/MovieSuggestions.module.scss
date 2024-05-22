@@ -1,11 +1,10 @@
 @import "../../../../Scss/mixin";
 
-.filter_movie {
-  margin-top: 24px;
+.suggestions {
 
   > header {
-    @include flex-custom(center, space-between);
-    margin-bottom: 24px;
+    @include flex-custom(center, space-between, null, null, 12px);
+    margin: 24px 0;
 
     > h4 {
       color: var(--primary-color);
@@ -16,19 +15,22 @@
       }
     }
 
-    .filter__options {
+    .suggestions__options {
         display: flex;
         align-items: center;
         gap: 12px;
+        flex-wrap: wrap;
+        margin-right: 6px;
+
+        button {
+            @media (max-width: 1024px) {
+                flex: 1;
+            }
+        }
 
         button.active {
            @include active-btn();
         }
     }
-  }
-
-  .filter__item {
-    margin: 24px 0;
-    @include flex-custom(center, null, null, null, 12px);
   }
 }

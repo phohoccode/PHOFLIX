@@ -1,14 +1,18 @@
 import { useEffect, useRef, useState } from "react"
 import styles from "./Slides.module.scss"
-import Slide from "../Slide"
 import useFetch from "../../../../Hooks/useFetch"
+import Slide from "../Slide"
 
 function Slides({ api }) {
     const [index, setIndex] = useState(0)
     const slideInnerRef = useRef()
     const idInterval = useRef()
     const [data] = useFetch(api)
-    const slides = data?.items || []
+    const [slides, setSlides] = useState([])
+
+    useEffect(() => {
+        setSlides(data?.items || [])
+    }, [data])
 
     useEffect(() => {
         idInterval.current = setInterval(handleNext, 5000)

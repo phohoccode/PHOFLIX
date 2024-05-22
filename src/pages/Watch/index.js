@@ -1,12 +1,12 @@
 import clsx from "clsx"
 import { useParams } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
-import { toast } from 'react-toastify'
 import styles from "./Watch.module.scss"
 import Comment from "../../components/Layout/components/Comments"
 import storage from "../../util"
 import useFetch from "../../Hooks/useFetch"
 import MovieSuggestions from "../../components/Layout/components/MovieSuggestions"
+import { showErrorMessage, showInfoMessage, showSuccessMessage } from "../../components/Layout/components/toastMessage"
 
 function Watch() {
     const params = useParams()
@@ -19,18 +19,26 @@ function Watch() {
     const [linkEmbed, setLinkEmbed] = useState('')
 
     useEffect(() => {
+        showInfoMessage('Chúc bạn xem phim vui vẻ ^_^', 2000)
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
 
     useEffect(() => {
+        if (data?.episodes[0].server_data.length === 0) {
+            showErrorMessage('Đã xảy ra sự cố khi tải phim!')
+            return
+        }
         setMovie(data?.episodes[0]?.server_data || [])
         setSlug(data?.movie?.slug || '')
         data && setMovieName(
             `${data?.movie?.name} - ${data?.episodes[0]?.server_data[0]?.name}` || '')
         handleRecenltyViewed(data)
         handleSetEpisode(data)
-        document.title = `Bạn đang xem: ${movieName}`
     }, [data])
+
+    useEffect(() => {
+        document.title = `Bạn đang xem: ${movieName}`
+    }, [movieName])
 
     const handleSetEpisode = (data) => {
         const currentMovie = storage.get('save-watched-episodes', [])
@@ -40,6 +48,7 @@ function Watch() {
         if (movieExist) {
             setEpisode(movieExist.episode)
             setLinkEmbed(movieExist.link_embed)
+            showInfoMessage(`Lúc trước bạn đang xem tập ${movieExist.episode}`)
             return
         }
         setEpisode(1)
@@ -81,16 +90,7 @@ function Watch() {
     const handleCopyLinkM3u8 = () => {
         navigator.clipboard.writeText(linkEmbed) // trả về promise
             .then(() => {
-                toast.success('Đã copy thành công!', {
-                    position: "top-right",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                })
+                showSuccessMessage('Đã copy thành công!')
             })
             .catch(err => {
                 console.error('Failed to copy: ', err)
@@ -110,7 +110,7 @@ function Watch() {
             </div>
             <div className={styles.watch__episodes}>
                 {movie &&
-                    <h4>
+                    <h4 className={styles.watch__title}>
                         <i className="fa-solid fa-grip"></i>
                         Danh sách tập phim ( {data?.movie?.lang} )
                     </h4>
@@ -131,12 +131,12 @@ function Watch() {
                     ))}
                 </ul>
             </div>
-            <div className={(styles.watch__copy_link_m3u8)}>
-                <h4>
+            <div className={(styles.watch__copy_box)}>
+                <h4 className={styles.watch__title}>
                     <i className="fa-solid fa-link"></i>
                     Link m3u8
                 </h4>
-                <div>
+                <div className={styles.watch__copy_area}>
                     <button
                         onClick={handleCopyLinkM3u8}
                         className={clsx('btn', 'btn--primary')}>Copy</button>
@@ -145,7 +145,7 @@ function Watch() {
             </div>
             {slug && <Comment slug={slug} />}
 
-            {data && <MovieSuggestions data={data}/>}
+            {data && <MovieSuggestions data={data} />}
         </div>
     )
 }

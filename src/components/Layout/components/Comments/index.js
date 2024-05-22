@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from "react"
 import clsx from "clsx"
-import { toast } from 'react-toastify';
 import styles from "./Comments.module.scss"
 import logo from './logo.jpg'
 import storage, { formatTime } from "../../../../util"
+import { showSuccessMessage } from "../toastMessage";
 
 function Comments({ slug }) {
     const [valueComment, setValueComment] = useState('')
@@ -38,16 +38,7 @@ function Comments({ slug }) {
             storage.set('comments', storedComments)
             setComments(storedComments[slug] || [])
             setValueComment('')
-            toast.success('Bình luận thành công!', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored"
-            });
+            showSuccessMessage('Bình luận thành công!')
         }
     }
 
@@ -56,16 +47,7 @@ function Comments({ slug }) {
         storedComments[slug].splice(index, 1)
         storage.set('comments', storedComments)
         setComments(storedComments[slug] || [])
-        toast.success('Xoá bình luận thành công!', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored"
-        });
+        showSuccessMessage('Xoá bình luận thành công!')
     }
 
     const handleEditComment = (index) => {
@@ -79,16 +61,7 @@ function Comments({ slug }) {
         storage.set('comments', storedComments)
         setComments(storedComments[slug] || [])
         setIndexEdit(-1)
-        toast.success('Chỉnh sửa bình luận thành công!', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored"
-        });
+        showSuccessMessage('Chỉnh sửa bình luận thành công!')
     }
 
     const handleLikeComment = (index) => {

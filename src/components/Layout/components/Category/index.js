@@ -5,7 +5,6 @@ import useFetch from "../../../../Hooks/useFetch"
 import Context from "../../../../Context"
 import styles from "../SideBar/SideBar.module.scss"
 
-
 function Category() {
     const [data] = useFetch('https://phimapi.com/the-loai')
     const { pathname } = useLocation()

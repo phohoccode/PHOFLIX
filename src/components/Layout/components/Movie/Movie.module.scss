@@ -38,6 +38,11 @@
   }
 
   @media (max-width: 768px) {
+    width: 28vw;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 576px) {
     width: 40vw;
     flex-shrink: 0;
   }

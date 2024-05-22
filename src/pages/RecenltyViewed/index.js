@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import clsx from "clsx"
-import { toast } from 'react-toastify';
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 import Movie from '../../components/Layout/components/Movie'
 import storage from "../../util"
+import { showSuccessMessage } from '../../components/Layout/components/toastMessage';
 
 function RecentlyViewed() {
     const [movies, setMovies] = useState([])
@@ -18,16 +18,7 @@ function RecentlyViewed() {
     const handleDeleteAll = () => {
         storage.set('recentlty-viewed', [])
         setMovies([])
-        toast.success('Đã xoá lịch sử xem gần đây!', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-        });
+        showSuccessMessage('Đã xoá lịch sử xem gần đây!')
     }
 
     return (

@@ -1,16 +1,16 @@
 @import "../../../../Scss/mixin";
 
 .sidebar {
+  width: 200px;
+  padding: 12px;
   position: sticky;
   top: 70px;
   flex-shrink: 0;
   margin-top: 10px;
   margin-left: 32px;
-  width: 200px;
-  padding: 12px;
+  height: calc(100vh - 80px);
   border-radius: var(--border-radius);
   background-color: var(--sub-background);
-  height: calc(100vh - 80px);
   user-select: none;
   z-index: 999;
   box-shadow: var(--box-shadow);

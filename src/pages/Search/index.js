@@ -1,23 +1,25 @@
 import clsx from 'clsx'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
 import styles from './Search.module.scss'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 import Movie from '../../components/Layout/components/Movie'
 import useFetch from '../../Hooks/useFetch'
+import { showSuccessMessage, showInfoMessage } from '../../components/Layout/components/toastMessage'
+
 
 function Search() {
     let [limit, setLimit] = useState(12)
     const params = useParams()
-    const [data] = useFetch(`https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword}&limit=${limit}`)
+    const [data] = useFetch(
+        `https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword}&limit=${limit}`)
     const [resultMovies, setResultMovies] = useState([])
     const [titlePage, setTitlePgae] = useState('')
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
-
+    
     useEffect(() => {
         setResultMovies(data?.data?.items || [])
         setTitlePgae(data?.data?.titlePage || '')
@@ -29,33 +31,16 @@ function Search() {
 
     useEffect(() => {
         setLimit(prevLimit => prevLimit * 0 + 12)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [params.keyword])
 
     const handleSeeMoreResult = () => {
         if (resultMovies.length < limit) {
-            toast.error('Đã hết phim phù hợp!', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            })
+            showInfoMessage('Đã hết phim phù hợp!')
             return
         }
-        setLimit(prevLimit => prevLimit + 10)
-        toast.success('Tải phim thành công!', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-        })
+        setLimit(prevLimit => prevLimit + 12)
+        showSuccessMessage('Tải phim thành công!')
     }
 
     return (

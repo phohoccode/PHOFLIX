@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import clsx from 'clsx'
-import { toast } from 'react-toastify';
 import styles from './Footer.module.scss'
+import { showInfoMessage } from '../toastMessage'
 
 function Footer() {
     const [valueSubmid, setValueSubmit] = useState('')
@@ -9,16 +9,7 @@ function Footer() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (valueSubmid === '') {
-            toast.info('Chưa nhập lời nhắn!', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored"
-            });
+            showInfoMessage('Chưa nhập lời nhắn!')
             return
         }
         const subject = encodeURIComponent('Xin chào tôi đến từ PHOFLIX!')
@@ -61,6 +52,12 @@ function Footer() {
                                 <span>Tiktok</span>
                             </a>
                         </li>
+                        <li>
+                            <a title='PHOFLIX trên Telegram' href="https://t.me/phohoccode_04" target="_blank">
+                                <i className="fa-brands fa-telegram"></i>
+                                <span>Telegram</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div className={styles.footer__column}>
@@ -96,7 +93,7 @@ function Footer() {
                 <p className={styles.footer__copyright}>© 2024 - PHOFLIX. Web xem phim chất lượng, không quảng cáo làm phiền.</p>
             </div>
         </footer>
-    );
+    )
 }
 
-export default Footer;
+export default Footer

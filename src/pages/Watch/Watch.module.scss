@@ -2,19 +2,11 @@
 
 .watch {
   &__title {
-    font-size: 4rem;
-
-    @media (max-width: 768px) {
-      font-size: 3rem;
-    }
-  }
-
-  h4 {
     font-size: 3rem;
     margin-bottom: 12px;
 
     @media (max-width: 768px) {
-      font-size: 2rem;
+      font-size: 2.6rem;
     }
 
     i {
@@ -39,10 +31,10 @@
     }
   }
 
-  &__copy_link_m3u8 {
+  &__copy_box {
     margin: 24px 0;
 
-    div {
+    .watch__copy_area {
       @include flex-custom(center, space-between, null, null, 12px);
       padding: 12px;
       border-radius: var(--border-radius);
@@ -64,7 +56,10 @@
 
     ul {
       @include flex-custom(null, null, null, wrap, 12px);
-      margin: 0 0 6px 5px;
+      padding: 12px;
+      background-color: var(--sub-background);
+      border-radius: var(--border-radius);
+
 
       li {
         @include flex-custom(center, center);
@@ -100,7 +95,7 @@
       li.active {
         background-color: var(--blue-custom-color);
         cursor: default;
-        @include outline-default(var(--blue-custom-color))
+        @include outline-default(var(--blue-custom-color));
       }
     }
   }

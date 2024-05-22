@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { useState, useContext, useEffect } from "react"
 import logo from './logo.jpg'
 import styles from "./Header.module.scss"
@@ -9,6 +9,8 @@ function Header() {
     const [showOnMobile, setShowOnMobile] = useState(false)
     const [width, setWidth] = useState(window.innerWidth)
     const { handleToggleBar, isSideBarOpen } = useContext(Context)
+    // useNavigatetrả về một hàm cho phép bạn điều hướng theo chương trình
+    const navigate = useNavigate()
 
     useEffect(() => {
         const handleResize = () => {
@@ -17,6 +19,12 @@ function Header() {
         window.addEventListener('resize', handleResize)
         return () => window.removeEventListener('resize', handleResize)
     }, [])
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            navigate(`/search/${valueSearch}`)
+        }
+    }
 
     return (
 
@@ -55,6 +63,7 @@ function Header() {
                         placeholder="Tìm kiếm phim..."
                         value={valueSearch}
                         onChange={(e) => setValueSearch(e.target.value)}
+                        onKeyDown={handleKeyPress}
                     />
                     <span onClick={() => setValueSearch('')}>
                         <i className="fa-solid fa-xmark"></i>

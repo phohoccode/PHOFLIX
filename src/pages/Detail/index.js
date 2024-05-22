@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import clsx from "clsx"
 import { toast } from 'react-toastify'
-import Movie from "../../components/Layout/components/Movie"
 import styles from './Detail.module.scss'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 import useFetch from "../../Hooks/useFetch"
+import Movie from '../../components/Layout/components/Movie'
+import {showInfoMessage} from '../../components/Layout/components/toastMessage'
 
 function Detail() {
     const params = useParams()
@@ -38,6 +39,7 @@ function Detail() {
 
     const handleChangePage = (index) => {
         setPage(index)
+        showInfoMessage(`Bạn đang ở trang thứ ${index}`)
     }
 
     const renderPaginations = () => {

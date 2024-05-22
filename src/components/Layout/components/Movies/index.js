@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import styles from "./Movies.module.scss"
-import Movie from "../Movie"
 import useFetch from "../../../../Hooks/useFetch"
+import Movie from "../Movie"
 
 function Movies({ api }) {
     const [data] = useFetch(api)

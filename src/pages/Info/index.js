@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import clsx from "clsx"
-import { toast } from 'react-toastify';
 import useFetch from "../../Hooks/useFetch"
 import styles from "./Info.module.scss"
 import storage from "../../util"
-import MovieSuggestions from "../../components/Layout/components/MovieSuggestions";
+import { showErrorMessage, showSuccessMessage } from "../../components/Layout/components/toastMessage"
+import { MovieSuggestions } from '../../components/Layout/components'
 
 function Info() {
     const params = useParams()
@@ -22,6 +22,10 @@ function Info() {
     }, [])
 
     useEffect(() => {
+        if (data?.status === false) {
+            showErrorMessage('Phim đang lỗi. Vui lòng truy cập lại sau!', 3000)
+            return
+        }
         setMovie(data?.movie || {})
         setCountrys(data?.movie?.country || [])
         setCategorys(data?.movie?.category || [])
@@ -48,16 +52,7 @@ function Info() {
                 ...saveMovies, data
             ]))
             setIsShow(true)
-            toast.success('Lưu phim thành công!', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            })
+            showSuccessMessage('Lưu phim thành công!')
         } catch (error) {
             console.error(error)
         }
@@ -69,20 +64,12 @@ function Info() {
             saveMovie => saveMovie?.movie?.slug !== slug)
         storage.set('list-of-saved-movies', newSaveMovies)
         setIsShow(false)
-        toast.success('Xoá phim thành công!', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-        });
+        showSuccessMessage('Xoá phim thành công!')
     }
 
     return (
         <div className={styles.info}>
+
             <div className={styles.info__background}>
                 <figure className={styles.info__thumb}>
                     <img src={movie?.thumb_url} />
@@ -131,7 +118,7 @@ function Info() {
                             <span className='text-primary'>Quốc gia:</span>
                             {countrys.map((country, index) => (
                                 <li
-                                    style={{ padding: '0 2px'}}
+                                    style={{ padding: '0 2px' }}
                                     className={clsx('cursor-pointer', 'btn', 'btn--primary')}
                                     key={index}
                                 >
@@ -145,7 +132,7 @@ function Info() {
                             <span className='text-primary '>Thể loại:</span>
                             {categorys.map((category, index) => (
                                 <li
-                                    style={{ padding: '0 2px'}}
+                                    style={{ padding: '0 2px' }}
                                     className={clsx('cursor-pointer', 'btn', 'btn--primary')}
                                     key={index}
                                 >
@@ -170,21 +157,23 @@ function Info() {
                 <p>{movie?.content}</p>
             </div>
 
-            <div className={styles.info__trailer}>
-                <h4 className={styles.info__title}>Xem Trailer</h4>
-                <iframe
-                    src={movie?.trailer_url &&
-                        movie?.trailer_url.replace('watch?v=', '/embed/')}
-                    frameBorder="0"
-                    allowFullScreen
-                    allow="accelerometer"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                >
-                </iframe>
-            </div>
+            {movie?.trailer_url &&
+                <div className={styles.info__trailer}>
+                    <h4 className={styles.info__title}>Xem Trailer</h4>
+                    <iframe
+                        src={movie?.trailer_url &&
+                            movie?.trailer_url.replace('watch?v=', '/embed/')}
+                        frameBorder="0"
+                        allowFullScreen
+                        allow="accelerometer"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                    >
+                    </iframe>
+                </div>
+            }
 
-            {data && <MovieSuggestions data={data}/>}
-            
+            {data?.status && <MovieSuggestions data={data} />}
+
         </div>
     )
 }

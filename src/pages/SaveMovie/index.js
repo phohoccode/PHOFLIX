@@ -3,7 +3,7 @@ import clsx from "clsx"
 import { toast } from 'react-toastify';
 import Movie from '../../components/Layout/components/Movie'
 import { useEffect, useState } from 'react'
-
+import { showSuccessMessage } from '../../components/Layout/components/toastMessage';
 
 function SaveMovie() {
     const [movies, setMovies] = useState([])
@@ -18,16 +18,7 @@ function SaveMovie() {
     const handleDeleteAll = () => {
         localStorage.setItem('list-of-saved-movies', JSON.stringify([]))
         setMovies([])
-        toast.success('Đã xoá danh sách phim đã lưu!', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-        });
+        showSuccessMessage('Đã xoá danh sách phim đã lưu!')
     }
     return (
         <div className={clsx(stylesMovie.movies__wrapper)}>
