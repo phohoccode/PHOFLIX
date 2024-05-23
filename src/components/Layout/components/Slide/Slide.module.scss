@@ -6,7 +6,6 @@
   flex-shrink: 0;
 
   figure {
-    filter: blur(3px);
     height: 600px;
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -31,7 +30,6 @@
     gap: 12px;
 
     figure {
-      filter: unset;
       height: 240px;
 
       @media (max-width: 1024px) {
