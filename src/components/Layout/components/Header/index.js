@@ -60,13 +60,13 @@ function Header() {
                     className={styles.navbar__search_center}
                 >
                     <input
-                        placeholder="Tìm kiếm phim..."
+                        placeholder="Tìm kiếm..."
                         value={valueSearch}
                         onChange={(e) => setValueSearch(e.target.value)}
                         onKeyDown={handleKeyPress}
                     />
                     <span onClick={() => setValueSearch('')}>
-                        <i className="fa-solid fa-xmark"></i>
+                        <i className="fa-regular fa-circle-xmark"></i>
                     </span>
                     <NavLink to={`/search/${valueSearch}`}>
                         <i className="fa-solid fa-magnifying-glass"></i>

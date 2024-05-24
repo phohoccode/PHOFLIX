@@ -6,6 +6,7 @@
   flex-shrink: 0;
 
   figure {
+    opacity: 0.8;
     height: 600px;
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -21,15 +22,16 @@
   }
 
   &__info {
-    width: 90%;
     position: absolute;
-    left: 96px;
-    bottom: 24px;
+    left: 64px;
+    bottom: 16px;
     margin-top: 12px;
     display: flex;
     gap: 12px;
+    width: 100%;
 
     figure {
+      opacity: 1;
       height: 240px;
 
       @media (max-width: 1024px) {
@@ -43,7 +45,6 @@
 
     @media (max-width: 768px) {
       left: 16px;
-      bottom: 16px;
     }
 
     .slide__info_right {
@@ -55,16 +56,21 @@
         margin-bottom: 12px;
         color: var(--white-color);
         text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
-        @include ellipsis-text();
+        @include ellipsis-text(2);
+
+        @media (max-width: 1024px) {
+          font-size: 2.4rem;
+        }
 
         @media (max-width: 768px) {
-          font-size: 2rem;
+          width: calc(100% - 32px);
+          font-size: 1.5rem;
         }
       }
 
       .slide__actions {
         @include flex-custom(flex-start, null, column, null, 12px);
-
+        
         @media (max-width: 1024px) {
           align-items: center;
           flex-direction: unset;

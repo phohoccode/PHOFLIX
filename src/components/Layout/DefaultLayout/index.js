@@ -13,9 +13,9 @@ function DefaultLayout({ children }) {
 
     useEffect(() => {
         setTimeout(() => {
+            setIsLoading(false)
         }, 2000)
-        setIsLoading(false)
-        // showInfoMessage('Chào mừng bạn đến với PHOFLIX! Chúc bạn có trải nghiệm xem phim vui vẻ nhất.')
+        showInfoMessage('Chào mừng bạn đến với PHOFLIX! Chúc bạn có trải nghiệm xem phim vui vẻ nhất.')
     }, [])
 
     useEffect(() => {

@@ -103,8 +103,7 @@ i {
   }
 
   @media (max-width: 768px) {
-    font-size: 1.6rem;
-    padding: 8px;
+    font-size: 1.4rem;
   }
 }
 
@@ -144,6 +143,10 @@ i {
   transition: 0.3s;
   box-shadow: var(--box-shadow);
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .prev:active,
@@ -153,11 +156,11 @@ i {
 }
 
 .prev {
-  left: 10px;
+  left: 16px;
 }
 
 .next {
-  right: 10px;
+  right: 16px;
 }
 
 .year,
