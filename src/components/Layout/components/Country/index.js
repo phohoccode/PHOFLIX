@@ -2,12 +2,9 @@ import { NavLink, useLocation } from "react-router-dom"
 import { useContext } from "react";
 import clsx from "clsx"
 import Context from "../../../../Context";
-import useFetch from "../../../../Hooks/useFetch"
 import styles from "../SideBar/SideBar.module.scss"
 
-
-function Country() {
-    const [data] = useFetch('https://phimapi.com/quoc-gia')
+function Country({ data }) {
     const { pathname } = useLocation()
     const { handleToggleBar } = useContext(Context)
 

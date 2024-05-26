@@ -1,4 +1,4 @@
-@import '../../../../Scss/mixin';
+@import "../../../../Scss/mixin";
 
 footer {
   margin: 64px 32px;
@@ -86,6 +86,10 @@ footer {
           margin: 0 0 0 auto;
           padding: 8px;
           font-weight: 600;
+
+          @media (max-width: 768px) {
+            width: 100%;
+          }
         }
       }
     }

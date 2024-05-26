@@ -11,7 +11,7 @@ function MovieSuggestions({ data }) {
     useEffect(() => {
         setCategorys(data?.movie?.category || [])
         setCurrentApi(
-            `https://phimapi.com/v1/api/the-loai/${data?.movie?.category[0]?.slug}?page=2&limit=12` || '') 
+            `https://phimapi.com/v1/api/the-loai/${data?.movie?.category[0]?.slug}?page=2&limit=18` || '') 
         setCurrentIndex(0)
     }, [data])
 

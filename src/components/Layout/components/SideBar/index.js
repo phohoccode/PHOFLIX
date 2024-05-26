@@ -5,13 +5,16 @@ import styles from "./SideBar.module.scss"
 import Context from "../../../../Context"
 import Category from "../Category"
 import Country from "../Country"
+import useFetch from "../../../../Hooks/useFetch"
 
 function SideBar() {
-    const { pathname } = useLocation()
-    const [showCategorys, setShowCategorys] = useState(false)
-    const [showCountry, setShowCountry] = useState(false)
     const { handleToggleBar, isSideBarOpen } = useContext(Context)
+    const { pathname } = useLocation()
+    const [showCategory, setShowCategory] = useState(false)
+    const [showCountry, setShowCountry] = useState(false)
     const [width, setWidth] = useState(window.innerWidth)
+    const [dataCategory] = useFetch('https://phimapi.com/the-loai')
+    const [dataCountry] = useFetch('https://phimapi.com/quoc-gia')
 
     useEffect(() => {
         const handleResize = () => {
@@ -20,7 +23,6 @@ function SideBar() {
         window.addEventListener('resize', handleResize)
         return () => window.removeEventListener('resize', handleResize)
     }, [])
-
 
     return (
         <div
@@ -93,16 +95,18 @@ function SideBar() {
                     </li>
                     <li
                         className={styles.sidebar__item}
-                        onClick={() => setShowCategorys(!showCategorys)}>
+                        onClick={() => setShowCategory(!showCategory)}>
                         <span>
                             Thể Loại
-                            {showCategorys ? (
+                            {showCategory ? (
                                 <i className="fa-solid fa-chevron-up"></i>
                             ) : (
                                 <i className="fa-solid fa-chevron-down"></i>
                             )}
                         </span>
-                        {showCategorys && <Category />}
+                        {showCategory &&
+                            <Category data={dataCategory && dataCategory} />
+                        }
                     </li>
                     <li
                         className={styles.sidebar__item}
@@ -115,7 +119,9 @@ function SideBar() {
                                 <i className="fa-solid fa-chevron-down"></i>
                             )}
                         </span>
-                        {showCountry && <Country />}
+                        {showCountry &&
+                            <Country data={dataCountry && dataCountry} />
+                        }
                     </li>
                 </ul>
             </div>

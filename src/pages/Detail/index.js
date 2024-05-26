@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import clsx from "clsx"
-import { toast } from 'react-toastify'
 import styles from './Detail.module.scss'
 import stylesMovie from '../../components/Layout/components/Movies/Movies.module.scss'
 import useFetch from "../../Hooks/useFetch"
@@ -11,7 +10,8 @@ import {showInfoMessage} from '../../components/Layout/components/toastMessage'
 function Detail() {
     const params = useParams()
     const [page, setPage] = useState(1)
-    const [data] = useFetch(`https://phimapi.com/v1/api/${params.describe}/${params.slug}?page=${page}&limit=12`)
+    const [data] = useFetch(
+        `https://phimapi.com/v1/api/${params.describe}/${params.slug}?page=${page}&limit=30`)
     const [movies, setMovie] = useState([])
     const [titleName, setTitleName] = useState('')
     const [totalPages, setTotalPages] = useState(0)

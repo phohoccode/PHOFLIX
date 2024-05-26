@@ -19,7 +19,7 @@ function Watch() {
     const [linkEmbed, setLinkEmbed] = useState('')
 
     useEffect(() => {
-        showInfoMessage('Chúc bạn xem phim vui vẻ ^_^', 2000)
+        showInfoMessage('Chúc bạn xem phim vui vẻ ^_^')
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
 

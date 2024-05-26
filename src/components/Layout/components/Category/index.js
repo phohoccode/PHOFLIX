@@ -1,12 +1,10 @@
 import { NavLink, useLocation } from "react-router-dom"
 import clsx from "clsx"
 import { useContext } from "react"
-import useFetch from "../../../../Hooks/useFetch"
 import Context from "../../../../Context"
 import styles from "../SideBar/SideBar.module.scss"
 
-function Category() {
-    const [data] = useFetch('https://phimapi.com/the-loai')
+function Category({ data }) {
     const { pathname } = useLocation()
     const { handleToggleBar } = useContext(Context)
 

@@ -7,9 +7,8 @@ import Movie from '../../components/Layout/components/Movie'
 import useFetch from '../../Hooks/useFetch'
 import { showSuccessMessage, showInfoMessage } from '../../components/Layout/components/toastMessage'
 
-
 function Search() {
-    let [limit, setLimit] = useState(12)
+    let [limit, setLimit] = useState(18)
     const params = useParams()
     const [data] = useFetch(
         `https://phimapi.com/v1/api/tim-kiem?keyword=${params.keyword}&limit=${limit}`)
@@ -30,7 +29,7 @@ function Search() {
     }, [titlePage])
 
     useEffect(() => {
-        setLimit(prevLimit => prevLimit * 0 + 12)
+        setLimit(prevLimit => prevLimit * 0 + 18)
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [params.keyword])
 
@@ -39,7 +38,7 @@ function Search() {
             showInfoMessage('Đã hết phim phù hợp!')
             return
         }
-        setLimit(prevLimit => prevLimit + 12)
+        setLimit(prevLimit => prevLimit + 18)
         showSuccessMessage('Tải phim thành công!')
     }
 
@@ -60,7 +59,7 @@ function Search() {
                     ))}
                 </div>
             </div>
-            {resultMovies.length >= 12 &&
+            {resultMovies.length >= 18 &&
                 <button
                     onClick={handleSeeMoreResult}
                     className={clsx('btn', 'btn--primary')}

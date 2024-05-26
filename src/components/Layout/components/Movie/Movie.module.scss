@@ -85,7 +85,8 @@
       @include flex-custom(null, null, column);
 
       @media (max-width: 768px) {
-        display: none;
+        top: 4px;
+        opacity: 1;
       }
 
       .quality,
@@ -99,6 +100,10 @@
         box-shadow: var(--box-shadow);
         user-select: none;
         font-size: 1.4rem;
+        @media (max-width: 768px) {
+            font-size: 1.2rem;
+            padding: 4px;
+        }
       }
 
       .quality {
@@ -111,6 +116,10 @@
 
       .episode_current {
         background-color: var(--pink-custom-color);
+
+        @media (max-width: 768px) {
+            display: none;
+          }  
       }
     }
   }

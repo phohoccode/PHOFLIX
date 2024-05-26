@@ -66,7 +66,7 @@ function Header() {
                         onKeyDown={handleKeyPress}
                     />
                     <span onClick={() => setValueSearch('')}>
-                        <i className="fa-regular fa-circle-xmark"></i>
+                        <i className="fa-solid fa-xmark"></i>
                     </span>
                     <NavLink to={`/search/${valueSearch}`}>
                         <i className="fa-solid fa-magnifying-glass"></i>
