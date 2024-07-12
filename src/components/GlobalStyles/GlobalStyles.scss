@@ -50,6 +50,10 @@ body {
   font-weight: 400;
   font-style: normal;
   text-rendering: optimizeSpeed;
+
+  @media (max-width: 1023px) {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 img {
